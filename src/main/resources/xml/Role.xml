@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.RoleDao">
+
+    <!--根据参数查询角色信息-->
+    <resultMap id="rolelist" type="Role">
+        <id property="roleId" column="roleId"/>
+        <result property="roleName" column="roleName"/>
+        <result property="createTime" column="createTime"/>
+        <result property="roleStatus" column="roleStatus"/>
+        <collection property="resource" ofType="Resource">
+            <id property="resourceId" column="resourceId"/>
+            <result property="resourceName" column="resourceName"/>
+            <result property="resouceStatus" column="resouceStatus"/>
+            <result property="menuId" column="menuId"/>
+        </collection>
+        <collection property="menus" ofType="Menu">
+            <id property="menu_id" column="menuId"/>
+            <result property="menuName" column="menuName"/>
+            <result property="menuUrl" column="menuUrl"/>
+        </collection>
+    </resultMap>
+    <select id="findRoleInfo" resultMap="rolelist">
+        select r.*,re.*,m.menuName FROM  role r,role_resource rr,resource re,menu m
+        <where>
+            and r.roleId=#{roleId}
+           AND r.roleId=rr.ROLE_ID
+            and rr.resource_id=re.resourceId
+            AND m.menuId=re.menuId
+        </where>
+
+    </select>
+
+</mapper>

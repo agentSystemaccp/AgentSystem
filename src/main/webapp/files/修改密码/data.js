@@ -1,0 +1,361 @@
+﻿$axure.loadCurrentPage({
+  "url":"修改密码.html",
+  "generationDate":new Date(1384938520804.9),
+  "isCanvasEnabled":false,
+  "variables":["OnLoadVariable"],
+  "page":{
+    "packageId":"4db4e35806bd4565aed383e36c0615b5",
+    "type":"Axure:Page",
+    "name":"修改密码",
+    "notes":{
+},
+    "style":{
+      "baseStyle":"627587b6038d43cca051c114ac41ad32",
+      "pageAlignment":"near",
+      "fill":{
+        "fillType":"solid",
+        "color":0xFFFFFFFF},
+      "image":null,
+      "imageHorizontalAlignment":"near",
+      "imageVerticalAlignment":"near",
+      "imageRepeat":"",
+      "favicon":null,
+      "sketchFactor":"0",
+      "colorStyle":"appliedColor",
+      "fontName":"应用字体",
+      "borderWidth":"0"},
+    "adaptiveStyles":{
+},
+    "interactionMap":{
+},
+    "diagram":{
+      "objects":[{
+          "id":"4737a79755f34cf6b7ffeec95fd73dfa",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":49,
+              "y":34},
+            "size":{
+              "width":996,
+              "height":766}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"01f84cd28bbf4537ace679426d094370",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":49,
+                  "y":34},
+                "size":{
+                  "width":996,
+                  "height":766}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/修改密码/u0.png"}},
+{
+          "id":"33ace9735b1946d5aea7ed072d519735",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":935,
+              "y":37},
+            "size":{
+              "width":57,
+              "height":19}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"933431f4aaaf45de81593e4a8375881f",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":935,
+                  "y":37},
+                "size":{
+                  "width":57,
+                  "height":19}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"fadeWidget",
+                      "description":"显示 修改密码 淡入淡出 500 ms,<br>(图片),<br>(文本框(单行)),<br>(文本框(单行)),<br>(文本框(单行)),<br>(图片)",
+                      "objectsToFades":[{
+                          "objectPath":["a47daa938aa647a0ad7b8429b2826c84"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "easing":"fade",
+                              "duration":500,
+                              "showType":"none"}}},
+{
+                          "objectPath":["06c159059c0643a98121240f651bf55e"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["0139b9866c2e41c59b94f57ff62b7e73"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["ceb6b65c17e34884a90f9be240a858c2"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["f6ee3032dc864d17bb475b0470aeb13f"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["89fa6c5a2fc84b8caaf6e4fc577c3f96"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}}]}]}]}},
+          "tabbable":true,
+          "annotation":{
+            "描述":"点击修改密码，弹出修改密码的输入框"},
+          "images":{
+            "normal~":"images/修改密码/u2.png"}},
+{
+          "id":"a47daa938aa647a0ad7b8429b2826c84",
+          "label":"修改密码",
+          "type":"dynamicPanel",
+          "styleType":"dynamicPanel",
+          "visible":false,
+          "style":{
+            "location":{
+              "x":660,
+              "y":61},
+            "size":{
+              "width":380,
+              "height":174},
+            "visible":false},
+          "adaptiveStyles":{
+},
+          "scrollbars":"none",
+          "fitToContent":false,
+          "propagate":false,
+          "diagrams":[{
+              "id":"59eedc07ab2f459da90a319cd401f627",
+              "label":"State1",
+              "type":"Axure:PanelDiagram",
+              "objects":[{
+                  "id":"06c159059c0643a98121240f651bf55e",
+                  "label":"",
+                  "parentDynamicPanel":"a47daa938aa647a0ad7b8429b2826c84",
+                  "type":"imageBox",
+                  "styleType":"imageBox",
+                  "visible":true,
+                  "style":{
+                    "location":{
+                      "x":2,
+                      "y":0},
+                    "size":{
+                      "width":372,
+                      "height":162}},
+                  "adaptiveStyles":{
+},
+                  "objects":[{
+                      "id":"bfecb772f7f146caa09d819c80e2bc06",
+                      "label":"",
+                      "isContained":true,
+                      "parentDynamicPanel":"a47daa938aa647a0ad7b8429b2826c84",
+                      "type":"richTextPanel",
+                      "styleType":"paragraph",
+                      "visible":true,
+                      "style":{
+                        "location":{
+                          "x":2,
+                          "y":0},
+                        "size":{
+                          "width":372,
+                          "height":162}},
+                      "adaptiveStyles":{
+}}],
+                  "images":{
+                    "normal~":"images/修改密码/u5.png"}},
+{
+                  "id":"0139b9866c2e41c59b94f57ff62b7e73",
+                  "label":"",
+                  "parentDynamicPanel":"a47daa938aa647a0ad7b8429b2826c84",
+                  "type":"textBox",
+                  "styleType":"textBox",
+                  "visible":true,
+                  "style":{
+                    "location":{
+                      "x":103,
+                      "y":32},
+                    "size":{
+                      "width":128,
+                      "height":21}},
+                  "adaptiveStyles":{
+}},
+{
+                  "id":"ceb6b65c17e34884a90f9be240a858c2",
+                  "label":"",
+                  "parentDynamicPanel":"a47daa938aa647a0ad7b8429b2826c84",
+                  "type":"textBox",
+                  "styleType":"textBox",
+                  "visible":true,
+                  "style":{
+                    "location":{
+                      "x":103,
+                      "y":62},
+                    "size":{
+                      "width":128,
+                      "height":21}},
+                  "adaptiveStyles":{
+}},
+{
+                  "id":"f6ee3032dc864d17bb475b0470aeb13f",
+                  "label":"",
+                  "parentDynamicPanel":"a47daa938aa647a0ad7b8429b2826c84",
+                  "type":"textBox",
+                  "styleType":"textBox",
+                  "visible":true,
+                  "style":{
+                    "location":{
+                      "x":103,
+                      "y":93},
+                    "size":{
+                      "width":128,
+                      "height":21}},
+                  "adaptiveStyles":{
+}},
+{
+                  "id":"89fa6c5a2fc84b8caaf6e4fc577c3f96",
+                  "label":"",
+                  "parentDynamicPanel":"a47daa938aa647a0ad7b8429b2826c84",
+                  "type":"imageBox",
+                  "styleType":"imageBox",
+                  "visible":true,
+                  "style":{
+                    "location":{
+                      "x":180,
+                      "y":121},
+                    "size":{
+                      "width":155,
+                      "height":29}},
+                  "adaptiveStyles":{
+},
+                  "objects":[{
+                      "id":"1fb2c4211c70458abf53ad59a9a092a9",
+                      "label":"",
+                      "isContained":true,
+                      "parentDynamicPanel":"a47daa938aa647a0ad7b8429b2826c84",
+                      "type":"richTextPanel",
+                      "styleType":"paragraph",
+                      "visible":true,
+                      "style":{
+                        "location":{
+                          "x":180,
+                          "y":121},
+                        "size":{
+                          "width":155,
+                          "height":29}},
+                      "adaptiveStyles":{
+}}],
+                  "interactionMap":{
+                    "onClick":{
+                      "description":"OnClick",
+                      "cases":[{
+                          "description":"用例 1",
+                          "isNewIfGroup":false,
+                          "actions":[{
+                              "action":"fadeWidget",
+                              "description":"隐藏 修改密码,<br>(图片),<br>(文本框(单行)),<br>(文本框(单行)),<br>(文本框(单行)),<br>(图片)",
+                              "objectsToFades":[{
+                                  "objectPath":["a47daa938aa647a0ad7b8429b2826c84"],
+                                  "fadeInfo":{
+                                    "fadeType":"hide",
+                                    "options":{
+                                      "showType":"none"}}},
+{
+                                  "objectPath":["06c159059c0643a98121240f651bf55e"],
+                                  "fadeInfo":{
+                                    "fadeType":"hide",
+                                    "options":{
+                                      "showType":"none"}}},
+{
+                                  "objectPath":["0139b9866c2e41c59b94f57ff62b7e73"],
+                                  "fadeInfo":{
+                                    "fadeType":"hide",
+                                    "options":{
+                                      "showType":"none"}}},
+{
+                                  "objectPath":["ceb6b65c17e34884a90f9be240a858c2"],
+                                  "fadeInfo":{
+                                    "fadeType":"hide",
+                                    "options":{
+                                      "showType":"none"}}},
+{
+                                  "objectPath":["f6ee3032dc864d17bb475b0470aeb13f"],
+                                  "fadeInfo":{
+                                    "fadeType":"hide",
+                                    "options":{
+                                      "showType":"none"}}},
+{
+                                  "objectPath":["89fa6c5a2fc84b8caaf6e4fc577c3f96"],
+                                  "fadeInfo":{
+                                    "fadeType":"hide",
+                                    "options":{
+                                      "showType":"none"}}}]}]}]}},
+                  "tabbable":true,
+                  "images":{
+                    "normal~":"images/修改密码/u10.png"}}]}]}]}},
+  "masters":{
+},
+  "objectPaths":{
+    "4737a79755f34cf6b7ffeec95fd73dfa":{
+      "scriptId":"u0"},
+    "01f84cd28bbf4537ace679426d094370":{
+      "scriptId":"u1"},
+    "33ace9735b1946d5aea7ed072d519735":{
+      "scriptId":"u2"},
+    "933431f4aaaf45de81593e4a8375881f":{
+      "scriptId":"u3"},
+    "a47daa938aa647a0ad7b8429b2826c84":{
+      "scriptId":"u4"},
+    "06c159059c0643a98121240f651bf55e":{
+      "scriptId":"u5"},
+    "bfecb772f7f146caa09d819c80e2bc06":{
+      "scriptId":"u6"},
+    "0139b9866c2e41c59b94f57ff62b7e73":{
+      "scriptId":"u7"},
+    "ceb6b65c17e34884a90f9be240a858c2":{
+      "scriptId":"u8"},
+    "f6ee3032dc864d17bb475b0470aeb13f":{
+      "scriptId":"u9"},
+    "89fa6c5a2fc84b8caaf6e4fc577c3f96":{
+      "scriptId":"u10"},
+    "1fb2c4211c70458abf53ad59a9a092a9":{
+      "scriptId":"u11"}}});

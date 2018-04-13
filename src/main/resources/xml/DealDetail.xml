@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.DealDetailDao">
+
+
+    <!--查看用户明细-->
+    <select id="queryDealDetails" resultType="DealDetail">
+        SELECT * FROM account_details WHERE userId=#{userid}  LIMIT #{offset},#{pageSize}
+    </select>
+
+    <!--查询总条数-->
+    <select id="queryDealDetailCount" resultType="_int">
+        SELECT COUNT(1) FROM account_details WHERE userId=#{userid}
+    </select>
+
+</mapper>

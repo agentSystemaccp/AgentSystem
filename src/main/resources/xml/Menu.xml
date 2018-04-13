@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.MenuDao">
+    <!--根据主菜单对象查询其子菜单-->
+    <resultMap id="resourceList" type="Resource">
+        <id property="resourceId" column="resourceId"/>
+        <result property="resourceName" column="resourceName"/>
+        <result property="createTime" column="createTime"/>
+        <result property="resouceStatus" column="resouceStatus"/>
+        <result property="resourceUrl" column="resourceUrl"/>
+        <association property="menu" javaType="Menu">
+            <id property="menu_id" column="menuId"/>
+            <result property="menuName" column="menuName"/>
+            <result property="menuUrl" column="menuUrl"/>
+        </association>
+    </resultMap>
+    <select id="findResourceList" resultMap="resourceList">
+        select r.*,m.* FROM menu m,resource r
+        <where>
+            and m.menuId=#{menu_id}
+            and m.menuId=r.menuId
+        </where>
+    </select>
+</mapper>

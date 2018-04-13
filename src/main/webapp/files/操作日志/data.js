@@ -1,0 +1,383 @@
+﻿$axure.loadCurrentPage({
+  "url":"操作日志.html",
+  "generationDate":new Date(1384938521305.93),
+  "isCanvasEnabled":false,
+  "variables":["OnLoadVariable"],
+  "page":{
+    "packageId":"12764578f22041e1920e98ab2b2c7f99",
+    "type":"Axure:Page",
+    "name":"操作日志",
+    "notes":{
+},
+    "style":{
+      "baseStyle":"627587b6038d43cca051c114ac41ad32",
+      "pageAlignment":"near",
+      "fill":{
+        "fillType":"solid",
+        "color":0xFFFFFFFF},
+      "image":null,
+      "imageHorizontalAlignment":"near",
+      "imageVerticalAlignment":"near",
+      "imageRepeat":"",
+      "favicon":null,
+      "sketchFactor":"0",
+      "colorStyle":"appliedColor",
+      "fontName":"应用字体",
+      "borderWidth":"0"},
+    "adaptiveStyles":{
+},
+    "interactionMap":{
+},
+    "diagram":{
+      "objects":[{
+          "id":"d20a1d3643ed4791a9f35689509134dc",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":47,
+              "y":34},
+            "size":{
+              "width":994,
+              "height":658}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"c5a3ebee318c4af9a9ebdd1e313665f7",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":47,
+                  "y":34},
+                "size":{
+                  "width":994,
+                  "height":658}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/操作日志/u0.png"}},
+{
+          "id":"5a6b59ff1fec4a12b1a5b53931465e32",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":160,
+              "y":169},
+            "size":{
+              "width":74,
+              "height":19}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"5614c3efa1f843fba5faee4c33539279",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":160,
+                  "y":169},
+                "size":{
+                  "width":74,
+                  "height":19}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 关键词申请",
+                      "target":{
+                        "targetType":"page",
+                        "url":"关键词申请.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/代理商管理/u6.png"}},
+{
+          "id":"3a981b56c9f5496a9ec307af232332c2",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":255,
+              "y":171},
+            "size":{
+              "width":98,
+              "height":17}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"08e25bae0c9a41448715875a61f2d3b7",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":255,
+                  "y":171},
+                "size":{
+                  "width":98,
+                  "height":17}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 代理商客户管理",
+                      "target":{
+                        "targetType":"page",
+                        "url":"代理商客户管理.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/代理商管理/u8.png"}},
+{
+          "id":"5709ededd37347d1abc3cc1d332fe0e8",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":375,
+              "y":169},
+            "size":{
+              "width":78,
+              "height":20}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"d846354bdfa749eb9c175f67c4fe05ec",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":375,
+                  "y":169},
+                "size":{
+                  "width":78,
+                  "height":20}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 代理商预付款",
+                      "target":{
+                        "targetType":"page",
+                        "url":"代理商预付款.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/代理商管理/u10.png"}},
+{
+          "id":"f4194824df7a456f9913b57654453630",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":479,
+              "y":171},
+            "size":{
+              "width":96,
+              "height":19}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"339a6cea4bb849779a64292212ca29ce",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":479,
+                  "y":171},
+                "size":{
+                  "width":96,
+                  "height":19}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 关键词申请管理",
+                      "target":{
+                        "targetType":"page",
+                        "url":"关键词申请管理.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/代理商管理/u12.png"}},
+{
+          "id":"5cd6f61501364f13b01b547edcc52a3e",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":594,
+              "y":170},
+            "size":{
+              "width":64,
+              "height":19}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"8a507c037c0c401fafc99134f47e4b2c",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":594,
+                  "y":170},
+                "size":{
+                  "width":64,
+                  "height":19}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 操作日志",
+                      "target":{
+                        "targetType":"page",
+                        "url":"操作日志.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/代理商管理/u14.png"}},
+{
+          "id":"49f90c143f42456ab352bcfb127cc858",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":174,
+              "y":136},
+            "size":{
+              "width":74,
+              "height":19}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"4cdcc47a6e2045999de619839f2d9d9e",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":174,
+                  "y":136},
+                "size":{
+                  "width":74,
+                  "height":19}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 代理商管理",
+                      "target":{
+                        "targetType":"page",
+                        "url":"代理商管理.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/代理商管理/u16.png"}}]}},
+  "masters":{
+},
+  "objectPaths":{
+    "d20a1d3643ed4791a9f35689509134dc":{
+      "scriptId":"u0"},
+    "c5a3ebee318c4af9a9ebdd1e313665f7":{
+      "scriptId":"u1"},
+    "5a6b59ff1fec4a12b1a5b53931465e32":{
+      "scriptId":"u2"},
+    "5614c3efa1f843fba5faee4c33539279":{
+      "scriptId":"u3"},
+    "3a981b56c9f5496a9ec307af232332c2":{
+      "scriptId":"u4"},
+    "08e25bae0c9a41448715875a61f2d3b7":{
+      "scriptId":"u5"},
+    "5709ededd37347d1abc3cc1d332fe0e8":{
+      "scriptId":"u6"},
+    "d846354bdfa749eb9c175f67c4fe05ec":{
+      "scriptId":"u7"},
+    "f4194824df7a456f9913b57654453630":{
+      "scriptId":"u8"},
+    "339a6cea4bb849779a64292212ca29ce":{
+      "scriptId":"u9"},
+    "5cd6f61501364f13b01b547edcc52a3e":{
+      "scriptId":"u10"},
+    "8a507c037c0c401fafc99134f47e4b2c":{
+      "scriptId":"u11"},
+    "49f90c143f42456ab352bcfb127cc858":{
+      "scriptId":"u12"},
+    "4cdcc47a6e2045999de619839f2d9d9e":{
+      "scriptId":"u13"}}});

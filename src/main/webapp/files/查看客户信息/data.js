@@ -1,0 +1,160 @@
+﻿$axure.loadCurrentPage({
+  "url":"查看客户信息.html",
+  "generationDate":new Date(1384938521175.92),
+  "isCanvasEnabled":false,
+  "variables":["OnLoadVariable"],
+  "page":{
+    "packageId":"0daf104506b947059a62ccc0eb72327c",
+    "type":"Axure:Page",
+    "name":"查看客户信息",
+    "notes":{
+},
+    "style":{
+      "baseStyle":"627587b6038d43cca051c114ac41ad32",
+      "pageAlignment":"near",
+      "fill":{
+        "fillType":"solid",
+        "color":0xFFFFFFFF},
+      "image":null,
+      "imageHorizontalAlignment":"near",
+      "imageVerticalAlignment":"near",
+      "imageRepeat":"",
+      "favicon":null,
+      "sketchFactor":"0",
+      "colorStyle":"appliedColor",
+      "fontName":"应用字体",
+      "borderWidth":"0"},
+    "adaptiveStyles":{
+},
+    "interactionMap":{
+},
+    "diagram":{
+      "objects":[{
+          "id":"bb9560a55be648ca8374e60b83cddddb",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":50,
+              "y":204},
+            "size":{
+              "width":989,
+              "height":705}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"025659c74b5a44569ad3dbb5f377f974",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":50,
+                  "y":204},
+                "size":{
+                  "width":989,
+                  "height":705}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/查看客户信息/u0.png"}},
+{
+          "id":"a2444632f9e54a8ba4a2271df8e55f8e",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":49,
+              "y":32},
+            "size":{
+              "width":990,
+              "height":173}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"3a397935a09d4212b56e4511d7620e2c",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":49,
+                  "y":32},
+                "size":{
+                  "width":990,
+                  "height":173}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/查看客户信息/u2.png"}},
+{
+          "id":"1b6b5fd27c814115a0df0577f9abf988",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":513,
+              "y":840},
+            "size":{
+              "width":62,
+              "height":27}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"4de90239ff1e4a0cb24376ef227ea905",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":513,
+                  "y":840},
+                "size":{
+                  "width":62,
+                  "height":27}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 代理商客户管理",
+                      "target":{
+                        "targetType":"page",
+                        "url":"代理商客户管理.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/查看客户信息/u4.png"}}]}},
+  "masters":{
+},
+  "objectPaths":{
+    "bb9560a55be648ca8374e60b83cddddb":{
+      "scriptId":"u0"},
+    "025659c74b5a44569ad3dbb5f377f974":{
+      "scriptId":"u1"},
+    "a2444632f9e54a8ba4a2271df8e55f8e":{
+      "scriptId":"u2"},
+    "3a397935a09d4212b56e4511d7620e2c":{
+      "scriptId":"u3"},
+    "1b6b5fd27c814115a0df0577f9abf988":{
+      "scriptId":"u4"},
+    "4de90239ff1e4a0cb24376ef227ea905":{
+      "scriptId":"u5"}}});

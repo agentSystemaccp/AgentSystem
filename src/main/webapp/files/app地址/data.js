@@ -1,0 +1,627 @@
+﻿$axure.loadCurrentPage({
+  "url":"app地址.html",
+  "generationDate":new Date(1384938522103.98),
+  "isCanvasEnabled":false,
+  "variables":["OnLoadVariable"],
+  "page":{
+    "packageId":"3c53ab92ee2144278fb2fe466f6d732e",
+    "type":"Axure:Page",
+    "name":"APP地址",
+    "notes":{
+},
+    "style":{
+      "baseStyle":"627587b6038d43cca051c114ac41ad32",
+      "pageAlignment":"near",
+      "fill":{
+        "fillType":"solid",
+        "color":0xFFFFFFFF},
+      "image":null,
+      "imageHorizontalAlignment":"near",
+      "imageVerticalAlignment":"near",
+      "imageRepeat":"",
+      "favicon":null,
+      "sketchFactor":"0",
+      "colorStyle":"appliedColor",
+      "fontName":"应用字体",
+      "borderWidth":"0"},
+    "adaptiveStyles":{
+},
+    "interactionMap":{
+},
+    "diagram":{
+      "objects":[{
+          "id":"3a336c8470794079a793d4732e24cc90",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":49,
+              "y":34},
+            "size":{
+              "width":994,
+              "height":619}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"c73925be146f48ac8cd8cb899e96c322",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":49,
+                  "y":34},
+                "size":{
+                  "width":994,
+                  "height":619}},
+              "adaptiveStyles":{
+}}],
+          "images":{
+            "normal~":"images/app地址/u0.png"}},
+{
+          "id":"300c22f6d0944b889a22893ac407a381",
+          "label":"",
+          "type":"textBox",
+          "styleType":"textBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":511,
+              "y":398},
+            "size":{
+              "width":131,
+              "height":20}},
+          "adaptiveStyles":{
+}},
+{
+          "id":"e29a729e727547ffbc5e41df503a6a58",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":514,
+              "y":437},
+            "size":{
+              "width":64,
+              "height":22}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"ebeffb46bc5b483d99e684dc6e0afee8",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":514,
+                  "y":437},
+                "size":{
+                  "width":64,
+                  "height":22}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"fadeWidget",
+                      "description":"显示 (HTML Button),<br>(图片),<br>修改成功",
+                      "objectsToFades":[{
+                          "objectPath":["510148d542dd43b6b01a72a677f20daf"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["94ab638dd003459cb02fe049bfd31a0c"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}},
+{
+                          "objectPath":["588c5ba5b1ab4e23b881c64df14f2419"],
+                          "fadeInfo":{
+                            "fadeType":"show",
+                            "options":{
+                              "showType":"none"}}}]}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/服务年限/u7.png"}},
+{
+          "id":"588c5ba5b1ab4e23b881c64df14f2419",
+          "label":"修改成功",
+          "type":"dynamicPanel",
+          "styleType":"dynamicPanel",
+          "visible":false,
+          "style":{
+            "location":{
+              "x":400,
+              "y":280},
+            "size":{
+              "width":260,
+              "height":157},
+            "visible":false},
+          "adaptiveStyles":{
+},
+          "scrollbars":"none",
+          "fitToContent":false,
+          "propagate":false,
+          "diagrams":[{
+              "id":"ce144cf728f34541be89a0426b2dcd93",
+              "label":"State1",
+              "type":"Axure:PanelDiagram",
+              "objects":[{
+                  "id":"94ab638dd003459cb02fe049bfd31a0c",
+                  "label":"",
+                  "parentDynamicPanel":"588c5ba5b1ab4e23b881c64df14f2419",
+                  "type":"imageBox",
+                  "styleType":"imageBox",
+                  "visible":true,
+                  "style":{
+                    "location":{
+                      "x":6,
+                      "y":4},
+                    "size":{
+                      "width":241,
+                      "height":145}},
+                  "adaptiveStyles":{
+},
+                  "objects":[{
+                      "id":"3d822fa775a845049b02c339884f8402",
+                      "label":"",
+                      "isContained":true,
+                      "parentDynamicPanel":"588c5ba5b1ab4e23b881c64df14f2419",
+                      "type":"richTextPanel",
+                      "styleType":"paragraph",
+                      "visible":true,
+                      "style":{
+                        "location":{
+                          "x":6,
+                          "y":4},
+                        "size":{
+                          "width":241,
+                          "height":145}},
+                      "adaptiveStyles":{
+}}],
+                  "images":{
+                    "normal~":"images/服务年限/u4.png"}},
+{
+                  "id":"510148d542dd43b6b01a72a677f20daf",
+                  "label":"",
+                  "parentDynamicPanel":"588c5ba5b1ab4e23b881c64df14f2419",
+                  "type":"button",
+                  "styleType":"button",
+                  "visible":true,
+                  "style":{
+                    "location":{
+                      "x":145,
+                      "y":106},
+                    "size":{
+                      "width":73,
+                      "height":23}},
+                  "adaptiveStyles":{
+},
+                  "interactionMap":{
+                    "onClick":{
+                      "description":"OnClick",
+                      "cases":[{
+                          "description":"用例 1",
+                          "isNewIfGroup":false,
+                          "actions":[{
+                              "action":"fadeWidget",
+                              "description":"隐藏 修改成功,<br>(图片),<br>(HTML Button)",
+                              "objectsToFades":[{
+                                  "objectPath":["588c5ba5b1ab4e23b881c64df14f2419"],
+                                  "fadeInfo":{
+                                    "fadeType":"hide",
+                                    "options":{
+                                      "showType":"none"}}},
+{
+                                  "objectPath":["94ab638dd003459cb02fe049bfd31a0c"],
+                                  "fadeInfo":{
+                                    "fadeType":"hide",
+                                    "options":{
+                                      "showType":"none"}}},
+{
+                                  "objectPath":["510148d542dd43b6b01a72a677f20daf"],
+                                  "fadeInfo":{
+                                    "fadeType":"hide",
+                                    "options":{
+                                      "showType":"none"}}}]}]}]}},
+                  "tabbable":true}]}]},
+{
+          "id":"a9be7e4a1c094fc48314c14a5aafddda",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":372,
+              "y":170},
+            "size":{
+              "width":56,
+              "height":23}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"d04c8c4d10584542a8f639206c1cd7fa",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":372,
+                  "y":170},
+                "size":{
+                  "width":56,
+                  "height":23}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 财务类型",
+                      "target":{
+                        "targetType":"page",
+                        "url":"财务类型.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/财务类型/u31.png"}},
+{
+          "id":"c4dac1afdd614f96a33de2b34f4879fe",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":450,
+              "y":172},
+            "size":{
+              "width":62,
+              "height":23}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"1d0243aaf37c4d489ca68965d33c7a6e",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":450,
+                  "y":172},
+                "size":{
+                  "width":62,
+                  "height":23}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 服务类型",
+                      "target":{
+                        "targetType":"page",
+                        "url":"服务类型.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/财务类型/u33.png"}},
+{
+          "id":"2183fc0112924e55b848b5f2f33d63ca",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":534,
+              "y":174},
+            "size":{
+              "width":56,
+              "height":20}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"8b459abc63464555b6914551a402c07d",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":534,
+                  "y":174},
+                "size":{
+                  "width":56,
+                  "height":20}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 服务年限",
+                      "target":{
+                        "targetType":"page",
+                        "url":"服务年限.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/财务类型/u35.png"}},
+{
+          "id":"f9f9fb909a5146d2bd4607c97756b262",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":619,
+              "y":171},
+            "size":{
+              "width":54,
+              "height":21}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"137e9f7f041143979b8a608c004f0354",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":619,
+                  "y":171},
+                "size":{
+                  "width":54,
+                  "height":21}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 APP地址",
+                      "target":{
+                        "targetType":"page",
+                        "url":"app地址.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/财务类型/u37.png"}},
+{
+          "id":"9a25c9644c5d4aa09441e868351d9ec3",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":699,
+              "y":172},
+            "size":{
+              "width":55,
+              "height":22}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"3656b433fa1a42d2bc8afb4c091b96e2",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":699,
+                  "y":172},
+                "size":{
+                  "width":55,
+                  "height":22}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 客户类型",
+                      "target":{
+                        "targetType":"page",
+                        "url":"客户类型.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/财务类型/u39.png"}},
+{
+          "id":"861d66afe4dd400893a204d0dc7c49aa",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":781,
+              "y":174},
+            "size":{
+              "width":59,
+              "height":16}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"15fb707b7aff40769a779296654893ce",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":781,
+                  "y":174},
+                "size":{
+                  "width":59,
+                  "height":16}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 证件类型",
+                      "target":{
+                        "targetType":"page",
+                        "url":"证件类型.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/财务类型/u41.png"}},
+{
+          "id":"6325ae7dd24f46a2b53dffd492592207",
+          "label":"",
+          "type":"imageBox",
+          "styleType":"imageBox",
+          "visible":true,
+          "style":{
+            "location":{
+              "x":862,
+              "y":172},
+            "size":{
+              "width":58,
+              "height":20}},
+          "adaptiveStyles":{
+},
+          "objects":[{
+              "id":"6a21a767b316478fbefbb1bdb1a4a1cc",
+              "label":"",
+              "isContained":true,
+              "type":"richTextPanel",
+              "styleType":"paragraph",
+              "visible":true,
+              "style":{
+                "location":{
+                  "x":862,
+                  "y":172},
+                "size":{
+                  "width":58,
+                  "height":20}},
+              "adaptiveStyles":{
+}}],
+          "interactionMap":{
+            "onClick":{
+              "description":"OnClick",
+              "cases":[{
+                  "description":"用例 1",
+                  "isNewIfGroup":false,
+                  "actions":[{
+                      "action":"linkWindow",
+                      "description":"在 当前窗口 打开 优惠类型",
+                      "target":{
+                        "targetType":"page",
+                        "url":"优惠类型.html",
+                        "includeVariables":true},
+                      "linkType":"current"}]}]}},
+          "tabbable":true,
+          "images":{
+            "normal~":"images/财务类型/u43.png"}}]}},
+  "masters":{
+},
+  "objectPaths":{
+    "3a336c8470794079a793d4732e24cc90":{
+      "scriptId":"u0"},
+    "c73925be146f48ac8cd8cb899e96c322":{
+      "scriptId":"u1"},
+    "300c22f6d0944b889a22893ac407a381":{
+      "scriptId":"u2"},
+    "e29a729e727547ffbc5e41df503a6a58":{
+      "scriptId":"u3"},
+    "ebeffb46bc5b483d99e684dc6e0afee8":{
+      "scriptId":"u4"},
+    "588c5ba5b1ab4e23b881c64df14f2419":{
+      "scriptId":"u5"},
+    "94ab638dd003459cb02fe049bfd31a0c":{
+      "scriptId":"u6"},
+    "3d822fa775a845049b02c339884f8402":{
+      "scriptId":"u7"},
+    "510148d542dd43b6b01a72a677f20daf":{
+      "scriptId":"u8"},
+    "a9be7e4a1c094fc48314c14a5aafddda":{
+      "scriptId":"u9"},
+    "d04c8c4d10584542a8f639206c1cd7fa":{
+      "scriptId":"u10"},
+    "c4dac1afdd614f96a33de2b34f4879fe":{
+      "scriptId":"u11"},
+    "1d0243aaf37c4d489ca68965d33c7a6e":{
+      "scriptId":"u12"},
+    "2183fc0112924e55b848b5f2f33d63ca":{
+      "scriptId":"u13"},
+    "8b459abc63464555b6914551a402c07d":{
+      "scriptId":"u14"},
+    "f9f9fb909a5146d2bd4607c97756b262":{
+      "scriptId":"u15"},
+    "137e9f7f041143979b8a608c004f0354":{
+      "scriptId":"u16"},
+    "9a25c9644c5d4aa09441e868351d9ec3":{
+      "scriptId":"u17"},
+    "3656b433fa1a42d2bc8afb4c091b96e2":{
+      "scriptId":"u18"},
+    "861d66afe4dd400893a204d0dc7c49aa":{
+      "scriptId":"u19"},
+    "15fb707b7aff40769a779296654893ce":{
+      "scriptId":"u20"},
+    "6325ae7dd24f46a2b53dffd492592207":{
+      "scriptId":"u21"},
+    "6a21a767b316478fbefbb1bdb1a4a1cc":{
+      "scriptId":"u22"}}});
