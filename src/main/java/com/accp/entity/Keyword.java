@@ -11,6 +11,7 @@ public class Keyword {
     private int customerId;         //客户id
     private int userId;         //用户id
     private int  term;          //申请年限
+    private int typeId;         //服务类别对应字典表
     private Date createTime;        //申请时间
     private int keywordStatus;      //状态
 
@@ -78,5 +79,13 @@ public class Keyword {
 
     public void setUser(UserInfo user) {
         this.user = user;
+    }
+
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
     }
 }

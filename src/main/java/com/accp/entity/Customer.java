@@ -106,4 +106,5 @@ public class Customer {
     public void setUser(UserInfo user) {
         this.user = user;
     }
+
 }

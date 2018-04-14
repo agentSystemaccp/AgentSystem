@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.TypeDao">
+
+
+
+<!--根据父级id拿数据-->
+    <select id="queryTypeByParentId" resultType="Type">
+        SELECT * FROM finance_type WHERE parentId=#{parentId} AND typeStatus=1
+    </select>
+
+
+
+</mapper>

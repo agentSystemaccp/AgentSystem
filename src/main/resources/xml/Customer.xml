@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.CustomerDao">
+
+
+    <!--搜索框搜索前十位客户-->
+    <resultMap id="customerMap" type="Customer">
+        <result property="customerId" column="customerId"/>
+        <result property="userId" column="userId"/>
+        <result property="companyName" column="companyName"/>
+        <result property="companyType" column="companyType"/>
+        <result property="companyPages" column="companyPages"/>
+        <result property="companyStatus" column="companyStatus"/>
+        <association property="type" javaType="Type">
+            <result property="typeName" column="typeName"/>
+        </association>
+    </resultMap>
+
+    <select id="queryCustomBySearch" resultMap="customerMap">
+        SELECT c.customerId,f.typeName,c.companyName FROM customerinfo AS c,finance_type AS f WHERE c.userId=#{userId} AND c.companyType=f.typeId
+            <if test="companyName!='' and companyName!=null">
+                and companyName like CONCAT('%',#{companyName},'%')
+            </if>
+         AND c.companyStatus=#{companyStatus} limit 10
+    </select>
+
+
+
+</mapper>

@@ -20,4 +20,6 @@ public interface UserInfoDao {
      */
     UserInfo findInfo(UserInfo userInfo);
 
+    int updateUserInfo(UserInfo userInfo);
+
 }

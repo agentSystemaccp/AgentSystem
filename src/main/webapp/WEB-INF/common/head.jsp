@@ -135,6 +135,9 @@
 						<a href="${pageContext.request.contextPath }${resource.resourceUrl}">${resource.resourceName}</a>
 				</li>
 			</c:forEach>
+
+
+
 			<%--<s:iterator value="roleFunctions" status="sta">--%>
 				<%--<li id="s_<s:property value="#sta.index+1"/>" class="s_li">--%>
 					<%--<s:iterator value="subFunctions">--%>
@@ -142,18 +145,24 @@
 					<%--</s:iterator>--%>
 				<%--</li>--%>
 			<%--</s:iterator>--%>
-			<!-- <li id="s_1" class="s_li">	
-				
-				 
-			</li>
+
+			<%--用来做功能--%>
+			<%--<li id="s_1" class="s_li">--%>
+				<%--<a href="${pageContext.request.contextPath }/agent/toKeyWord">关键词申请</a>--%>
+				<%--<a href="#">代理商客户管理</a>--%>
+				<%--<a href="#">代理商预付款</a>--%>
+				<%--<a href="#">关键词申请管理</a>--%>
+				<%--<a href="#">操作日志</a>--%>
+				 <%----%>
+			<%--</li>--%>
+				<!--
 			<li id="s_4" class="s_li">
 				<a href="#">财务管理</a>
 				<a href="/rolelist.action">角色管理</a>
 				<a href="/permission.action">角色权限配置</a>
 				<a href="/userlist.action">用户管理</a>
 				<a href="#">关键词审核</a>
-				
-				 
+
 			</li>
 			<li id="s_5" class="s_li">
 				<a href="/caiwutype.action">财务类型</a>
