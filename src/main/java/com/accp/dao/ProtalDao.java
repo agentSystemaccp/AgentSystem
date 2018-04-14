@@ -1,5 +1,6 @@
 package com.accp.dao;
 
+import com.accp.entity.Page;
 import com.accp.entity.Protal;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,6 +13,14 @@ public interface ProtalDao {
      * @param customerName
      * @return
      */
-    public List<Protal> getProtalList(@Param("keyword") String keyword
-            ,@Param("customerName")String customerName,@Param("userId")int userId);
+    public List<Protal> queryProtalList(@Param("keyword") String keyword
+            , @Param("customerName")String customerName, @Param("userId")int userId
+            , @Param("page") Page<Protal> protalPage);
+
+    /**
+     * 获取门户的总数量
+     * @return
+     */
+    public int queryProtalCount(@Param("keyword") String keyword
+            , @Param("customerName")String customerName,@Param("userId") int userId);
 }

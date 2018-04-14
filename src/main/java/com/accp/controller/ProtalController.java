@@ -1,6 +1,7 @@
 package com.accp.controller;
 
 import com.accp.biz.ProtalBiz;
+import com.accp.entity.Page;
 import com.accp.entity.Protal;
 import com.accp.entity.UserInfo;
 import org.springframework.stereotype.Controller;
@@ -19,13 +20,22 @@ public class ProtalController {
     @Resource
     private ProtalBiz protalBiz;
 
-    @RequestMapping("/getProtalList")
-    public String getProtalList(@RequestParam(value = "keyword",required = false)String keyword,
+    @RequestMapping("/queryProtalList")
+    public String queryProtalList(@RequestParam(value = "keyword",required = false)String keyword,
                                 @RequestParam(value = "companyName",required = false)String companyName,
+                                @RequestParam(value = "pageNo",required = false)String pageNo,
                                 HttpSession session, Model model){
         UserInfo user = (UserInfo) session.getAttribute("userLogin");
-        List<Protal> protalList = protalBiz.getProtalList(keyword, companyName, user.getUserid());
-        model.addAttribute("protalList",protalList);
+        if(pageNo == null){
+            pageNo = "1";
+        }
+        Page<Protal> protalPage = new Page<Protal>();
+        protalPage.setPageNo(Integer.valueOf(pageNo));
+        protalPage.setPageSize(5);
+        protalBiz.queryProtalList(keyword, companyName, user.getUserid(),protalPage);
+        model.addAttribute("page",protalPage);
+        model.addAttribute("companyName",companyName);
+        model.addAttribute("keyword",keyword);
         return "protalManage";
     }
 

@@ -14,11 +14,11 @@ import javax.annotation.Resource;
 @Service("userInfoBiz")
 public class UserInfoBizImpl implements UserInfoBiz {
 
-    @Resource
+    @Resource(name = "userInfoDao")
     private UserInfoDao userInfoDao;
-    @Resource
+    @Resource(name = "resourceDao")
     private ResourceDao resourceDao;
-    @Resource
+    @Resource(name = "roleDao")
     private RoleDao roleDao;
 
     /**
@@ -27,12 +27,12 @@ public class UserInfoBizImpl implements UserInfoBiz {
      * @return
      */
     public UserInfo login(UserInfo userInfo) {
-        UserInfo userInfo1=userInfoDao.login(userInfo);
+        userInfo=userInfoDao.login(userInfo);
         Role role=new Role();
-        role.setRoleId(userInfo1.getRoleId());
+        role.setRoleId(userInfo.getRoleId());
         Role role1=roleDao.findRoleInfo(role);      //查找角色权限信息
-        userInfo1.setRole(role1);
-        return userInfo1;
+        userInfo .setRole(role1);
+        return userInfo;
     }
 
 

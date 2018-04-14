@@ -39,7 +39,7 @@
         <association resultMap="custmerMap" property="customer"/>
     </resultMap>
 
-    <select id="getProtalList" resultMap="protalMap">
+    <select id="queryProtalList" resultMap="protalMap">
        SELECT p.protalId,p.legalRepresentative,c.companyName,u.userName,k.keyword,k.createTime,
        (SELECT typeName FROM finance_type WHERE typeid = c.companyType) typeName,k.keywordStatus
        FROM protalinfo p,customerInfo c,userinfo u,keyword k WHERE p.customerId = c.customerId AND
@@ -48,11 +48,25 @@
           AND k.keyword LIKE CONCAT ('%',#{keyword},'%')
        </if>
         <if test="customerName != null">
-            and c.customerName LIKE CONCAT ('%',#{customerName},'%')
+            and c.companyName LIKE CONCAT ('%',#{customerName},'%')
         </if>
         <if test="userId != 0 and userId != 1">
             and u.userId = #{userId}
         </if>
-       GROUP BY c.companyName,p.protalId
+       GROUP BY c.companyName,p.protalId LIMIT #{page.pageNo},#{page.pageSize}
+    </select>
+
+    <select id="queryProtalCount" resultType="_Integer">
+        SELECT COUNT(1) FROM protalinfo p,customerInfo c,userinfo u,keyword k
+        WHERE p.customerId = c.customerId AND c.userId = u.userId AND c.customerId = k.customerId
+        <if test="keyword != null">
+            AND k.keyword LIKE CONCAT ('%',#{keyword},'%')
+        </if>
+        <if test="customerName != null">
+            AND c.companyName LIKE CONCAT ('%',#{customerName},'%')
+        </if>
+        <if test="userId != 0 and userId !=1">
+            AND c.userId = #{userId}
+        </if>
     </select>
 </mapper>

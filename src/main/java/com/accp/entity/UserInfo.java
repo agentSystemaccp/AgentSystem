@@ -5,7 +5,7 @@ public class UserInfo {
     private String userAccount;//登录账号
     private String userPassword;//登录密码
     private String userName;//姓名
-    private float balance;//当前账户余额
+    private double balance;//当前账户余额
     private int roleId;//角色id
     private int userStatus;//启用状态
     private Role role;      //角色
@@ -52,11 +52,11 @@ public class UserInfo {
         this.userName = userName;
     }
 
-    public float getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(float balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 
