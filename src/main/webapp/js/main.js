@@ -12,6 +12,7 @@ $().ready(function() {
     var path=$("#path").val();
     mover(1);
 
+
     //点击修改密码
     $("#modifypwdbtna").click(function () {
         $("#modifydiv").show();

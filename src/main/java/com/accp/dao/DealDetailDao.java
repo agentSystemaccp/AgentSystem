@@ -10,4 +10,7 @@ public interface DealDetailDao {
     List<DealDetail> queryDealDetails(@Param("userid")int userid, @Param("offset") int offset, @Param("pageSize") int pageSize);
 
     int queryDealDetailCount(int userid);
+
+    //添加明细
+    int addDealDetail(DealDetail dealDetail);
 }

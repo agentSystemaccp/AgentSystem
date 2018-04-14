@@ -15,4 +15,8 @@
         SELECT COUNT(1) FROM account_details WHERE userId=#{userid}
     </select>
 
+    <insert id="addDealDetail">
+        INSERT INTO account_details (userId,financeType,detailId,financeFund,balance,remark,createTime) VALUES (#{userId},#{financeType},#{financeFund},#{balance},#{remark},#{createTime})
+    </insert>
+
 </mapper>

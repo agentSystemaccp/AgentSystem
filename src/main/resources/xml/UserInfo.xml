@@ -33,4 +33,22 @@
             u.roleId=r.roleId AND u.userid=#{userid}
         </where>
     </select>
+
+
+    <update id="updateUserInfo">
+        update userinfo
+        <set>
+            <if test="userAccount!=null">
+                userAccount=#{userAccount},
+            </if>
+            <if test="userName!=null">
+                userName=#{userName},
+            </if>
+            <if test="userPassword!=null">userPassword=#{userPassword},</if>
+            <if test="balance!=0">balance=#{balance},</if>
+            <if test="roleId!=0">roleId=#{roleId},</if>
+            <if test="userStatus!=0">userStatus=#{userStatus},</if>
+        </set>
+        where userid=#{userid}
+    </update>
 </mapper>
