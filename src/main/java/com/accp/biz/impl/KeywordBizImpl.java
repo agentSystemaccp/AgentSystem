@@ -35,7 +35,8 @@ public class KeywordBizImpl implements KeywordBiz {
 
        //添加明细
        DealDetail dealDetail = new DealDetail();
-       dealDetail.setBalance(userInfo.getBalance()-(price/keyword.getTerm()));
+       dealDetail.setUserId(userInfo.getUserid());
+       dealDetail.setBalance((float) userInfo.getBalance()-(price/keyword.getTerm()));
        dealDetail.setCreateTime(new Date());
        dealDetail.setFinanceFund(-price/keyword.getTerm());
        dealDetail.setFinanceType("预注册冻结资金");

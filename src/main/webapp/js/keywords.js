@@ -146,56 +146,87 @@ function submitKeyWord() {
 
         //再次验证关键词
 
-        $.ajax({
-            type: "post",
-            url: path + "/agent/valikey",
-            data: {"keyword": $("#keyword").val()},
-            contentType: "application/x-www-form-urlencoded; charset=utf-8",
-            success: function (result) {
-                alert(result);
+        $.post(path + "/agent/valikey",
+            {
+                "keyword": $("#keyword").val()
+            },
+            function (result) {
                 if (result == "success") {
                     //验证成功开始验证当前用户余额
 
-                    $.ajax({
-                            type: "post",
-                            url: path + "/agent/valiBalance",
-                            data: {balance: $("#price").val()},
-                            contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                            success: function (result) {
-                                if ("nomoney" == result) {
-                                    alert("对不起,您当前的余额不能支付本次申请,请充值后再进行重试");
-                                } else {
-                                    //余额充足
-                                    $.ajax({
-                                        type: "post",
-                                        url: path + "/agent/submitkeyword",
-                                        data: {
-                                            keyword: $("#keyword").val(),
-                                            customerId: customID,
-                                            servicetype: servicetype,
-                                            serviceyear: serviceyear,
-                                            price: $("#price").val()
-                                        },
-                                        contentType: "application/x-www-form-urlencoded; charset=utf-8",
-                                        success: function (result) {
-                                            if (result != "failed") {
-                                                $("#accountspan").html(result);
-                                                humane.success("恭喜您 ,您 提交的关键词[" + $("#keyword").val() + "]申请成功!");
-                                            }
-                                        }
+                     validateBalance(servicetype,serviceyear);
 
-                                    })
-                                }
-                            }
-                        }
-                    )
                 } else
                     alert("对不起,您申请的关键词 [" + $("#keyword").val() + "]已被抢占");
-            }
-        });
+            }, 'html');
+
 
     }
 };
+
+
+//验证余额
+function validateBalance(servicetype,serviceyear) {
+
+
+    $.post(path + "/agent/valiBalance",
+        {
+            balance: $("#price").val()
+        },
+        function (result) {
+            if (result == "nomoney") {
+                alert("对不起,您当前的余额不能支付本次申请,请充值后再进行重试");
+
+            } else
+            //余额充足,提交
+                submitAdd(servicetype,serviceyear);
+        }, 'html');
+
+}
+
+
+//提交申请
+function submitAdd(servicetype,serviceyear) {
+    $.post(path + "/agent/submitkeyword",
+        {
+            keyword: $("#keyword").val(),
+            customerId: customID,
+            servicetype: servicetype,
+            serviceyear: serviceyear,
+            price: $("#price").val()
+        },
+        function (result) {
+            alert(result);
+            if (result != "failed") {
+                alert("恭喜您 ,您 提交的关键词[" + $("#keyword").val() + "]申请成功!");
+                window.location.href=path+"/agent/toKeyWordManage"
+            }
+        }, 'html');
+
+
+    //
+    // $.ajax({
+    //     type: "post",
+    //     url: path + "/agent/submitkeyword",
+    //     async : false,
+    //     data: {
+    //         keyword: $("#keyword").val(),
+    //         customerId: customID,
+    //         servicetype: servicetype,
+    //         serviceyear: serviceyear,
+    //         price: $("#price").val()
+    //     },
+    //     contentType: "application/x-www-form-urlencoded; charset=utf-8",
+    //     success: function (result) {
+    //         alert(result);
+    //         if (result != "failed") {
+    //             $("#accountspan").html(result);
+    //             humane.success("恭喜您 ,您 提交的关键词[" + $("#keyword").val() + "]申请成功!");
+    //         }
+    //     }
+    //
+    // })
+}
 
 
 

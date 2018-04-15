@@ -142,6 +142,18 @@
 					<%--</s:iterator>--%>
 				<%--</li>--%>
 			<%--</s:iterator>--%>
+
+				<li id="s_1" class="s_li">
+				<a href="${pageContext.request.contextPath }/agent/toKeyWord">关键词申请</a>
+				<a href="#">角色管理</a>
+				<a href="#">角色权限配置</a>
+				<a href="#">用户管理</a>
+				<a href="#">关键词审核</a>
+
+
+			</li>
+
+
 			<li id="s_2" class="s_li">
 				<a href="${pageContext.request.contextPath }/protal/queryProtalList">门户管理</a>
 			</li>

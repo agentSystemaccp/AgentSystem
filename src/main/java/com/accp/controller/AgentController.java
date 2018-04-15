@@ -101,7 +101,11 @@ public class AgentController {
     @RequestMapping("/valiBalance")
     @ResponseBody
     public Object valiBalance(String balance,HttpSession session){
-        return ((UserInfo)session.getAttribute("userLogin")).getBalance()<Integer.parseInt(balance) ? "nomoney":"sucess";
+        UserInfo u = (UserInfo)session.getAttribute("userLogin");
+        if(u.getBalance()<Integer.parseInt(balance)){
+            return "nomoney";
+        }
+        return  "success";
     }
 
 
@@ -136,5 +140,15 @@ public class AgentController {
     @RequestMapping("/toKeyWord")
     public String toKeyWord(){
         return "keyword";
+    }
+
+
+    /**
+     * 跳至关键词申请管理
+     * @return
+     */
+    @RequestMapping("/toKeyWordManage")
+    public String toKeyWordManage(){
+        return "keywordmanage";
     }
 }

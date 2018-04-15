@@ -16,7 +16,7 @@
     </select>
 
     <insert id="addDealDetail">
-        INSERT INTO account_details (userId,financeType,detailId,financeFund,balance,remark,createTime) VALUES (#{userId},#{financeType},#{financeFund},#{balance},#{remark},#{createTime})
+        INSERT INTO account_details (userId,financeType,financeFund,balance,remark,createTime) VALUES (#{userId},#{financeType},#{financeFund},#{balance},#{remark},#{createTime})
     </insert>
 
 </mapper>
