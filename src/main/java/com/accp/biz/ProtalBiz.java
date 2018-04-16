@@ -13,4 +13,11 @@ public interface ProtalBiz {
      * @return
      */
     public void queryProtalList(String keyword, String customerName, int userId, Page<Protal> protalPage);
+
+    /**
+     * 通过门户id查询门户机器关联的客户和联系人
+     * @param protalId
+     * @return
+     */
+    public Protal queryProtalById(int protalId);
 }

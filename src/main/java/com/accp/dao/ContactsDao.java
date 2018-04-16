@@ -1,4 +1,14 @@
 package com.accp.dao;
 
-public class ContactsDao {
+import com.accp.entity.Contacts;
+
+import java.util.List;
+
+public interface ContactsDao {
+    /**
+     * 通过客户id查询客户下的联系人
+     * @param customerId
+     * @return
+     */
+    public List<Contacts> queryContactsByCustomerId(int customerId);
 }

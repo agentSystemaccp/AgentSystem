@@ -22,6 +22,7 @@ public class Protal {
     private String remark;          //备注
 
     private Customer customer;          //门户对应的客户
+    private Type type;              //门户证件类型
 
     public int getProtalId() {
         return protalId;
@@ -141,5 +142,13 @@ public class Protal {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 }

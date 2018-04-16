@@ -15,7 +15,7 @@ public interface ProtalDao {
      */
     public List<Protal> queryProtalList(@Param("keyword") String keyword
             , @Param("customerName")String customerName, @Param("userId")int userId
-            , @Param("page") Page<Protal> protalPage);
+            , @Param("pageNo") int pageNo,@Param("pageSize") int pageSize);
 
     /**
      * 获取门户的总数量
@@ -23,4 +23,11 @@ public interface ProtalDao {
      */
     public int queryProtalCount(@Param("keyword") String keyword
             , @Param("customerName")String customerName,@Param("userId") int userId);
+
+    /**
+     * 通过门户id查询门户机器关联的客户和联系人
+     * @param protalId
+     * @return
+     */
+    public Protal queryProtalById(int protalId);
 }
