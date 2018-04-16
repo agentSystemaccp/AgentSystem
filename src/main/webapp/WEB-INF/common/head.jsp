@@ -105,7 +105,6 @@
 				<%--</ul>--%>
 			<%--</li>--%>
 				<c:forEach var="menu" items="${userLogin.role.menus}" varStatus="sta">
-
 					<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>
 					<li id="m_${sta.count}" class="m_li"  onmouseover="mover(${sta.count})">
 						<a class="showChildMenu" menuid="${menu.menu_id}" href="javascript:;">${menu.menuName}</a>
