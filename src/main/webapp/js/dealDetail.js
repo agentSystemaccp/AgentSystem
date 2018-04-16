@@ -42,7 +42,6 @@ function replace(pageIndex) {
                         +"<td>"+data.pageList[i].balance+"</td>"
                         +"<td>"+data.pageList[i].remark+"</td>"
                         +"<td>"+createTime.getFullYear()+"-"+(createTime.getMonth()+1)+"-"+createTime.getDate()+"</td></tr>";
-                // <fmt:formatDate value='"+data.pageList[i].createTime+"' pattern='yyyy-MM-dd HH:mm:ss'/>
                 }
                 $("#dealTable").append(table);
 

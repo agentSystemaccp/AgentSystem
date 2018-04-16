@@ -145,10 +145,10 @@
 
 				<li id="s_1" class="s_li">
 				<a href="${pageContext.request.contextPath }/agent/toKeyWord">关键词申请</a>
-				<a href="#">角色管理</a>
-				<a href="#">角色权限配置</a>
-				<a href="#">用户管理</a>
-				<a href="#">关键词审核</a>
+				<a href="#">代理商客户管理</a>
+				<a href="#">代理商预付款</a>
+				<a href="${pageContext.request.contextPath }/agent/toKeyWordManage">关键词申请管理</a>
+				<a href="#">操作日志</a>
 
 
 			</li>

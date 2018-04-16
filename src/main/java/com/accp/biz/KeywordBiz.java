@@ -1,6 +1,8 @@
 package com.accp.biz;
 
+import com.accp.entity.DealDetail;
 import com.accp.entity.Keyword;
+import com.accp.entity.Page;
 import com.accp.entity.UserInfo;
 
 public interface KeywordBiz {
@@ -8,4 +10,7 @@ public interface KeywordBiz {
     Keyword queryByKeyWord(Keyword keyword);
 
     int addKeyWord(Keyword keyword, UserInfo userInfo,int price);
+
+    //查看账户明细
+    Page<Keyword> queryKeyWordList(String keyword, int pageSize, int pageNo);
 }

@@ -6,6 +6,7 @@ import com.accp.dao.KeyWordDao;
 import com.accp.dao.UserInfoDao;
 import com.accp.entity.DealDetail;
 import com.accp.entity.Keyword;
+import com.accp.entity.Page;
 import com.accp.entity.UserInfo;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,7 @@ public class KeywordBizImpl implements KeywordBiz {
    public int addKeyWord(Keyword keyword, UserInfo userInfo,int price) {
        //冻结一年资金资金
        userInfo.setBalance(userInfo.getBalance()-(price/keyword.getTerm()));
+       userInfo.setFrozenFunds(userInfo.getFrozenFunds()+price);          //冻结资金
        userInfoDao.updateUserInfo(userInfo);
 
        //添加明细
@@ -47,6 +49,26 @@ public class KeywordBizImpl implements KeywordBiz {
        return keyWordDao.addKeyWord(keyword);
    }
 
+
+    /**
+     * 关键词申请管理列表
+     * @param keyword
+     * @param pageSize
+     * @param pageNo
+     * @return
+     */
+    public Page<Keyword> queryKeyWordList(String keyword, int pageSize, int pageNo) {
+        Page<Keyword> page = new Page<Keyword>();
+        page.setPageSize(pageSize);
+        page.setPageNo(pageNo);
+        //有问题
+        page.setTotalRows(keyWordDao.queryKeyWordCount(keyword));
+        //设置总页数
+        page.setTotalPage((page.getTotalRows()+pageSize-1)/pageSize);
+        //设置查询的集合
+        page.setPageList(keyWordDao.queryKeyWordList(keyword,(pageNo-1)*pageSize,pageSize));
+        return page;
+    }
 
     /**
      * 动态验证关键词是否存在

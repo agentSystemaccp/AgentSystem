@@ -21,6 +21,7 @@
         <result property="userPassword" column="userPassword"/>
         <result property="userName" column="userName"/>
         <result property="balance" column="balance"/>
+        <result property="frozenFunds" column="frozenFunds"/>
         <result property="userStatus" column="userStatus"/>
             <association property="role" javaType="Role">
                 <id property="roleId" column="roleId"/>
@@ -46,6 +47,7 @@
             </if>
             <if test="userPassword!=null">userPassword=#{userPassword},</if>
             <if test="balance!=0">balance=#{balance},</if>
+            <if test="frozenFunds!=0">frozenFunds=#{frozenFunds},</if>
             <if test="roleId!=0">roleId=#{roleId},</if>
             <if test="userStatus!=0">userStatus=#{userStatus},</if>
         </set>
