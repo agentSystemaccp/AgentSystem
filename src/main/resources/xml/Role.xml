@@ -23,7 +23,7 @@
         </collection>
     </resultMap>
     <select id="findRoleInfo" resultMap="rolelist">
-        select r.*,re.*,m.menuName FROM  role r,role_resource rr,resource re,menu m
+        select r.*,re.*,m.* FROM  role r,role_resource rr,resource re,menu m
         <where>
             and r.roleId=#{roleId}
            AND r.roleId=rr.ROLE_ID
