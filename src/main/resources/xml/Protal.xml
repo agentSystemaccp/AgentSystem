@@ -6,23 +6,28 @@
     <!--配置关键词对象-->
     <resultMap id="keywordMap" type="Keyword">
         <result column="keyword" property="keyword"/>
+        <result column="term" property="term"/>
         <result column="createTime" property="createTime"/>
         <result column="keywordStatus" property="keywordStatus"/>
     </resultMap>
 
-    <!--配置类型对象-->
+    <!--配置客户类型对象-->
     <resultMap id="typeMap" type="Type">
-        <result column="typeName" property="typeName"/>
+        <result column="companyTypeName" property="typeName"/>
     </resultMap>
 
     <!--配置用户对象-->
     <resultMap id="userMap" type="UserInfo">
+        <result column="uid" property="userid"/>
         <result column="userName" property="userName"/>
     </resultMap>
 
     <!--配置客户对象-->
-    <resultMap id="custmerMap" type="Customer">
+    <resultMap id="customerMap" type="Customer">
+        <result column="cid" property="customerId"/>
         <result column="companyName" property="companyName"/>
+        <result column="companyStatus" property="companyStatus"/>
+        <result column="companyPages" property="companyPages"/>
         <!--配置客户下的用户对象-->
         <association resultMap="userMap" property="user"/>
         <!--配置客户下的类型对象-->
@@ -31,19 +36,38 @@
         <association resultMap="keywordMap" property="keyword"/>
     </resultMap>
 
+    <!--配置门户类型-->
+    <resultMap id="protalTypeMap" type="Type">
+        <result column="protalType" property="typeName"/>
+    </resultMap>
+
     <!--配置门户下的客户信息-->
     <resultMap id="protalMap" type="Protal">
         <result column="protalId" property="protalId"/>
+        <result column="customerId" property="customerId"/>
+        <result column="protalTel" property="protalTel"/>
+        <result column="protalFax" property="protalFax"/>
+        <result column="idNumber" property="idNumber"/>
+        <result column="createTime" property="createTime"/>
+        <result column="state" property="state"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="district" property="district"/>
+        <result column="companyAddress" property="companyAddress"/>
+        <result column="remark" property="remark"/>
         <result column="legalRepresentative" property="legalRepresentative"/>
         <!--配置门户对应的客户对象-->
-        <association resultMap="custmerMap" property="customer"/>
+        <association resultMap="customerMap" property="customer"/>
+        <!--配置门户对应的类型对象-->
+        <association resultMap="protalTypeMap" property="type"/>
     </resultMap>
 
     <select id="queryProtalList" resultMap="protalMap">
-       SELECT p.protalId,p.legalRepresentative,c.companyName,u.userName,k.keyword,k.createTime,
-       (SELECT typeName FROM finance_type WHERE typeid = c.companyType) typeName,k.keywordStatus
-       FROM protalinfo p,customerInfo c,userinfo u,keyword k WHERE p.customerId = c.customerId AND
-       c.userId = u.userId AND c.customerId = k.customerId
+        SELECT p.*,c.*,u.*,k.*,c.customerId cid,u.userId uid,k.customerId kcustomerId,
+        (SELECT typeName FROM finance_type WHERE typeid = c.companyType) companyTypeName,
+        (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
+        FROM protalinfo p,customerInfo c,userinfo u,keyword k  WHERE
+        p.customerId = c.customerId AND c.userId = u.userId AND c.customerId = k.customerId
        <if test="keyword != null">
           AND k.keyword LIKE CONCAT ('%',#{keyword},'%')
        </if>
@@ -53,7 +77,7 @@
         <if test="userId != 0 and userId != 1">
             and u.userId = #{userId}
         </if>
-       GROUP BY c.companyName,p.protalId LIMIT #{page.pageNo},#{page.pageSize}
+       GROUP BY c.companyName,p.protalId LIMIT #{pageNo},#{pageSize}
     </select>
 
     <select id="queryProtalCount" resultType="_Integer">
@@ -68,5 +92,13 @@
         <if test="userId != 0 and userId !=1">
             AND c.userId = #{userId}
         </if>
+    </select>
+
+    <select id="queryProtalById" resultMap="protalMap">
+            SELECT p.*,c.*,u.*,k.*,c.customerId cid,u.userId uid,k.customerId kcustomerId,
+            (SELECT typeName FROM finance_type WHERE typeid = c.companyType) companyType,
+            (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
+            FROM protalinfo p,customerInfo c,userinfo u,keyword k WHERE p.customerId = c.customerId AND
+            c.userId = u.userId AND c.customerId = k.customerId AND p.protalId = #{protalId}
     </select>
 </mapper>

@@ -20,6 +20,7 @@ public class ProtalController {
     @Resource
     private ProtalBiz protalBiz;
 
+    //获取门户集合跳转到门户页面
     @RequestMapping("/queryProtalList")
     public String queryProtalList(@RequestParam(value = "keyword",required = false)String keyword,
                                 @RequestParam(value = "companyName",required = false)String companyName,
@@ -39,4 +40,11 @@ public class ProtalController {
         return "protalManage";
     }
 
+    //获取门户对象 跳转到门户详情页面
+    @RequestMapping("/queryProtal")
+    public String queryProtal(int protalId,Model model){
+        Protal protal = protalBiz.queryProtalById(protalId);
+        model.addAttribute("protal",protal);
+        return  "viewProtal";
+    }
 }
