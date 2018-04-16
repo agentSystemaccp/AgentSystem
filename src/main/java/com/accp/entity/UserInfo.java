@@ -6,6 +6,7 @@ public class UserInfo {
     private String userPassword;//登录密码
     private String userName;//姓名
     private double balance;//当前账户余额
+    private double frozenFunds; //已冻结资金
     private int roleId;//角色id
     private int userStatus;//启用状态
     private Role role;      //角色
@@ -74,5 +75,13 @@ public class UserInfo {
 
     public void setUserStatus(int userStatus) {
         this.userStatus = userStatus;
+    }
+
+    public double getFrozenFunds() {
+        return frozenFunds;
+    }
+
+    public void setFrozenFunds(double frozenFunds) {
+        this.frozenFunds = frozenFunds;
     }
 }

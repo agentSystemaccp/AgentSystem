@@ -1,5 +1,7 @@
 package com.accp.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 /**
@@ -12,10 +14,26 @@ public class Keyword {
     private int userId;         //用户id
     private int  term;          //申请年限
     private int typeId;         //服务类别对应字典表
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;        //申请时间
     private int keywordStatus;      //状态
+    private int checkStatus;    //审核状态
+    private int useStatus;      //使用状态,默认1
+    private int appStatus;      //APP开通状态
+
 
     private UserInfo user;      //关键字的代理商id
+
+    private Customer customer;
+
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public int getKeywordId() {
         return keywordId;
@@ -87,5 +105,29 @@ public class Keyword {
 
     public void setTypeId(int typeId) {
         this.typeId = typeId;
+    }
+
+    public int getCheckStatus() {
+        return checkStatus;
+    }
+
+    public void setCheckStatus(int checkStatus) {
+        this.checkStatus = checkStatus;
+    }
+
+    public int getUseStatus() {
+        return useStatus;
+    }
+
+    public void setUseStatus(int useStatus) {
+        this.useStatus = useStatus;
+    }
+
+    public int getAppStatus() {
+        return appStatus;
+    }
+
+    public void setAppStatus(int appStatus) {
+        this.appStatus = appStatus;
     }
 }

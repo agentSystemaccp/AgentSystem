@@ -12,8 +12,46 @@
 
     <!--添加关键词-->
     <insert id="addKeyWord" >
-        INSERT INTO keyword (keywordId,keyword,customerId,userId,typeId,term,createTime,keywordStatus) VALUES (#{keywordId},#{keyword},#{customerId},#{userId},#{typeId},#{term},#{createTime},#{keywordStatus})
+        INSERT INTO keyword (keywordId,keyword,customerId,userId,typeId,term,createTime,keywordStatus,checkStatus,useStatus,appStatus) VALUES (#{keywordId},#{keyword},#{customerId},#{userId},#{typeId},#{term},#{createTime},#{keywordStatus},#{checkStatus},#{useStatus},#{appStatus})
     </insert>
+
+    <resultMap id="KeywordList" type="Keyword">
+        <result property="keywordId" column="keywordId"/>
+        <result property="keyword" column="keyword"/>
+        <result property="customerId" column="customerId"/>
+        <result property="userId" column="userId"/>
+        <result property="term" column="term"/>
+        <result property="createTime" column="createTime"/>
+        <result property="checkStatus" column="checkStatus"/>
+        <result property="useStatus" column="useStatus"/>
+        <result property="appStatus" column="appStatus"/>
+        <result property="keywordStatus" column="keywordStatus"/>
+
+        <association property="user" javaType="UserInfo">
+            <result property="userid" column="userid"/>
+            <result property="userName" column="userName"/>
+        </association>
+        <association property="customer" javaType="Customer">
+            <result property="customerId" column="customerId"/>
+            <result property="companyName" column="companyName"/>
+        </association>
+    </resultMap>
+
+    <select id="queryKeyWordList" resultMap="KeywordList">
+        SELECT k.*,u.userName,c.companyName FROM keyword k,userinfo u,customerinfo c WHERE k.userId=u.userid AND k.customerId=c.customerId
+        <if test="keyword!=null and keyword!=''">
+            AND k.keyword LIKE CONCAT ('%',#{keyword},'%')
+        </if>
+          LIMIT #{offset},#{pageSize}
+    </select>
+
+    <!--查询总条数-->
+    <select id="queryKeyWordCount" resultType="_int">
+        SELECT COUNT(1) FROM keyword WHERE 1=1 
+        <if test="keyword!=null and keyword!=''">
+            AND keyword LIKE CONCAT ('%',#{keyword},'%')
+        </if>
+    </select>
 
 
 

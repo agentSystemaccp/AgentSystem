@@ -1,3 +1,9 @@
+/**
+ * 关键词申请模块
+ * @type {number}
+ */
+
+
 var customID = -1;
 var customName = "";
 var path = $("#path").val();

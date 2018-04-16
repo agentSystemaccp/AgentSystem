@@ -5,10 +5,12 @@ import com.accp.biz.KeywordBiz;
 import com.accp.biz.TypeBiz;
 import com.accp.entity.Customer;
 import com.accp.entity.Keyword;
+import com.accp.entity.Page;
 import com.accp.entity.UserInfo;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -125,12 +127,37 @@ public class AgentController {
         keyWord.setCreateTime(new Date());
         keyWord.setKeywordStatus(1);
         keyWord.setTypeId(Integer.parseInt(servicetype));
+        keyWord.setCheckStatus(1);      //未审核
+        keyWord.setUseStatus(1);        //使用状态,默认已使用
+        keyWord.setAppStatus(0);        //未开通
         keyWord.setTerm(serviceyear.equals("买二赠一") ? 2:Integer.parseInt(serviceyear));
         if(keywordBiz.addKeyWord(keyWord,userInfo,Integer.parseInt(price))>0){
             return "success";
         }
         return "failed";
     }
+
+
+    //    -------------------------------关键词申请管理------------------------------
+
+
+    /**
+     * 关键词列表
+     * @return
+     */
+    @RequestMapping("/keyWordsList")
+    @ResponseBody
+    public Object keyWordsList(String keyword, HttpSession session,@RequestParam(value = "pageIndex",required = false) String pageIndex){
+
+        if(pageIndex==null||pageIndex==""){
+            pageIndex="1";
+        }
+        Page<Keyword> page = keywordBiz.queryKeyWordList(keyword,2,Integer.parseInt(pageIndex));
+
+        return JSONArray.toJSONString(page);
+    }
+
+
 
 
     /**

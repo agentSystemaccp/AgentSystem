@@ -26,17 +26,6 @@ public class DealDetailController {
      * @param session
      * @return
      */
-//    @PostMapping("/accountdetail")
-//    @ResponseBody
-//    public Object accountDetail(String pageIndex, HttpSession session){
-//        int uid = ((UserInfo)session.getAttribute("userLogin")).getUserid();
-//
-//        if(pageIndex==null||pageIndex==""){
-//            pageIndex="1";
-//        }
-//        Page<DealDetail> page = dealDetailBiz.queryDealDetails(uid,2,Integer.parseInt(pageIndex));
-//        return page;
-//    }
 
     @PostMapping("/accountdetail")
     @ResponseBody

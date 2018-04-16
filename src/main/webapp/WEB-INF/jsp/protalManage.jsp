@@ -1,11 +1,10 @@
-﻿<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+﻿
 <%@include file="../common/head.jsp"%>
 <div class="mbxnav">
   <!-- 导航 -->
   门户管理\
 </div>
 <div class="container">
-
   <form id="protalForm" action="${pageContext.request.contextPath }/protal/queryProtalList" method="get">
     <input type="hidden" id="pageNo" name="pageNo" value="${page.pageNo}">
     <div>
@@ -42,7 +41,7 @@
         <td>${protal.customer.type.typeName}</td>
         <td>${protal.customer.keyword.keywordStatus==1?'启用':'停用'}</td>
         <td>
-          <a href="#">查看</a>|<a href="#">修改</a>
+          <a class="viewprotal" href="javascript:;" protalId="${protal.protalId}">查看</a>|<a href="#">修改</a>
         </td>
       </tr>
     </c:forEach>
@@ -51,7 +50,7 @@
   <div class="pagination pagination-centered">
     <ul>
       <li>
-        <a href="javascript;" onclick="getProtalList(1);">首页</a>
+        <a href="javascript:;" onclick="getProtalList(1);">首页</a>
       </li>
       <%--<s:if test="pager.prevPages!=null">--%>
       <%--<s:iterator value="pager.prevPages"  var="num">--%>
@@ -60,7 +59,7 @@
       <%--</s:if>--%>
       <c:forEach var="s" begin="2" end="${page.totalPage-1}">
         <li>
-          <a href="javascript;" onclick="getProtalList(${s})">${s}</a>
+          <a href="javascript:;" onclick="getProtalList(${s})">${s}</a>
         </li>
       </c:forEach>
 
@@ -82,7 +81,7 @@
       <%--</s:iterator>--%>
       <%--</s:if>--%>
       <li>
-        <a href="javascript;" onclick="getProtalList(${page.totalPage})">尾页</a>
+        <a href="javascript:;" onclick="getProtalList(${page.totalPage})">尾页</a>
       </li>
     </ul>
   </div>
