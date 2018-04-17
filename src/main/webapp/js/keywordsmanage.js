@@ -10,7 +10,7 @@ var path=$("#path").val();
 
     $("#submitkeyword").click(function () {
         var keyword = $("#keyword").val();
-        loadKeyWordList(keyword,"");
+        loadKeyWordList("",keyword);
         return;
     })
 
@@ -20,9 +20,12 @@ var path=$("#path").val();
 
 
 
-function loadKeyWordList(keyword,pageIndex) {
+function loadKeyWordList(pageIndex,keyword) {
     if (typeof(pageIndex) == "undefined"||typeof(pageIndex) == ""){
         pageIndex="1";
+    }
+    if (typeof(keyword) == "undefined"){
+        keyword="";
     }
 
     $.ajax({
@@ -83,7 +86,6 @@ function loadKeyWordList(keyword,pageIndex) {
                     }
                 }
                 page+="<li><a href=\"javascript:;\" onclick= \"loadKeyWordList("+data.totalPage+")\">尾页</a></li></ul>";
-
 
                 $(".pagination").append(page);
             }

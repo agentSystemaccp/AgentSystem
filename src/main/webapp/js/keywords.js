@@ -202,7 +202,6 @@ function submitAdd(servicetype,serviceyear) {
             price: $("#price").val()
         },
         function (result) {
-            alert(result);
             if (result != "failed") {
                 alert("恭喜您 ,您 提交的关键词[" + $("#keyword").val() + "]申请成功!");
                 window.location.href=path+"/agent/toKeyWordManage"
@@ -210,28 +209,6 @@ function submitAdd(servicetype,serviceyear) {
         }, 'html');
 
 
-    //
-    // $.ajax({
-    //     type: "post",
-    //     url: path + "/agent/submitkeyword",
-    //     async : false,
-    //     data: {
-    //         keyword: $("#keyword").val(),
-    //         customerId: customID,
-    //         servicetype: servicetype,
-    //         serviceyear: serviceyear,
-    //         price: $("#price").val()
-    //     },
-    //     contentType: "application/x-www-form-urlencoded; charset=utf-8",
-    //     success: function (result) {
-    //         alert(result);
-    //         if (result != "failed") {
-    //             $("#accountspan").html(result);
-    //             humane.success("恭喜您 ,您 提交的关键词[" + $("#keyword").val() + "]申请成功!");
-    //         }
-    //     }
-    //
-    // })
 }
 
 

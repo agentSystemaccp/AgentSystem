@@ -148,11 +148,11 @@ public class AgentController {
     @RequestMapping("/keyWordsList")
     @ResponseBody
     public Object keyWordsList(String keyword, HttpSession session,@RequestParam(value = "pageIndex",required = false) String pageIndex){
-
+        int uid = ((UserInfo)session.getAttribute("userLogin")).getUserid();
         if(pageIndex==null||pageIndex==""){
             pageIndex="1";
         }
-        Page<Keyword> page = keywordBiz.queryKeyWordList(keyword,2,Integer.parseInt(pageIndex));
+        Page<Keyword> page = keywordBiz.queryKeyWordList(keyword,uid,2,Integer.parseInt(pageIndex));
 
         return JSONArray.toJSONString(page);
     }

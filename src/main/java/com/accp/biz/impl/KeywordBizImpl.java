@@ -57,12 +57,12 @@ public class KeywordBizImpl implements KeywordBiz {
      * @param pageNo
      * @return
      */
-    public Page<Keyword> queryKeyWordList(String keyword, int pageSize, int pageNo) {
+    public Page<Keyword> queryKeyWordList(String keyword,int userId, int pageSize, int pageNo) {
         Page<Keyword> page = new Page<Keyword>();
         page.setPageSize(pageSize);
         page.setPageNo(pageNo);
         //有问题
-        page.setTotalRows(keyWordDao.queryKeyWordCount(keyword));
+        page.setTotalRows(keyWordDao.queryKeyWordCount(keyword,userId));
         //设置总页数
         page.setTotalPage((page.getTotalRows()+pageSize-1)/pageSize);
         //设置查询的集合
