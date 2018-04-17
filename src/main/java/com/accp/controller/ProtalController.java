@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/protal")
@@ -42,9 +43,20 @@ public class ProtalController {
 
     //获取门户对象 跳转到门户详情页面
     @RequestMapping("/queryProtal")
-    public String queryProtal(int protalId,Model model){
+    public String queryProtal(int protalId,String type,Model model) {
         Protal protal = protalBiz.queryProtalById(protalId);
-        model.addAttribute("protal",protal);
-        return  "viewProtal";
+        Date endDate = protal.getCustomer().getKeyword().getCreateTime();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(endDate);
+        calendar.add(Calendar.YEAR, +protal.getCustomer().getKeyword().getTerm());
+        endDate = calendar.getTime();
+        model.addAttribute("protal", protal);
+        model.addAttribute("endDate", endDate);
+        if (type.equals("view")) {
+            return "viewCustomer";
+        } else {
+            return "modifyProtal";
+        }
+
     }
 }

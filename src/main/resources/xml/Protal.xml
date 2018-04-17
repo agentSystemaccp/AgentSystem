@@ -45,8 +45,8 @@
     <resultMap id="protalMap" type="Protal">
         <result column="protalId" property="protalId"/>
         <result column="customerId" property="customerId"/>
-        <result column="protalTel" property="protalTel"/>
-        <result column="protalFax" property="protalFax"/>
+        <result column="companyTel" property="companyTel"/>
+        <result column="companyFax" property="companyFax"/>
         <result column="idNumber" property="idNumber"/>
         <result column="createTime" property="createTime"/>
         <result column="state" property="state"/>
@@ -96,7 +96,7 @@
 
     <select id="queryProtalById" resultMap="protalMap">
             SELECT p.*,c.*,u.*,k.*,c.customerId cid,u.userId uid,k.customerId kcustomerId,
-            (SELECT typeName FROM finance_type WHERE typeid = c.companyType) companyType,
+            (SELECT typeName FROM finance_type WHERE typeid = c.companyType) companyTypeName,
             (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
             FROM protalinfo p,customerInfo c,userinfo u,keyword k WHERE p.customerId = c.customerId AND
             c.userId = u.userId AND c.customerId = k.customerId AND p.protalId = #{protalId}

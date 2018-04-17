@@ -41,7 +41,8 @@
         <td>${protal.customer.type.typeName}</td>
         <td>${protal.customer.keyword.keywordStatus==1?'启用':'停用'}</td>
         <td>
-          <a class="viewprotal" href="javascript:;" protalId="${protal.protalId}">查看</a>|<a href="#">修改</a>
+          <a class="viewprotal" href="javascript:;" protalId="${protal.protalId}">查看</a>|
+          <a class="modifprotal" href="javascript:;" protalId="${protal.protalId}">修改</a>
         </td>
       </tr>
     </c:forEach>

@@ -4,21 +4,23 @@
   代理商管理\ <a href="/customlist.action">代理商客户管理</a>\ <a href="/viewcustom.action?custom.id=${custom.id}">查看客户信息</a>
 </div>
 <div class="container">
+
   <div class="subtitle">注册的移动云端信息</div>
   <div class="info2">
     <ul>
-      <li>登录账号:</li>
-      <li>登录密码:</li>
-      <li>关键字:${protal.customer.keyword.keyword}</li>
-      <li>登录地址:</li>
-      <li>客户端下载地址(IOS):</li>
-      <li>二维码下载地址(IOS):</li>
-      <li>客户端下载地址(Android):</li>
-      <li>二维码下载地址(Android):</li>
-      <li>关键字开始日期:<fmt:formatDate value='${protal.customer.keyword.createTime}' pattern='yyyy-MM-dd'/></li>
-      <li>关键字结束日期:</li>
-      <li>关键字服务年限:${protal.customer.keyword.term}</li>
+      <li>登录账号 : </li>
+      <li>登录密码 : </li>
+      <li>关键字 : ${protal.customer.keyword.keyword}</li>
+      <li>登录地址 : </li>
+      <li>客户端下载地址(IOS) : </li>
+      <li>二维码下载地址(IOS) : </li>
+      <li>客户端下载地址(Android) : </li>
+      <li>二维码下载地址(Android) : </li>
+      <li>关键字开始日期 : <fmt:formatDate value='${protal.customer.keyword.createTime}' pattern='yyyy-MM-dd'/></li>
+      <li>关键字结束日期 : <fmt:formatDate value='${endDate}' pattern='yyyy-MM-dd'/></li>
+      <li>关键字服务年限 : ${protal.customer.keyword.term}</li>
     </ul>
+    <div class="clear"></div>
   </div>
 
   <div style="clear: both"></div>
@@ -26,10 +28,11 @@
   <div class="subtitle">基本信息</div>
   <div class="info1">
     <ul>
-      <li>企业名称:${protal.customer.companyName}</li>
-      <li>企业类型:${protal.customer.type.typeName}</li>
-      <li>企业主页:${protal.customer.companyPages}</li>
-      <li>状态:${protal.customer.companyStatus==1?"启用":"停用"}</li>
+      <li>企业名称 : ${protal.customer.companyName}</li>
+      <li>状态 : ${protal.customer.companyStatus==1?"启用":"停用"}</li>
+      <li>企业类型 : ${protal.customer.type.typeName}</li>
+      <li>企业主页 : ${protal.customer.companyPages}</li>
+
     </ul>
     <div class="clear"></div>
   </div>
@@ -85,8 +88,12 @@
       </tbody>
     </table>
   </div>
+  <div class="goback">
+    <input type="button" onclick="window.history.go(-1)" value="返回"/>
+  </div>
+
 </div>
-<input type="button" onclick="window.history.go(-1)" value="返回">
+
 <link rel="stylesheet" type="text/css" href="/css/viewcustom.css">
   </body>
 </html>
