@@ -12,5 +12,5 @@ public interface KeywordBiz {
     int addKeyWord(Keyword keyword, UserInfo userInfo,int price);
 
     //查看账户明细
-    Page<Keyword> queryKeyWordList(String keyword, int pageSize, int pageNo);
+    Page<Keyword> queryKeyWordList(String keyword,int userId, int pageSize, int pageNo);
 }

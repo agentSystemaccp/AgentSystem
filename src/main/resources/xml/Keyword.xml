@@ -47,7 +47,7 @@
 
     <!--查询总条数-->
     <select id="queryKeyWordCount" resultType="_int">
-        SELECT COUNT(1) FROM keyword WHERE 1=1 
+        SELECT COUNT(1) FROM keyword WHERE  userId=#{userId}
         <if test="keyword!=null and keyword!=''">
             AND keyword LIKE CONCAT ('%',#{keyword},'%')
         </if>
