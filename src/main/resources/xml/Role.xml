@@ -30,7 +30,11 @@
             and rr.resource_id=re.resourceId
             AND m.menuId=re.menuId
         </where>
+    </select>
 
+    <!--查找所有信息-->
+    <select id="findAllInfo" resultType="Role">
+        select * FROM role
     </select>
 
 </mapper>

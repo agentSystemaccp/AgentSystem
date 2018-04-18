@@ -2,6 +2,8 @@ package com.accp.dao;
 
 import com.accp.entity.Role;
 
+import java.util.List;
+
 public interface RoleDao {
 
     /**
@@ -10,4 +12,10 @@ public interface RoleDao {
      * @return
      */
     Role findRoleInfo(Role role);
+
+    /**
+     * 查找所有信息
+     * @return
+     */
+    List<Role>  findAllInfo();
 }

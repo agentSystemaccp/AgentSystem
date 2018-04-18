@@ -282,7 +282,7 @@ h1{
 .subbox{height:32px;background:url(../imgs/top_1px.gif) repeat-x 0px  -162px;}
 .subbox .smenu{width:804px;margin:0px auto;height:32px;}
 .subbox li{line-height:32px;height:32px;}
-.subbox .s_li{display:none;}
+/*.subbox .s_li{display:none;}*/
 .subbox .s_li_a{display:block;}
 .smenu a{
 	color:#0D4C6B;

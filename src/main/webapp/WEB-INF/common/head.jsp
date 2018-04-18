@@ -27,17 +27,20 @@
 
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-form.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/public.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/login.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/ymPrompt.js"></script>
-	<script src="${pageContext.request.contextPath }/js/menu.js" type="text/javascript"></script>
+	<%--<script src="${pageContext.request.contextPath }/js/menu.js" type="text/javascript"></script>--%>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
 	<meta name="apple-mobile-web-app-capable" content="yes"/>
 	<link href="${pageContext.request.contextPath }/resources/css/jquery-ui-themes.css" type="text/css" rel="stylesheet"/>
 	<link href="${pageContext.request.contextPath }/resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
 	<link href="${pageContext.request.contextPath }/js/styles.css" type="text/css" rel="stylesheet"/>
 	<link href="${pageContext.request.contextPath }/files/manage/styles.css" type="text/css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/permission.css">
+
 	<script src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/axQuery.js"></script>
@@ -70,7 +73,7 @@
 	<script src="${pageContext.request.contextPath }/files/manage/data.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/legacy.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/viewer.js"></script>
-
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/permission.js"></script>
 
 </head>
 <body>
@@ -133,6 +136,7 @@
 	<!-- 子菜单 -->
 	<div class="subbox">
 		<ul class="smenu">
+			11
 			<%--<c:forEach items="${resourceList}" var="resource" varStatus="sta">--%>
 				<%--<li id="s_${sta.index+1}" class="s_li">--%>
 						<%--<a href="${pageContext.request.contextPath }${resource.resourceUrl}">${resource.resourceName}</a>--%>
