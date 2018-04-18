@@ -26,6 +26,7 @@
         <result property="useStatus" column="useStatus"/>
         <result property="appStatus" column="appStatus"/>
         <result property="keywordStatus" column="keywordStatus"/>
+        <result property="typeId" column="typeId"/>
 
         <association property="user" javaType="UserInfo">
             <result property="userid" column="userid"/>
@@ -34,6 +35,10 @@
         <association property="customer" javaType="Customer">
             <result property="customerId" column="customerId"/>
             <result property="companyName" column="companyName"/>
+        </association>
+        <association property="type" javaType="Type">
+            <result property="typeId" column="typeId"/>
+            <result property="typeName" column="typeName"/>
         </association>
     </resultMap>
 
@@ -51,6 +56,11 @@
         <if test="keyword!=null and keyword!=''">
             AND keyword LIKE CONCAT ('%',#{keyword},'%')
         </if>
+    </select>
+
+    <!--根据id返回关键词对象-->
+    <select id="queryKeyWordById" resultMap="KeywordList">
+        SELECT k.*,c.companyName,k.term,f.typeName FROM keyword k,`customerinfo` c,`finance_type` f WHERE k.customerId = c.customerId AND k.typeId=f.typeId AND k.keywordId=#{keywordId}
     </select>
 
 

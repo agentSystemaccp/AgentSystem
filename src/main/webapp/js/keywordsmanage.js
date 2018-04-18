@@ -25,7 +25,7 @@ function loadKeyWordList(pageIndex,keyword) {
         pageIndex="1";
     }
     if (typeof(keyword) == "undefined"){
-        keyword="";
+        keyword=$("#keyword").val();
     }
 
     $.ajax({
@@ -63,9 +63,9 @@ function loadKeyWordList(pageIndex,keyword) {
 
                     if(data.pageList[i].keywordStatus==1){
                         if(data.pageList[i].appStatus==1){
-                            table+="<td><a href='#' kid='"+data.pageList[i].keywordId+"' class=\"xufei\">续费</a></td></tr>";
+                            table+="<td><a href='#' kid='"+data.pageList[i].keywordId+"' keyword='"+data.pageList[i].keyword+"' class=\"xufei\">续费</a></td></tr>";
                         }else {
-                            table+="<td><a href='#' kid='"+data.pageList[i].keywordId+"' class=\"openapp\">开通APP</a>&nbsp;&nbsp;<a href='#' kid='"+data.pageList[i].keywordId+"' class=\"xufei\">续费</a></td></tr>";
+                            table+="<td><a href='#' kid='"+data.pageList[i].keywordId+"' keyword='"+data.pageList[i].keyword+"' class=\"openapp\">开通APP</a>&nbsp;&nbsp;<a href='#' kid='"+data.pageList[i].keywordId+"' keyword='"+data.pageList[i].keyword+"' class=\"xufei\">续费</a></td></tr>";
                         }
                     }else {
                         table+="<td>无操作</td></tr>";
@@ -93,3 +93,5 @@ function loadKeyWordList(pageIndex,keyword) {
         }
     })
 }
+
+

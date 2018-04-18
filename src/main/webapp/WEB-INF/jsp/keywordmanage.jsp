@@ -42,5 +42,10 @@
 </div>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/keywordmanage.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/keywordsmanage.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/xufei.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/openapp.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/keywordopr.js"></script>
+
+
   </body>
 </html>

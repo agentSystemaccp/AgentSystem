@@ -28,6 +28,16 @@ public class Keyword {
 
     private AppInfo appInfo; //关键字关联的APp
 
+    private Type type;
+
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
 
     public Customer getCustomer() {
         return customer;
