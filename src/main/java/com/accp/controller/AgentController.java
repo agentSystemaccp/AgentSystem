@@ -9,6 +9,7 @@ import com.accp.entity.Page;
 import com.accp.entity.UserInfo;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -148,15 +149,39 @@ public class AgentController {
     @RequestMapping("/keyWordsList")
     @ResponseBody
     public Object keyWordsList(String keyword, HttpSession session,@RequestParam(value = "pageIndex",required = false) String pageIndex){
-
+        int uid = ((UserInfo)session.getAttribute("userLogin")).getUserid();
         if(pageIndex==null||pageIndex==""){
             pageIndex="1";
         }
-        Page<Keyword> page = keywordBiz.queryKeyWordList(keyword,2,Integer.parseInt(pageIndex));
-
+        Page<Keyword> page = keywordBiz.queryKeyWordList(keyword,uid,2,Integer.parseInt(pageIndex));
         return JSONArray.toJSONString(page);
     }
 
+
+    /**
+     * 根据id得到关键词信息,打开app
+     * @param kid
+     * @return
+     */
+    @RequestMapping("/openapp")
+    public Object openApp(String kid, Model model){
+        Keyword keyword = keywordBiz.queryKeyWordById(Integer.parseInt(kid));
+        model.addAttribute("keyword",keyword);
+        return  "openapp";
+    }
+
+
+    /**
+     * 根据id得到关键词信息,打开app
+     * @param kid
+     * @return
+     */
+    @RequestMapping("/xufei")
+    public Object xufei(String kid, Model model){
+        Keyword keyword = keywordBiz.queryKeyWordById(Integer.parseInt(kid));
+        model.addAttribute("xufei",typeBiz.queryTypeByParentId(3));
+        return  "xufei";
+    }
 
 
 

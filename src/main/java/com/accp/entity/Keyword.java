@@ -24,8 +24,20 @@ public class Keyword {
 
     private UserInfo user;      //关键字的代理商id
 
-    private Customer customer;
+    private Customer customer;      //关键字关联的客户id
 
+    private AppInfo appInfo; //关键字关联的APp
+
+    private Type type;
+
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
 
     public Customer getCustomer() {
         return customer;
@@ -129,5 +141,13 @@ public class Keyword {
 
     public void setAppStatus(int appStatus) {
         this.appStatus = appStatus;
+    }
+
+    public AppInfo getAppInfo() {
+        return appInfo;
+    }
+
+    public void setAppInfo(AppInfo appInfo) {
+        this.appInfo = appInfo;
     }
 }

@@ -5,14 +5,14 @@
   门户管理\
 </div>
 <div class="container">
-  <form id="protalForm" action="${pageContext.request.contextPath }/protal/queryProtalList" method="get">
+  <form id="protalForm" action="${pageContext.request.contextPath }/protal/queryProtalList" method="post">
     <input type="hidden" id="pageNo" name="pageNo" value="${page.pageNo}">
     <div>
       <label>关键字:</label>
       <input type="text" id="keyword" name="keyword" value="${keyword}">
       <label>客户名称:</label>
       <input type="text" id="cname" name="companyName" value="${companyName}">
-      <input type="button" value="查询" onclick="formsubmit()"/>
+      <input type="submit" value="查询"/>
     </div>
   </form>
   <table style="text-align: center;font-family: 宋体">
@@ -30,21 +30,31 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${page.pageList}" var="protal" varStatus="status">
+    <c:if test="${not empty page.pageList}">
+      <c:forEach items="${page.pageList}" var="protal" varStatus="status">
+        <tr>
+          <td>${status.count}</td>
+          <td>${protal.customer.keyword.keyword}</td>
+          <td>${protal.customer.companyName}</td>
+          <td>${protal.legalRepresentative}</td>
+          <td>${protal.customer.user.userName}</td>
+          <td><fmt:formatDate value="${protal.customer.keyword.createTime}" pattern="yyyy-MM-dd"/></td>
+          <td>${protal.customer.type.typeName}</td>
+          <td>${protal.customer.keyword.keywordStatus==1?'启用':'停用'}</td>
+          <td>
+            <a class="viewprotal" href="javascript:;" protalId="${protal.protalId}">查看</a>
+            <c:if test="${not empty protal.customer.keyword.appInfo}">
+              |<a class="modifprotal" href="javascript:;" protalId="${protal.protalId}">修改</a>
+            </c:if>
+          </td>
+        </tr>
+      </c:forEach>
+    </c:if>
+    <c:if test="${empty page.pageList}">
       <tr>
-        <td>${status.count}</td>
-        <td>${protal.customer.keyword.keyword}</td>
-        <td>${protal.customer.companyName}</td>
-        <td>${protal.legalRepresentative}</td>
-        <td>${protal.customer.user.userName}</td>
-        <td><fmt:formatDate value="${protal.customer.keyword.createTime}" pattern="yyyy-MM-dd"/></td>
-        <td>${protal.customer.type.typeName}</td>
-        <td>${protal.customer.keyword.keywordStatus==1?'启用':'停用'}</td>
-        <td>
-          <a class="viewprotal" href="javascript:;" protalId="${protal.protalId}">查看</a>|<a href="#">修改</a>
-        </td>
+        <td colspan="10">没有查询结果</td>
       </tr>
-    </c:forEach>
+    </c:if>
     </tbody>
   </table>
   <div class="pagination pagination-centered">
@@ -57,11 +67,14 @@
       <%--<li><a href="/customlist.action?pager.page=<s:property value="#num"/>&custom.customName=<s:property value="custom.customName" />"><s:property value="#num"/></a></li>--%>
       <%--</s:iterator>--%>
       <%--</s:if>--%>
-      <c:forEach var="s" begin="2" end="${page.totalPage-1}">
-        <li>
-          <a href="javascript:;" onclick="getProtalList(${s})">${s}</a>
-        </li>
-      </c:forEach>
+      <c:if test="${page.totalPage>0}">
+        <c:forEach var="s" begin="2" end="${page.totalPage-1}">
+          <li>
+            <a href="javascript:;" onclick="getProtalList(${s})">${s}</a>
+          </li>
+        </c:forEach>
+      </c:if>
+
 
       <%--<s:if test="pager.nextPages!=null">--%>
       <%--<s:iterator value="pager.nextPages" var="num">--%>

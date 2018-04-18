@@ -1,18 +1,25 @@
 package com.accp.controller;
 
 import com.accp.biz.ProtalBiz;
+import com.accp.entity.AppInfo;
 import com.accp.entity.Page;
 import com.accp.entity.Protal;
 import com.accp.entity.UserInfo;
+import com.alibaba.fastjson.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-import java.util.List;
+import java.util.Calendar;
+import java.util.Date;
 
+/**
+ * 门户管理层
+ */
 @Controller
 @RequestMapping("/protal")
 public class ProtalController {
@@ -42,9 +49,26 @@ public class ProtalController {
 
     //获取门户对象 跳转到门户详情页面
     @RequestMapping("/queryProtal")
-    public String queryProtal(int protalId,Model model){
+    public String queryProtal(int protalId,String type,Model model) {
         Protal protal = protalBiz.queryProtalById(protalId);
-        model.addAttribute("protal",protal);
-        return  "viewProtal";
+        Date endDate = protal.getCustomer().getKeyword().getCreateTime();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(endDate);
+        calendar.add(Calendar.YEAR, +protal.getCustomer().getKeyword().getTerm());
+        endDate = calendar.getTime();
+        model.addAttribute("protal", protal);
+        model.addAttribute("endDate", endDate);
+        if (type.equals("view")) {
+            return "viewCustomer";
+        } else {
+            return "modifyProtal";
+        }
+    }
+
+    @RequestMapping("/modifyProtal")
+    @ResponseBody
+    public Object modifyProtal(AppInfo appInfo){
+        int result = protalBiz.modifyProtal(appInfo);
+        return JSONArray.toJSONString(result);
     }
 }

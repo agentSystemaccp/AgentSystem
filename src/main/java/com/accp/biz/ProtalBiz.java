@@ -1,5 +1,6 @@
 package com.accp.biz;
 
+import com.accp.entity.AppInfo;
 import com.accp.entity.Page;
 import com.accp.entity.Protal;
 
@@ -20,4 +21,11 @@ public interface ProtalBiz {
      * @return
      */
     public Protal queryProtalById(int protalId);
+
+    /**
+     * 修改门户
+     * @param appInfo
+     * @return
+     */
+    public int modifyProtal(AppInfo appInfo);
 }

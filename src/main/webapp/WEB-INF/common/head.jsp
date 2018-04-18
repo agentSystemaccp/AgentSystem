@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 
@@ -25,7 +25,7 @@
 <%--<link id='theme' rel='stylesheet' href='/humane/themes/original.css' />--%>
 <script type="text/javascript" src='${pageContext.request.contextPath }/js/humane.js'></script>
 
-
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-form.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-form.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
@@ -75,6 +75,7 @@
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/viewer.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/permission.js"></script>
 
+
 </head>
 <body>
 	<div class="head">
@@ -92,29 +93,29 @@
 	<!-- 主菜单 -->
 	<div id="menu">
 		<ul>
-			<%--<li>--%>
-				<%--<ul>--%>
+			<li>
+				<ul>
 
-					<%--<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>--%>
-					<%--<li id="m_1" class="m_li"  onmouseover="mover(1)"><a>代理商管理</a></li>--%>
-					<%--<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>--%>
-					<%--<li id="m_2" class="m_li" onmouseover="mover(2)"><a>门户管理</a></li>--%>
-					<%--<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>--%>
-					<%--<li id="m_3" class="m_li" onmouseover="mover(3)"><a>报表管理</a></li>--%>
-					<%--<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>--%>
-					<%--<li id="m_4" class="m_li" onmouseover="mover(4)"><a>系统管理</a></li>--%>
-					<%--<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>--%>
-					<%--<li id="m_5" class="m_li" onmouseover="mover(5)"><a>系统配置管理</a></li>--%>
-				<%--</ul>--%>
-			<%--</li>--%>
-				<c:forEach var="menu" items="${userLogin.role.menus}" varStatus="sta">
 					<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>
-					<li id="m_${sta.count}" class="m_li"  onmouseover="mover(${sta.count})">
-						<a class="showChildMenu" menuid="${menu.menu_id}" href="javascript:;">${menu.menuName}</a>
-					</li>
+					<li id="m_1" class="m_li"  onmouseover="mover(1)"><a>代理商管理</a></li>
+					<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>
+					<li id="m_2" class="m_li" onmouseover="mover(2)"><a>门户管理</a></li>
+					<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>
+					<li id="m_3" class="m_li" onmouseover="mover(3)"><a>报表管理</a></li>
+					<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>
+					<li id="m_4" class="m_li" onmouseover="mover(4)"><a>系统管理</a></li>
+					<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>
+					<li id="m_5" class="m_li" onmouseover="mover(5)"><a>系统配置管理</a></li>
+				</ul>
+			</li>
+				<%--<c:forEach var="menu" items="${userLogin.role.menus}" varStatus="sta">--%>
+					<%--<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>--%>
+					<%--<li id="m_${sta.count}" class="m_li"  onmouseover="mover(${sta.count})">--%>
+						<%--<a class="showChildMenu" menuid="${menu.menu_id}" href="javascript:;">${menu.menuName}</a>--%>
+					<%--</li>--%>
 
 
-			</c:forEach>
+			<%--</c:forEach>--%>
 			<%--<s:iterator value="${userLogin.role.menus}" status="sta">--%>
 				<%--<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>--%>
 				<%--<li id="m_<s:property value="#sta.index+1"/>" id="m_<s:property value="#sta.index+1"/>" class="m_li"  onmouseover="mover(<s:property value="#sta.index+1"/>)"><s:property value="menuName"/></li>--%>
@@ -150,20 +151,20 @@
 				<%--</li>--%>
 			<%--</s:iterator>--%>
 
-				<%--<li id="s_1" class="s_li">--%>
-				<%--<a href="${pageContext.request.contextPath }/agent/toKeyWord">关键词申请</a>--%>
-				<%--<a href="#">角色管理</a>--%>
-				<%--<a href="#">角色权限配置</a>--%>
-				<%--<a href="#">用户管理</a>--%>
-				<%--<a href="#">关键词审核</a>--%>
+				<li id="s_1" class="s_li">
+				<a href="${pageContext.request.contextPath }/agent/toKeyWord">关键词申请</a>
+				<a href="#">角色管理</a>
+				<a href="#">角色权限配置</a>
+				<a href="#">用户管理</a>
+				<a href="#">关键词审核</a>
 
 
-			<%--</li>--%>
+			</li>
 
 
-			<%--<li id="s_2" class="s_li">--%>
-				<%--<a href="${pageContext.request.contextPath }/protal/queryProtalList">门户管理</a>--%>
-			<%--</li>--%>
+			<li id="s_2" class="s_li">
+				<a href="${pageContext.request.contextPath }/protal/queryProtalList">门户管理</a>
+			</li>
 			<!--<li id="s_4" class="s_li">
 				<a href="#">财务管理</a>
 				<a href="/rolelist.action">角色管理</a>
