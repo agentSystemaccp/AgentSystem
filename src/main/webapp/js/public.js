@@ -27,6 +27,7 @@ function mover(object) {
             var son ="";
             $(".smenu").html("");
 			//显示该用户权限内主菜单下 子菜单
+
             $.ajax({
                 type: "GET",
                 url: path + "/menu/manage/" + object,
