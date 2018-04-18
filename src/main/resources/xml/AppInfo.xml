@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.accp.dao.AppInfoDao">
+    <update id="updateAppInfo">
+        UPDATE appInfo
+        <set>
+            <if test="appCode != null and appCode != ''">appCode = #{appCode}</if>
+            <if test="appPassword != null and appPassword != ''">,appPassword = #{appPassword}</if>
+            <if test="appIOSUrl != null and appIOSUrl != ''">,appIOSUrl = #{appIOSUrl}</if>
+            <if test="appAndroidUrl != null and appAndroidUrl != ''">,appAndroidUrl = #{appAndroidUrl}</if>
+            <if test="appIOSQRCodeUrl != null and appIOSQRCodeUrl != ''">,appIOSQRCodeUrl = #{appIOSQRCodeUrl}</if>
+            <if test="appAndroidQRCodeUrl != null and appAndroidQRCodeUrl != ''">,appAndroidQRCodeUrl = #{appAndroidQRCodeUrl}</if>
+        </set>
+        where appId = #{appId}
+    </update>
+</mapper>

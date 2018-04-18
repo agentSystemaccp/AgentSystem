@@ -1,19 +1,25 @@
 package com.accp.controller;
 
 import com.accp.biz.ProtalBiz;
+import com.accp.entity.AppInfo;
 import com.accp.entity.Page;
 import com.accp.entity.Protal;
 import com.accp.entity.UserInfo;
+import com.alibaba.fastjson.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * 门户管理层
+ */
 @Controller
 @RequestMapping("/protal")
 public class ProtalController {
@@ -57,6 +63,12 @@ public class ProtalController {
         } else {
             return "modifyProtal";
         }
+    }
 
+    @RequestMapping("/modifyProtal")
+    @ResponseBody
+    public Object modifyProtal(AppInfo appInfo){
+        int result = protalBiz.modifyProtal(appInfo);
+        return JSONArray.toJSONString(result);
     }
 }

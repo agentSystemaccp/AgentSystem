@@ -3,12 +3,23 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.accp.dao.ProtalDao">
+    <resultMap id="appMap" type="AppInfo">
+        <result column="appId" property="appId"/>
+        <result column="appCode" property="appCode"/>
+        <result column="appPassword" property="appPassword"/>
+        <result column="appIOSUrl" property="appIOSUrl"/>
+        <result column="appAndroidUrl" property="appAndroidUrl"/>
+        <result column="appIOSQRCodeUrl" property="appIOSQRCodeUrl"/>
+        <result column="appAndroidQRCodeUrl" property="appAndroidQRCodeUrl"/>
+    </resultMap>
+
     <!--配置关键词对象-->
     <resultMap id="keywordMap" type="Keyword">
         <result column="keyword" property="keyword"/>
         <result column="term" property="term"/>
         <result column="createTime" property="createTime"/>
         <result column="keywordStatus" property="keywordStatus"/>
+        <association resultMap="appMap" property="appInfo"/>
     </resultMap>
 
     <!--配置客户类型对象-->
@@ -63,26 +74,28 @@
     </resultMap>
 
     <select id="queryProtalList" resultMap="protalMap">
-        SELECT p.*,c.*,u.*,k.*,c.customerId cid,u.userId uid,k.customerId kcustomerId,
+        SELECT p.*,c.*,u.*,k.*,a.*,c.customerId cid,u.userId uid,k.customerId kcustomerId,
         (SELECT typeName FROM finance_type WHERE typeid = c.companyType) companyTypeName,
         (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
-        FROM protalinfo p,customerInfo c,userinfo u,keyword k  WHERE
-        p.customerId = c.customerId AND c.userId = u.userId AND c.customerId = k.customerId
+        FROM protalInfo p,customerInfo c,userinfo u,keyword k LEFT JOIN appInfo a ON
+        k.keywordId = a.keywordId WHERE p.customerId = c.customerId AND
+        c.userId = u.userId AND c.customerId = k.customerId
        <if test="keyword != null">
           AND k.keyword LIKE CONCAT ('%',#{keyword},'%')
        </if>
-        <if test="customerName != null">
-            and c.companyName LIKE CONCAT ('%',#{customerName},'%')
+        <if test="customerName != null and customerName != ''">
+            AND c.companyName LIKE CONCAT ('%',#{customerName},'%')
         </if>
         <if test="userId != 0 and userId != 1">
-            and u.userId = #{userId}
+            AND u.userId = #{userId}
         </if>
        GROUP BY c.companyName,p.protalId LIMIT #{pageNo},#{pageSize}
     </select>
 
     <select id="queryProtalCount" resultType="_Integer">
-        SELECT COUNT(1) FROM protalinfo p,customerInfo c,userinfo u,keyword k
-        WHERE p.customerId = c.customerId AND c.userId = u.userId AND c.customerId = k.customerId
+        SELECT COUNT(1) FROM protalInfo p,customerInfo c,userinfo u,keyword k LEFT JOIN
+        appInfo a ON k.keywordId = a.keywordId WHERE p.customerId = c.customerId AND
+        c.userId = u.userId AND c.customerId = k.customerId
         <if test="keyword != null">
             AND k.keyword LIKE CONCAT ('%',#{keyword},'%')
         </if>
@@ -95,10 +108,11 @@
     </select>
 
     <select id="queryProtalById" resultMap="protalMap">
-            SELECT p.*,c.*,u.*,k.*,c.customerId cid,u.userId uid,k.customerId kcustomerId,
-            (SELECT typeName FROM finance_type WHERE typeid = c.companyType) companyTypeName,
-            (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
-            FROM protalinfo p,customerInfo c,userinfo u,keyword k WHERE p.customerId = c.customerId AND
-            c.userId = u.userId AND c.customerId = k.customerId AND p.protalId = #{protalId}
+        SELECT p.*,c.*,u.*,k.*,a.*,c.customerId cid,u.userId uid,k.customerId kcustomerId,
+        (SELECT typeName FROM finance_type WHERE typeid = c.companyType) companyTypeName,
+        (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
+        FROM protalInfo p,customerInfo c,userinfo u,keyword k LEFT JOIN appInfo a ON
+        k.keywordId = a.keywordId WHERE p.customerId = c.customerId AND
+        c.userId = u.userId AND c.customerId = k.customerId AND p.protalId = #{protalId}
     </select>
 </mapper>

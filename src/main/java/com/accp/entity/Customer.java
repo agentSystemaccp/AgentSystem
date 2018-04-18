@@ -19,6 +19,7 @@ public class Customer {
     private Type type;              //客户类型
     private UserInfo user;          //客户的代理商
 
+
     public int getCustomerId() {
         return customerId;
     }
