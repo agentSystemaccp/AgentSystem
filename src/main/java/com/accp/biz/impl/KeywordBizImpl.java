@@ -78,4 +78,14 @@ public class KeywordBizImpl implements KeywordBiz {
     public Keyword queryByKeyWord(Keyword keyword) {
         return keyWordDao.queryByKeyWord(keyword);
     }
+
+
+    /**
+     * 根据id得到关键词对象
+     * @param keywordId
+     * @return
+     */
+    public Keyword queryKeyWordById(int keywordId) {
+        return keyWordDao.queryKeyWordById(keywordId);
+    }
 }

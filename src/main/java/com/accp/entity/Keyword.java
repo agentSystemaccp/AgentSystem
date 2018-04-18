@@ -26,6 +26,16 @@ public class Keyword {
 
     private Customer customer;
 
+    private Type type;
+
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
 
     public Customer getCustomer() {
         return customer;

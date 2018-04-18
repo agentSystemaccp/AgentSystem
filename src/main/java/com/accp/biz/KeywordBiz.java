@@ -13,4 +13,6 @@ public interface KeywordBiz {
 
     //查看账户明细
     Page<Keyword> queryKeyWordList(String keyword,int userId, int pageSize, int pageNo);
+    //根据id得到关键词
+    Keyword queryKeyWordById(int keywordId);
 }
