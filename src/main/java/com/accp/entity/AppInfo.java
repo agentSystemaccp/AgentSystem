@@ -2,7 +2,7 @@ package com.accp.entity;
 
 public class AppInfo {
     private int appId;
-    private int customerId;
+    private int keywordId;
     private String appCode;
     private String appPassword;
     private String appIOSUrl;
@@ -18,12 +18,12 @@ public class AppInfo {
         this.appId = appId;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getKeywordId() {
+        return keywordId;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setKeywordId(int keywordId) {
+        this.keywordId = keywordId;
     }
 
     public String getAppCode() {

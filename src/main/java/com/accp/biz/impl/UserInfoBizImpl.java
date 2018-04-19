@@ -9,6 +9,8 @@ import com.accp.entity.UserInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
+import java.util.List;
 
 
 @Service("userInfoBiz")
@@ -43,5 +45,15 @@ public class UserInfoBizImpl implements UserInfoBiz {
      */
     public int updatePassword(UserInfo userInfo) {
         return userInfoDao.updatePassword(userInfo);
+    }
+
+    /**
+     * 通过日期来查询用户余额信息
+     * @param starttime
+     * @param endtime
+     * @return
+     */
+    public List<UserInfo> queryAllUserBalance(Date starttime, Date endtime) {
+        return userInfoDao.queryAllUserBalance(starttime,endtime);
     }
 }

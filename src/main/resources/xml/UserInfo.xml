@@ -53,4 +53,11 @@
         </set>
         where userid=#{userid}
     </update>
+
+    <select id="queryAllUserBalance" resultType="UserInfo">
+        SELECT * FROM userInfo where 1=1
+        <if test="starttime != null and endtime == null">AND createTime >= #{starttime}</if>
+        <if test="starttime == null and endtime != null">AND #{endtime} >= createTime </if>
+        <if test="starttime != null and endtime != null">AND createTime BETWEEN #{starttime} AND  #{endtime}</if>
+    </select>
 </mapper>
