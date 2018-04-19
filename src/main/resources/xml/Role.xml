@@ -13,7 +13,8 @@
         <collection property="resource" ofType="Resource">
             <id property="resourceId" column="resourceId"/>
             <result property="resourceName" column="resourceName"/>
-            <result property="resouceStatus" column="resouceStatus"/>
+            <result property="resourceStatus" column="resourceStatus"/>
+            <result property="resourceUrl" column="resourceUrl"/>
             <result property="menuId" column="menuId"/>
         </collection>
         <collection property="menus" ofType="Menu">
