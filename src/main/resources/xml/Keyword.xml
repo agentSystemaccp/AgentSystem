@@ -63,6 +63,22 @@
         SELECT k.*,c.companyName,k.term,f.typeName FROM keyword k,`customerinfo` c,`finance_type` f WHERE k.customerId = c.customerId AND k.typeId=f.typeId AND k.keywordId=#{keywordId}
     </select>
 
+    <!--修改关键词-->
+    <update id="updateKeyWord">
+        UPDATE keyword
+          <set>
+              <if test="keyword!=null and keyword!=''">keyword=#{keyword}</if>
+              <if test="customerId!=0">customerId=#{customerId}</if>
+              <if test="userId!=0">userId=#{userId}</if>
+              <if test="term!=0">term=#{term}</if>
+              <if test="keywordStatus!=0">keywordStatus=#{keywordStatus}</if>
+              <if test="checkStatus!=0">checkStatus=#{checkStatus}</if>
+              <if test="useStatus!=0">useStatus=#{useStatus}</if>
+              <if test="appStatus!=0">appStatus=#{appStatus}</if>
+          </set>
+        WHERE keywordId=#{keywordId}
+    </update>
+
 
 
 </mapper>

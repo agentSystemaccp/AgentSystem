@@ -27,7 +27,6 @@
 
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-form.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-form.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/public.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/login.js"></script>
@@ -93,7 +92,7 @@
 	<!-- 主菜单 -->
 	<div id="menu">
 		<ul>
-				<c:forEach var="menu" items="${userLogin.role.menus}" varStatus="sta">
+			<c:forEach var="menu" items="${userLogin.role.menus}" varStatus="sta">
 					<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>
 					<li id="m_${sta.count}" class="m_li"  onmouseover="mover(${sta.count})">
 						<a class="showChildMenu" menuid="${menu.menu_id}" href="javascript:;">${menu.menuName}</a>
