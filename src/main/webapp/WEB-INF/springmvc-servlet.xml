@@ -88,6 +88,7 @@
     <mvc:resources mapping="/css/**" location="/css/"/>
     <mvc:resources mapping="/files/**" location="/files/"/>
     <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:resources mapping="/medire/**" location="/medire/"/>
     <!--<mvc:resources mapping="/upload/*" location="/upload/"/>-->
     <!--扫描注解的bean-->
     <context:component-scan base-package="com.accp.controller,com.accp.biz" />

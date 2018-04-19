@@ -1,6 +1,10 @@
 package com.accp.dao;
 
 import com.accp.entity.UserInfo;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.Date;
+import java.util.List;
 
 
 public interface UserInfoDao {
@@ -22,4 +26,11 @@ public interface UserInfoDao {
 
     int updateUserInfo(UserInfo userInfo);
 
+    /**
+     * 通过日期来查询用户余额信息
+     * @param starttime
+     * @param endtime
+     * @return
+     */
+    public List<UserInfo> queryAllUserBalance(@Param("starttime") Date starttime,@Param("endtiem") Date endtime);
 }
