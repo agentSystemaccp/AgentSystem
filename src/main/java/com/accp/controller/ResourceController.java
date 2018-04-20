@@ -9,7 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -47,7 +47,7 @@ public class ResourceController {
                     //角色有该权限 属性check为true 及被选中
                     resource.setCheck(true);
                     //状态改为1 （启用）
-                    resource.setResouceStatus(1);
+                    resource.setResourceStatus(1);
                 }
             }
 
