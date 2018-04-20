@@ -19,7 +19,6 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/public.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/main.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/files/updatePassword/styles.css">
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/permission.css">
 <!-- ymPrompt弹出框 -->
 <%--<link rel="stylesheet" type="text/css" href="/alertframe/skin/simple_gray/ymPrompt.css" />--%>
 <%--<!-- humane提醒库 -->--%>
@@ -28,7 +27,6 @@
 
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-form.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-form.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/public.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/login.js"></script>
@@ -74,7 +72,7 @@
 	<script src="${pageContext.request.contextPath }/files/manage/data.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/legacy.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/viewer.js"></script>
-	<script src="${pageContext.request.contextPath }/js/permission.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/permission.js"></script>
 
 
 </head>
@@ -94,95 +92,19 @@
 	<!-- 主菜单 -->
 	<div id="menu">
 		<ul>
-			<li>
-				<ul>
-
-					<%--<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>--%>
-					<%--<li id="m_1" class="m_li"  onmouseover="mover(1)"><a>代理商管理</a></li>--%>
-					<%--<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>--%>
-					<%--<li id="m_2" class="m_li" onmouseover="mover(2)"><a>门户管理</a></li>--%>
-					<%--<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>--%>
-					<%--<li id="m_3" class="m_li" onmouseover="mover(3)"><a>报表管理</a></li>--%>
-					<%--<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>--%>
-					<%--<li id="m_4" class="m_li" onmouseover="mover(4)"><a>系统管理</a></li>--%>
-					<%--<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>--%>
-					<%--<li id="m_5" class="m_li" onmouseover="mover(5)"><a>系统配置管理</a></li>--%>
-				<%--</ul>--%>
-			<%--</li>--%>
-				<c:forEach var="menu" items="${userLogin.role.menus}" varStatus="sta">
+			<c:forEach var="menu" items="${userLogin.role.menus}" varStatus="sta">
 					<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>
 					<li id="m_${sta.count}" class="m_li"  onmouseover="mover(${sta.count})">
 						<a class="showChildMenu" menuid="${menu.menu_id}" href="javascript:;">${menu.menuName}</a>
 					</li>
 			</c:forEach>
-			<%--<s:iterator value="${userLogin.role.menus}" status="sta">--%>
-				<%--<li class="m_line"><img src="${pageContext.request.contextPath }/imgs/line1.gif"></li>--%>
-				<%--<li id="m_<s:property value="#sta.index+1"/>" id="m_<s:property value="#sta.index+1"/>" class="m_li"  onmouseover="mover(<s:property value="#sta.index+1"/>)"><s:property value="menuName"/></li>--%>
-			<%--</s:iterator>--%>
-				<%--<a href="<s:property value="mainFunction.funcUrl"/>"></a>--%>
 		</ul>
 	</div>
-	
-	<!-- <div id="menu" class="menu">
-		<ul>
-			<li class="m_line"><img src="/imgs/line1.gif"></li>
-			<li id="m_1" class="m_li"><a>代理商管理</a></li>
-			<li class="m_line"><img src="/imgs/line1.gif"></li>
-			<li id="m_4" class="m_li" onmouseover="mover(4)"><a>系统管理</a></li>
-			<li class="m_line"><img src="/imgs/line1.gif"></li>
-			<li id="m_5" class="m_li" onmouseover="mover(5)"><a>系统配置管理</a></li>
-		</ul>
-	</div> -->
+
 	<!-- 子菜单 -->
 	<div class="subbox">
 		<ul class="smenu">
-			<%--11--%>
-			<%--<c:forEach items="${resourceList}" var="resource" varStatus="sta">--%>
-				<%--<li id="s_${sta.index+1}" class="s_li">--%>
-						<%--<a href="${pageContext.request.contextPath }${resource.resourceUrl}">${resource.resourceName}</a>--%>
-				<%--</li>--%>
-			<%--</c:forEach>--%>
-			<%--<s:iterator value="roleFunctions" status="sta">--%>
-				<%--<li id="s_<s:property value="#sta.index+1"/>" class="s_li">--%>
-					<%--<s:iterator value="subFunctions">--%>
-						<%--<a href="<s:property value="funcUrl"/>"><s:property value="functionName"/></a>--%>
-					<%--</s:iterator>--%>
-				<%--</li>--%>
-			<%--</s:iterator>--%>
 
-				<%--<li id="s_1" class="s_li">--%>
-				<%--<a href="${pageContext.request.contextPath }/agent/toKeyWord">关键词申请</a>--%>
-				<%--<a href="#">角色管理</a>--%>
-				<%--<a href="#">角色权限配置</a>--%>
-				<%--<a href="#">用户管理</a>--%>
-				<%--<a href="#">关键词审核</a>--%>
-
-
-			<%--</li>--%>
-
-
-			<%--<li id="s_2" class="s_li">--%>
-				<%--<a href="${pageContext.request.contextPath }/protal/queryProtalList">门户管理</a>--%>
-			<%--</li>--%>
-			<!--<li id="s_4" class="s_li">
-				<a href="#">财务管理</a>
-				<a href="/rolelist.action">角色管理</a>
-				<a href="/permission.action">角色权限配置</a>
-				<a href="/userlist.action">用户管理</a>
-				<a href="#">关键词审核</a>
-				
-				 
-			</li>
-			<li id="s_5" class="s_li">
-				<a href="/caiwutype.action">财务类型</a>
-				<a href="/servicetype.action"> 服务类型</a>
-				 <a href="/serviceyears.action">服务年限</a>
-				<a href="/appurl.action">APP地址</a>
-				<a href="/customtype.action"> 客户类型</a>
-				 <a href="/cardtype.action">证件类型</a>
-				<a href="/youhuitype.action">优惠类型</a>
-				 
-			</li> -->
 		</ul>
 	</div>
 

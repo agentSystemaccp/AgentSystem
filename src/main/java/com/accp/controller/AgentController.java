@@ -1,12 +1,10 @@
 package com.accp.controller;
 
+import com.accp.biz.AppInfoBiz;
 import com.accp.biz.CustomerBiz;
 import com.accp.biz.KeywordBiz;
 import com.accp.biz.TypeBiz;
-import com.accp.entity.Customer;
-import com.accp.entity.Keyword;
-import com.accp.entity.Page;
-import com.accp.entity.UserInfo;
+import com.accp.entity.*;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +30,9 @@ public class AgentController {
     private TypeBiz typeBiz;
     @Resource
     private KeywordBiz keywordBiz;
+    @Resource
+    private AppInfoBiz appInfoBiz;
+
 
 
 
@@ -164,11 +165,32 @@ public class AgentController {
      * @return
      */
     @RequestMapping("/openapp")
-    public Object openApp(String kid, Model model){
+    public String openApp(String kid, Model model){
         Keyword keyword = keywordBiz.queryKeyWordById(Integer.parseInt(kid));
         model.addAttribute("keyword",keyword);
         return  "openapp";
     }
+
+
+    /**
+     * 开通app
+     * @param appInfo
+     * @return
+     */
+    @RequestMapping("/openappSubmit")
+    @ResponseBody
+    public Object openAppSubmit(String appCode,String appPassword,String keywordId){
+        AppInfo appInfo = new AppInfo();
+        appInfo.setAppCode(appCode);
+        appInfo.setAppPassword(appPassword);
+
+        Keyword keyword = new Keyword();
+        keyword.setKeywordId(Integer.parseInt(keywordId));
+        keyword.setAppStatus(1);
+
+        return JSONArray.toJSONString(appInfoBiz.addAppInfo(appInfo,keyword));
+    }
+
 
 
     /**
@@ -177,11 +199,14 @@ public class AgentController {
      * @return
      */
     @RequestMapping("/xufei")
-    public Object xufei(String kid, Model model){
+    public String xufei(String kid, Model model){
         Keyword keyword = keywordBiz.queryKeyWordById(Integer.parseInt(kid));
         model.addAttribute("xufei",typeBiz.queryTypeByParentId(3));
         return  "xufei";
     }
+
+
+
 
 
 

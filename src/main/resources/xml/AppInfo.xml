@@ -15,4 +15,10 @@
         </set>
         where appId = #{appId}
     </update>
+
+
+    <!--开通app-->
+    <insert id="addAppInfo">
+        insert into appinfo (keywordId,appCode,appPassword) values (#{keywordId},#{appCode},#{appPassword})
+    </insert>
 </mapper>

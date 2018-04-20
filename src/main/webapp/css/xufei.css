@@ -2,6 +2,7 @@
 .container a{color:#000;}
 .container a:hover{color:red;}
 .formdiv{border:1px solid #ccc;padding:10px;margin:10px;}
+#openappBody{border: solid 4px #666;background-color: #fff}
 .formdiv li a{display: block;width:120px;float:left;font-weight:bold;color:#000;}
 .formdiv li{padding:5px;text-align:left;}
 .customname{width:50%;border:0px;color:green;font-weight:bold;font-size:14px;}

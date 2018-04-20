@@ -9,7 +9,7 @@ public class Resource {
     private  String  resourceName; //资源名
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createTime; //创建时间
-    private  int  resouceStatus;// 状态 1
+    private  int  resourceStatus;// 状态 1
     private String resourceUrl;     //权限路径
     private  int  menuId;  //菜单id
     private  boolean check=false;
@@ -47,12 +47,12 @@ public class Resource {
         this.createTime = createTime;
     }
 
-    public int getResouceStatus() {
-        return resouceStatus;
+    public int getResourceStatus() {
+        return resourceStatus;
     }
 
-    public void setResouceStatus(int resouceStatus) {
-        this.resouceStatus = resouceStatus;
+    public void setResourceStatus(int resourceStatus) {
+        this.resourceStatus = resourceStatus;
     }
 
     public int getMenuId() {

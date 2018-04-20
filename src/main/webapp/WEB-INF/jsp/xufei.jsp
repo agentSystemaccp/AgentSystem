@@ -41,10 +41,10 @@
 				readonly="readonly"></li>
 			<li><input type="button" id="submitkeyword" value="续费提交">
 			</li>
-			<input type="hidden" id="kid" value="${keywords.id}">
+			<input type="hidden" id="kid" value="${keyword.id}">
 		</ul>
 </div>
-<link rel="stylesheet" type="text/css" href="/css/xufei.css">
-<script type="text/javascript" src="/js/xufei.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/xufei.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/xufei.js"></script>
 </body>
 </html>

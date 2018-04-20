@@ -10,4 +10,11 @@ public interface AppInfoDao {
      * @return
      */
     public int updateAppInfo(AppInfo appInfo);
+
+    /**
+     * 添加app信息
+     * @param appInfo
+     * @return
+     */
+    int addAppInfo(AppInfo appInfo);
 }

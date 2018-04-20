@@ -3,6 +3,7 @@ package com.accp.dao;
 import com.accp.entity.Keyword;
 import org.apache.ibatis.annotations.Param;
 
+import java.security.Key;
 import java.util.List;
 
 public interface KeyWordDao {
@@ -19,4 +20,7 @@ public interface KeyWordDao {
 
     //根据id得到关键词
     Keyword queryKeyWordById(int keywordId);
+
+    //修改关键词
+    int updateKeyWord(Keyword keyword);
 }

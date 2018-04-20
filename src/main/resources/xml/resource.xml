@@ -8,7 +8,7 @@
         <id property="resourceId" column="resourceId"/>
         <result property="resourceName" column="resourceName"/>
         <result property="createTime" column="createTime"/>
-        <result property="resouceStatus" column="resouceStatus"/>
+        <result property="resourceStatus" column="resourceStatus"/>
         <result property="resourceUrl" column="resourceUrl"/>
         <association property="menu" javaType="Menu">
             <id property="menu_id" column="menuId"/>
