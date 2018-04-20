@@ -33,6 +33,7 @@ function mover(object) {
                 url: path + "/menu/manage/" + object,
                 dataType: "json",
                 success: function (data) {
+                    $(".smenu").html("");
                     son+="<li id=\"s_"+data[0].menu.menu_id+"\" class=\"s_li\">\n";
                     for (var j = 0; j < data.length; j++) {
                         son+= "<a href=\""+path+ data[j].resourceUrl + "\">"+data[j].resourceName+"</a>\n";

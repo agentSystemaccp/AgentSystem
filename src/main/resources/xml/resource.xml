@@ -13,7 +13,6 @@
         <association property="menu" javaType="Menu">
             <id property="menu_id" column="menuId"/>
             <result property="menuName" column="menuName"/>
-            <result property="menuUrl" column="menuUrl"/>
         </association>
     </resultMap>
     <select id="findResourceInfo" resultMap="resourceList">
@@ -24,5 +23,17 @@
         </where>
     </select>
 
+    <!--根据角色查询其权限-->
+    <select id="findResourceByRole" resultType="Resource">
+        select r.*,rr.* from role_resource rr,resource r
+        <where>
+            AND rr.ROLE_ID=#{roleId}
+            AND rr.resource_id=r.resourceId
+        </where>
+    </select>
 
+    <!--查询所有权限-->
+    <select id="findAllResource" resultType="Resource">
+        select * FROM resource
+    </select>
 </mapper>

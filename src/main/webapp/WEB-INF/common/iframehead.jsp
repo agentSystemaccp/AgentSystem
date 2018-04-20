@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 
@@ -20,8 +20,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/public.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/main.css">
 <!-- humane提醒库 -->
-<link id='theme' rel='stylesheet' href='/humane/themes/original.css' />
-<script src='/humane/humane.js'></script>
+<link id='theme' rel='stylesheet' href='${pageContext.request.contextPath }/humane/themes/original.css' />
+<script src='${pageContext.request.contextPath }/humane/humane.js'></script>
 
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js"></script>

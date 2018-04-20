@@ -6,7 +6,7 @@ package com.accp.entity;
 public class Menu {
     private int menu_id;  //菜单编号
     private String menuName;  //菜单名称
-    private String menuUrl;     //主菜单路径
+
 
     public int getMenu_id() {
         return menu_id;
@@ -24,11 +24,4 @@ public class Menu {
         this.menuName = menuName;
     }
 
-    public String getMenuUrl() {
-        return menuUrl;
-    }
-
-    public void setMenuUrl(String menuUrl) {
-        this.menuUrl = menuUrl;
-    }
 }

@@ -28,7 +28,7 @@ public class MenuController{
         Menu menu=new Menu();
         menu.setMenu_id(menu_id);
         List<com.accp.entity.Resource> resourceList=menuBiz.findResourceList(menu);
-        //model.addAttribute("resourceList",resourceList);
+
         return JSONArray.toJSONString(resourceList);
     }
 }

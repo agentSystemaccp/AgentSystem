@@ -1,19 +1,15 @@
-package com.accp.dao;
+package com.accp.biz;
 
-import com.accp.entity.Menu;
 import com.accp.entity.Resource;
 import com.accp.entity.Role;
 
 import java.util.List;
 
-public interface ResourceDao {
-    /**
-     * 根据参数查询信息
-     * @param resource
-     * @return
-     */
-    Resource findResourceInfo(Resource resource);
+/**
+ * 权限业务类
+ */
 
+public interface ResourceBiz {
     /**
      * 根据角色查询其权限
      * @param role
@@ -26,6 +22,4 @@ public interface ResourceDao {
      * @return
      */
     List<Resource> findAllResource();
-
-
 }

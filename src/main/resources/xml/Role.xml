@@ -14,12 +14,13 @@
             <id property="resourceId" column="resourceId"/>
             <result property="resourceName" column="resourceName"/>
             <result property="resouceStatus" column="resouceStatus"/>
+            <result property="resourceUrl" column="resourceUrl"/>
             <result property="menuId" column="menuId"/>
         </collection>
         <collection property="menus" ofType="Menu">
             <id property="menu_id" column="menuId"/>
             <result property="menuName" column="menuName"/>
-            <result property="menuUrl" column="menuUrl"/>
+
         </collection>
     </resultMap>
     <select id="findRoleInfo" resultMap="rolelist">

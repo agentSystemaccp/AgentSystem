@@ -7,13 +7,21 @@ import java.util.Date;
 public class Resource {
     private  int resourceId; //资源id
     private  String  resourceName; //资源名
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createTime; //创建时间
     private  int  resouceStatus;// 状态 1
     private String resourceUrl;     //权限路径
     private  int  menuId;  //菜单id
+    private  boolean check=false;
     private Menu menu;
 
+    public boolean isCheck() {
+        return check;
+    }
+
+    public void setCheck(boolean check) {
+        this.check = check;
+    }
 
     public int getResourceId() {
         return resourceId;
