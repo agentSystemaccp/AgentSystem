@@ -32,9 +32,12 @@ public class ProtalBizImpl implements ProtalBiz{
      */
     public void queryProtalList(String keyword, String customerName, int userId, Page<Protal> protalPage) {
         int totalRows = protalDao.queryProtalCount(keyword,customerName,userId);
+        //设置总数量
         protalPage.setTotalRows(totalRows);
+        //设置总行数
         protalPage.setTotalPage(totalRows % protalPage.getPageSize() == 0?totalRows % protalPage.getPageSize():
                 totalRows / protalPage.getPageSize() +1);
+        //判断是重新查询
         if(protalPage.getPageNo() > protalPage.getTotalPage()){
             protalPage.setPageNo(1);
         }
