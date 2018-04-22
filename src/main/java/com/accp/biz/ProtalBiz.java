@@ -20,7 +20,7 @@ public interface ProtalBiz {
      * @param protalId
      * @return
      */
-    public Protal queryProtalById(int protalId);
+    public Protal queryProtalById(int protalId,int cid);
 
     /**
      * 修改门户

@@ -46,8 +46,7 @@
         SELECT k.*,u.userName,c.companyName FROM keyword k,userinfo u,customerinfo c WHERE k.userId=u.userid AND k.customerId=c.customerId
         <if test="keyword!=null and keyword!=''">
             AND k.keyword LIKE CONCAT ('%',#{keyword},'%')
-        </if>
-          LIMIT #{offset},#{pageSize}
+        </if> LIMIT #{offset},#{pageSize}
     </select>
 
     <!--查询总条数-->
@@ -67,14 +66,15 @@
     <update id="updateKeyWord">
         UPDATE keyword
           <set>
-              <if test="keyword!=null and keyword!=''">keyword=#{keyword}</if>
-              <if test="customerId!=0">customerId=#{customerId}</if>
-              <if test="userId!=0">userId=#{userId}</if>
-              <if test="term!=0">term=#{term}</if>
-              <if test="keywordStatus!=0">keywordStatus=#{keywordStatus}</if>
-              <if test="checkStatus!=0">checkStatus=#{checkStatus}</if>
-              <if test="useStatus!=0">useStatus=#{useStatus}</if>
-              <if test="appStatus!=0">appStatus=#{appStatus}</if>
+              <if test="keyword!=null and keyword!=''">keyword=#{keyword},</if>
+              <if test="customerId!=0">customerId=#{customerId},</if>
+              <if test="userId!=0">userId=#{userId},</if>
+              <if test="term!=0">term=term+#{term},</if>
+              <if test="keywordStatus!=0">keywordStatus=#{keywordStatus},</if>
+              <if test="checkStatus!=0">checkStatus=#{checkStatus},</if>
+              <if test="useStatus!=0">useStatus=#{useStatus},</if>
+              <if test="appStatus!=0">appStatus=#{appStatus},</if>
+              <if test="typeId!=0">typeId=#{typeId},</if>
           </set>
         WHERE keywordId=#{keywordId}
     </update>

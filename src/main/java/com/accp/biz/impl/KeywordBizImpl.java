@@ -88,4 +88,27 @@ public class KeywordBizImpl implements KeywordBiz {
     public Keyword queryKeyWordById(int keywordId) {
         return keyWordDao.queryKeyWordById(keywordId);
     }
+
+    /**
+     * 续费操作
+     * @param keyword
+     * @return
+     */
+    public int updateKeyWord(Keyword keyword,UserInfo userInfo,int price) {
+        //扣除续费资金
+        userInfo.setBalance(userInfo.getBalance()-price);
+        userInfoDao.updateUserInfo(userInfo);
+
+        //添加明细
+        DealDetail dealDetail = new DealDetail();
+        dealDetail.setUserId(userInfo.getUserid());
+        dealDetail.setBalance((float) userInfo.getBalance()-price);
+        dealDetail.setCreateTime(new Date());
+        dealDetail.setFinanceFund(-price);
+        dealDetail.setFinanceType("扣除续费"+keyword.getTerm()+"年"+price+"元");
+        dealDetail.setRemark(userInfo.getUserName()+"对"+keyword.getKeyword()+"进行关键词续费操作,扣除续费资金:"+keyword.getTerm()+"年"+price+"元");
+        dealDetailDao.addDealDetail(dealDetail);
+
+        return keyWordDao.updateKeyWord(keyword);
+    }
 }

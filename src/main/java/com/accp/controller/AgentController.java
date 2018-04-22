@@ -1,10 +1,8 @@
 package com.accp.controller;
 
-import com.accp.biz.AppInfoBiz;
-import com.accp.biz.CustomerBiz;
-import com.accp.biz.KeywordBiz;
-import com.accp.biz.TypeBiz;
+import com.accp.biz.*;
 import com.accp.entity.*;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +30,10 @@ public class AgentController {
     private KeywordBiz keywordBiz;
     @Resource
     private AppInfoBiz appInfoBiz;
+    @Resource
+    private ProtalBiz protalBiz;
+    @Resource
+    private ContactsBiz contactsBiz;
 
 
 
@@ -174,7 +176,7 @@ public class AgentController {
 
     /**
      * 开通app
-     * @param appInfo
+     * @param
      * @return
      */
     @RequestMapping("/openappSubmit")
@@ -183,6 +185,8 @@ public class AgentController {
         AppInfo appInfo = new AppInfo();
         appInfo.setAppCode(appCode);
         appInfo.setAppPassword(appPassword);
+        appInfo.setKeywordId(Integer.parseInt(keywordId));
+
 
         Keyword keyword = new Keyword();
         keyword.setKeywordId(Integer.parseInt(keywordId));
@@ -202,13 +206,120 @@ public class AgentController {
     public String xufei(String kid, Model model){
         Keyword keyword = keywordBiz.queryKeyWordById(Integer.parseInt(kid));
         model.addAttribute("xufei",typeBiz.queryTypeByParentId(3));
+        model.addAttribute("keyword",keyword);
         return  "xufei";
+    }
+
+
+    /**
+     * 执行续费
+     * @return
+     */
+    @RequestMapping("/submitXufei")
+    @ResponseBody
+    public Object xufeiSubmit(String keyword,String price,String keywordId,String servicetype ,String serviceyear,HttpSession session){
+        UserInfo userInfo = ((UserInfo)session.getAttribute("userLogin"));
+        Keyword keyWord = new Keyword();
+        keyWord.setKeywordId(Integer.parseInt(keywordId));
+        keyWord.setTypeId(Integer.parseInt(servicetype));
+        keyWord.setTerm(Integer.parseInt(serviceyear));
+        keyWord.setKeyword(keyword);
+        if(keywordBiz.updateKeyWord(keyWord,userInfo,Integer.parseInt(price))>0){
+            return "success";
+        }
+        return "failed";
     }
 
 
 
 
 
+//    -----------------------------------------------代理商客户管理-----------------------------------------------------------
+
+
+    /**
+     * 加载客户列表
+     * @param session
+     * @return
+     */
+    @RequestMapping("/customerList")
+    @ResponseBody
+    public Object customerList(HttpSession session,String companyName,String pageIndex,Model model){
+        int uid = ((UserInfo)session.getAttribute("userLogin")).getUserid();
+        if(pageIndex==null||pageIndex==""){
+            pageIndex="1";
+        }
+        Page<Customer> page = customerBiz.queryCustomByList(companyName,uid,2,Integer.parseInt(pageIndex));
+        model.addAttribute("companyName",companyName);
+        return JSONArray.toJSONString(page);
+    }
+
+
+    /**
+     * 停用启用
+     * @param cid
+     * @param customStatus
+     * @return
+     */
+    @RequestMapping("/modifycustomstatus")
+    @ResponseBody
+    public Object modifyCustomstatus(String cid,String customStatus){
+        Customer customer = new Customer();
+        customer.setCustomerId(Integer.parseInt(cid));
+        if(customStatus.equals("1"))
+            customer.setCompanyStatus(0);
+        else
+            customer.setCompanyStatus(1);
+
+        return customerBiz.updateCustomer(customer)>0 ? "success":"false";
+    }
+
+    /**
+     * 修改客户
+     * @return
+     */
+    @RequestMapping("/modifycustom")
+    public String modifycustom(String cid,String type,Model model){
+        Protal protal = null;
+        List<Contacts> contactsList = null;
+        if(!cid.equals("0")){
+            protal =protalBiz.queryProtalById(0,Integer.parseInt(cid));
+            contactsList = contactsBiz.queryContactsById(Integer.parseInt(cid));
+        }
+
+
+        List<Type> typeList = typeBiz.queryTypeByParentId(1);   //根据父级id拿值
+        List<Type> idTypeList = typeBiz.queryTypeByParentId(4); //证件类型
+
+
+        model.addAttribute("protal",protal);
+        model.addAttribute("typeList",typeList);
+        model.addAttribute("idTypeList",idTypeList);
+        model.addAttribute("contactsList",contactsList);
+        if(type.equals("modify")){
+            return "modifycustomer";
+        }else {
+            return "addcustomer";
+        }
+
+    }
+
+
+    @RequestMapping("/addCustomer")
+    @ResponseBody
+    public Object addCutomer(){
+        return null;
+    }
+
+
+    /**
+     * 空跳至代理商客户管理页面
+     * @return
+     */
+    @RequestMapping("/toCustomerManage")
+    public String toCustomerManage(){
+        return "customermanage";
+    }
 
     /**
      * 空跳至关键词页面
