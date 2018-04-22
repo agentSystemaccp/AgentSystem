@@ -8,7 +8,7 @@
   <div class="searchuserdiv ope">
     <ul>
       <li>
-        <form action="/report.action" method="post" onsubmit="return searchReportFunc();">
+        <form action="/report/queryReportManage" method="post" onsubmit="return searchReportFunc();">
           操作类型:<select name="reportType" id="reporttype">
           <option value="">财务报表</option>
           <option value="1" <c:if test="${reportType==1}">selected="selected"</c:if>>&nbsp;&nbsp;&nbsp;&nbsp;代理商账户余额报表</option>
@@ -20,12 +20,12 @@
           <div id="opertime" style="margin-left: 250px;margin-top: -20px">
 
             操作时间: <input type="text" class="Wdate"
-                         size="15" onClick="WdatePicker()" id="starttime" readonly="readonly"
-                         name="startTime" value=""> 至 <input type="text" class="Wdate" size="15" onClick="WdatePicker()" id="endtime"  readonly="readonly"
-                         name="endTime" value="">
+                         size="15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="starttime" readonly="readonly"
+                         name="startTime"> 至 <input type="text" class="Wdate" size="15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="endtime"  readonly="readonly"
+                         name="endTime">
           </div>
           <div style="margin-left: 580px;margin-top: -20px">
-            <input type="submit" value="查询" />
+            <input type="submit" value="查询" onclick="queryReprot()" />
           </div>
 
         </form></li>
@@ -47,21 +47,19 @@
         <th>序号</th><th>代理商名称</th><th>账户余额</th>
       </tr>
       </thead>
-      <tbody>
-      <%--<s:iterator value="accountList" status="st">--%>
-
-        <%--<tr>--%>
-          <%--<td>${st.index+1}</td>--%>
-          <%--<td>${userName}</td>--%>
-          <%--<td>${money}</td>--%>
-        <%--</tr>--%>
-      <%--</s:iterator>--%>
-
+      <tbody style="text-align: center;font-family: 宋体">
+        <c:forEach items="${userInfoList}" var="userInfo" varStatus="status">
+          <tr>
+            <td>${status.count}</td>
+            <td>${userInfo.userName}</td>
+            <td>${userInfo.balance}</td>
+          </tr>
+        </c:forEach>
       </tbody>
 
     </table>
   </c:if>
-  <c:if test="${reportType==1}">
+  <c:if test="${reportType==2}">
 
     <!-- 预付款流水报表 -->
     <div class="downloadfile">
@@ -98,7 +96,7 @@
 
     </table>
   </c:if>
-  <c:if test="${reportType==1}">
+  <c:if test="${reportType==3}">
     <!-- 代理商流水报表 -->
     <div class="downloadfile">
       <ul>

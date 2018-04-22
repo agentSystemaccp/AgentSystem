@@ -27,5 +27,5 @@ public interface UserInfoBiz {
      * @param endtime
      * @return
      */
-    public List<UserInfo> queryAllUserBalance(Date starttime, Date endtime);
+    public List<UserInfo> queryAllUserBalance(String starttime, String endtime);
 }

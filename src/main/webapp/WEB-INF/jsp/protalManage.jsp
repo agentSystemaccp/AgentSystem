@@ -68,7 +68,7 @@
       <%--</s:iterator>--%>
       <%--</s:if>--%>
       <c:if test="${page.totalPage>0}">
-        <c:forEach var="s" begin="2" end="${page.totalPage-1}">
+        <c:forEach var="s" begin="1" end="${page.totalPage}">
           <li>
             <a href="javascript:;" onclick="getProtalList(${s})">${s}</a>
           </li>

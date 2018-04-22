@@ -74,13 +74,13 @@
     </resultMap>
 
     <select id="queryProtalList" resultMap="protalMap">
-            SELECT p.*,c.*,u.*,k.*,a.*,c.customerId cid,u.userId uid,k.customerId kcustomerId,
-            (SELECT typeName FROM finance_type WHERE typeid = c.companyType) companyTypeName,
-            (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
-            FROM protalInfo p,customerInfo c,userinfo u,keyword k LEFT JOIN appInfo a ON
-            k.keywordId = a.keywordId WHERE p.customerId = c.customerId AND
-            c.userId = u.userId AND c.customerId = k.customerId
-       <if test="keyword != null">
+        SELECT p.*,c.*,u.*,k.*,a.*,c.customerId cid,u.userId uid,k.customerId kcustomerId,
+        (SELECT typeName FROM finance_type WHERE typeid = c.companyType) companyTypeName,
+        (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
+        FROM protalInfo p,customerInfo c,userinfo u,keyword k LEFT JOIN appInfo a ON
+        k.keywordId = a.keywordId WHERE p.customerId = c.customerId AND
+        c.userId = u.userId AND c.customerId = k.customerId
+        <if test="keyword != null">
           AND k.keyword LIKE CONCAT ('%',#{keyword},'%')
        </if>
         <if test="customerName != null and customerName != ''">
@@ -93,8 +93,8 @@
     </select>
 
     <select id="queryProtalCount" resultType="_Integer">
-        SELECT COUNT(1) FROM protalInfo p,customerInfo c,userinfo u,keyword k LEFT JOIN
-        appInfo a ON k.keywordId = a.keywordId WHERE p.customerId = c.customerId AND
+        SELECT COUNT(1) FROM protalInfo p,customerInfo c,userinfo u,keyword k LEFT JOIN appInfo a ON
+        k.keywordId = a.keywordId WHERE p.customerId = c.customerId AND
         c.userId = u.userId AND c.customerId = k.customerId
         <if test="keyword != null">
             AND k.keyword LIKE CONCAT ('%',#{keyword},'%')

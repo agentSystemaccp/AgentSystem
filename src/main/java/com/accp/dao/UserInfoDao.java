@@ -32,5 +32,5 @@ public interface UserInfoDao {
      * @param endtime
      * @return
      */
-    public List<UserInfo> queryAllUserBalance(@Param("starttime") Date starttime,@Param("endtiem") Date endtime);
+    public List<UserInfo> queryAllUserBalance(@Param("starttime") String starttime,@Param("endtime") String endtime);
 }
