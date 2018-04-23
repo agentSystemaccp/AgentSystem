@@ -2,6 +2,7 @@ package com.accp.biz;
 
 import com.accp.entity.Resource;
 import com.accp.entity.Role;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,4 +23,19 @@ public interface ResourceBiz {
      * @return
      */
     List<Resource> findAllResource();
+
+    /**
+     * 根据角色ID删除角色权限中间表数据
+     * @param roleid
+     * @return
+     */
+    boolean deleteResourceByRoleId(int roleid);
+
+    /**
+     * 根据角色id插入权限数据到中间表
+     * @param roleId
+     * @param resourceId
+     * @return
+     */
+    boolean addResourceByRoleId(int roleId,int resourceId);
 }

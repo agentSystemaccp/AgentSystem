@@ -20,4 +20,18 @@ public class ResourceBizImpl implements ResourceBiz {
     public List<com.accp.entity.Resource> findAllResource() {
         return resourceDao.findAllResource();
     }
+
+    public boolean deleteResourceByRoleId(int roleid) {
+        if (resourceDao.deleteResourceByRoleId(roleid)>0){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean addResourceByRoleId(int roleId, int resourceId) {
+        if (resourceDao.addResourceByRoleId(roleId,resourceId)>0){
+            return true;
+        }
+        return false;
+    }
 }

@@ -18,6 +18,8 @@ Date.prototype.format=function(format){//format="yyyy-MM-dd"
 
 function mover(object) {
     var path=$("#path").val();
+    var roleId=$("#role_id").val();
+    var dian=",";
     var $info = $(".smenu").empty();
 	for ( var i = 1; i < 6; i++) {
 		if (i == object) {
@@ -30,7 +32,7 @@ function mover(object) {
 
             $.ajax({
                 type: "GET",
-                url: path + "/menu/manage/" + object,
+                url: path + "/menu/manage/" + object+dian+roleId,
                 dataType: "json",
                 success: function (data) {
                     $(".smenu").html("");

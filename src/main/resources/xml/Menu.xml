@@ -17,10 +17,12 @@
         </association>
     </resultMap>
     <select id="findResourceList" resultMap="resourceList">
-        select r.*,m.* FROM menu m,resource r
+        select r.*,m.* FROM menu m,resource r,role_resource rr
         <where>
-            and m.menuId=#{menu_id}
-            and m.menuId=r.menuId
+            and m.menuId=#{menuId}
+            AND rr.ROLE_ID=1
+            AND r.resourceId=rr.resource_id
+            AND m.menuId=r.menuId
         </where>
     </select>
 </mapper>
