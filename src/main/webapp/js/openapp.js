@@ -23,7 +23,7 @@ $("#openappSubmit").click(function(){
                 }else {
                     //申请成功
                     alert("APP开通成功！");
-                    window.location.href=path+"/agent/toKeyWordManage";
+                    top.location=path+"/agent/toKeyWordManage";
                 }
             }
         })

@@ -63,4 +63,16 @@
     </update>
 
 
+    <select id="queryCustomerByParam" resultType="Customer">
+        SELECT * FROM customerinfo WHERE 1=1
+        <if test="companyName!=null and companyName!=''">AND companyName=#{companyName}</if>
+        <if test="customerId!=0">AND customerId=#{customerId}</if>
+    </select>
+
+    <!--添加客户-->
+    <insert id="addCustomer">
+        INSERT INTO customerinfo VALUES (userId,companyName,companyType,companyPages,companyStatus) VALUES(#{userId},#{companyName},#{companyType},#{companyPages},#{companyStatus})
+    </insert>
+
+
 </mapper>

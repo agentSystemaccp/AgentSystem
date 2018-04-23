@@ -25,7 +25,6 @@ public class DealDetailBizImpl implements DealDetailBiz {
         Page<DealDetail> page = new Page<DealDetail>();
         page.setPageSize(pageSize);
         page.setPageNo(pageNo);
-        //有问题
         page.setTotalRows(dealDetailDao.queryDealDetailCount(userid));
         //设置总页数
         page.setTotalPage((page.getTotalRows()+pageSize-1)/pageSize);

@@ -5,7 +5,7 @@
   代理商管理\ <a href="${pageContext.request.contextPath }/agent/toCustomerManage">代理商客户管理</a>\ 添加客户信息
 </div>
 <div class="container">
-  <form id="cform" action=" method="post">
+  <form id="cform" action="${pageContext.request.contextPath }/agent/addCustomer" method="post">
     <div class="subtitle">基本信息</div>
     <div class="info1">
       <ul>
@@ -13,7 +13,7 @@
                         id="customname" value="">
         </li>
 
-        <li>企业类型: <select name="companyType">
+        <li>企业类型: <select name="companyType" id="companyType">
           <option value="">请选择</option>
           <c:forEach var="typeList" items="${typeList}">
               <option value="${typeList.typeId}">${typeList.typeName}</option>
@@ -33,7 +33,7 @@
     <div class="subtitle">门户信息</div>
     <div class="info2">
       <ul>
-        <li>法人代表:<input type="text" name="legalRepresentative">
+        <li>法人代表:<input type="text" id="legalRepresentative" name="legalRepresentative">
         </li>
         <li>注册日期:<input type="text" name="createTime" value=""
                         class="Wdate" onclick="WdatePicker()" id="regdate">
@@ -49,15 +49,15 @@
         <li>国家:<input type="text" name="state" value="中国" readonly="readonly">
         </li>
         <li>省份: <select id="customprovince" name="province" onchange="loadCity();">
-          <option value="0">--请选择省份--</option>
+          <option value="">--请选择省份--</option>
         </select>
         </li>
         <li>公司传真:<input type="text" name="companyFax" value="">
         </li>
         <li>城市: <select id="customcity" name="city">
-          <option value="0">--请选择城市--</option>
+          <option value="">--请选择城市--</option>
         </select></li>
-        <li>公司电话:<input type="text" name="companyTel" value="">
+        <li>公司电话:<input type="text" id="companyTel" name="companyTel" value="">
         </li>
         <li>公司地址:<input type="text" name="companyAddress" value="">
         </li>

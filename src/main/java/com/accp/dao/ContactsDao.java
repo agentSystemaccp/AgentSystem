@@ -11,4 +11,6 @@ public interface ContactsDao {
      * @return
      */
     public List<Contacts> queryContactsByCustomerId(int customerId);
+    //添加联系人
+    int addContacts(Contacts contacts);
 }

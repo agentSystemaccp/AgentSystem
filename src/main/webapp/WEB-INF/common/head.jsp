@@ -23,10 +23,10 @@
 <%--<link rel="stylesheet" type="text/css" href="/alertframe/skin/simple_gray/ymPrompt.css" />--%>
 <%--<!-- humane提醒库 -->--%>
 <%--<link id='theme' rel='stylesheet' href='/humane/themes/original.css' />--%>
-<script type="text/javascript" src='${pageContext.request.contextPath }/js/humane.js'></script>
 
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-form.js"></script>
+
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-form.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/public.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/login.js"></script>
@@ -40,8 +40,7 @@
 	<link href="${pageContext.request.contextPath }/files/manage/styles.css" type="text/css" rel="stylesheet"/>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/permission.css">
 
-	<script src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js"></script>
-	<script src="${pageContext.request.contextPath }/resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>
+	<%--<script src="${pageContext.request.contextPath }/resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>--%>
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/axQuery.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/globals.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/scripts/axutils.js"></script>

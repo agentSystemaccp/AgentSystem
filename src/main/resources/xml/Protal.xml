@@ -65,7 +65,6 @@
         <result column="state" property="state"/>
         <result column="province" property="province"/>
         <result column="city" property="city"/>
-        <result column="district" property="district"/>
         <result column="companyAddress" property="companyAddress"/>
         <result column="remark" property="remark"/>
         <result column="legalRepresentative" property="legalRepresentative"/>
@@ -119,4 +118,9 @@
         <if test="protalId!=0">AND p.protalId = #{protalId}</if>
         <if test="cid!=0">AND c.customerId = #{cid}</if>
     </select>
+
+    <insert id="addProtal">
+        INSERT INTO protalinfo VALUES (customerId,legalRepresentative,typeId,createTime,idNumber,state,province,city,companyFax,companyTel,companyAddress,remark) VALUES
+        (#{customerId},#{legalRepresentative},#{typeId},#{createTime},#{idNumber},#{state},#{province},#{city},#{companyFax},#{companyTel},#{companyAddress},#{remark})
+    </insert>
 </mapper>

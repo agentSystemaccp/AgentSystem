@@ -30,10 +30,12 @@ public class UserInfoBizImpl implements UserInfoBiz {
      */
     public UserInfo login(UserInfo userInfo) {
         userInfo=userInfoDao.login(userInfo);
-        Role role=new Role();
-        role.setRoleId(userInfo.getRoleId());
-        Role role1=roleDao.findRoleInfo(role);      //查找角色权限信息
-        userInfo .setRole(role1);
+        if(userInfo!=null){
+            Role role=new Role();
+            role.setRoleId(userInfo.getRoleId());
+            Role role1=roleDao.findRoleInfo(role);      //查找角色权限信息
+            userInfo .setRole(role1);
+        }
         return userInfo;
     }
 

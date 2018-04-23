@@ -30,4 +30,7 @@ public interface ProtalDao {
      * @return
      */
     public Protal queryProtalById(@Param("protalId") int protalId,@Param("cid") int cid);
+
+    //添加门户
+    int addProtal(Protal protal);
 }

@@ -17,7 +17,6 @@ public class Protal {
     private String state;              //国家
     private String province;            //省份
     private String  city;           //城市
-    private String district;        //区域
     private String companyAddress;      //企业地址
     private String remark;          //备注
 
@@ -112,13 +111,6 @@ public class Protal {
         this.city = city;
     }
 
-    public String getDistrict() {
-        return district;
-    }
-
-    public void setDistrict(String district) {
-        this.district = district;
-    }
 
     public String getCompanyAddress() {
         return companyAddress;

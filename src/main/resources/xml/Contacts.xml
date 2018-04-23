@@ -6,4 +6,9 @@
     <select id="queryContactsByCustomerId" resultType="Contacts">
         SELECT * FROM contactsinfo WHERE customerId = #{customerId}
     </select>
+
+    <insert id="addContacts">
+        INSERT INTO contactsinfo VALUES(customerId,contactsName,contactsTel,contactsFax,contactsEmail,contactsPost) VALUES
+        (#{customerId},#{contactsName},#{contactsTel},#{contactsFax},#{contactsEmail},#{contactsPost})
+    </insert>
 </mapper>

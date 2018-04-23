@@ -55,7 +55,7 @@ function loadKeyWordList(pageIndex,keyword) {
                     +"<td>"+data.pageList[i].term+"</td>"
                     +"<td>"+createTime.getFullYear()+"-"+(createTime.getMonth()+1)+"-"+createTime.getDate()+"</td>"
                     +"<td>"+maturity+"</td>"
-                    +"<td>"+(time>new Date() ? '已过期':'未过期')+"</td>"
+                    +"<td>"+(time>new Date() ? '未过期':'已过期')+"</td>"
                     +"<td>"+(data.pageList[i].checkStatus==1 ? '已申请':2 ? '审核中': 3 ? '已通过':'未通过')+"</td>"
                     +"<td>"+(data.pageList[i].useStatus==1 ? '已使用': '未使用')+"</td>"
                     +"<td>"+(data.pageList[i].appStatus==1 ? '已开通': '未开通')+"</td>";
@@ -63,7 +63,7 @@ function loadKeyWordList(pageIndex,keyword) {
 
                     if(data.pageList[i].keywordStatus==1){
                         //未开通
-                        if(data.pageList[i].appStatus==0){
+                        if(data.pageList[i].appStatus==2){
                             table+="<td><a href='#' kid='"+data.pageList[i].keywordId+"' keyword='"+data.pageList[i].keyword+"' class=\"openapp\">开通APP</a>&nbsp;&nbsp;";
                         }
                         //已审核
@@ -72,10 +72,9 @@ function loadKeyWordList(pageIndex,keyword) {
                         }
 
 
-                        if(data.pageList[i].appStatus!=0&&data.pageList[i].checkStatus!=3){
+                        if(data.pageList[i].appStatus!=2&&data.pageList[i].checkStatus!=3){
                             table+="<td style='color: #BEEBEE'>无操作";
                         }
-
                     }
                     table+="</td></tr>";
 

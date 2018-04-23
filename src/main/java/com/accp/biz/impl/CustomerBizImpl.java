@@ -1,10 +1,10 @@
 package com.accp.biz.impl;
 
 import com.accp.biz.CustomerBiz;
+import com.accp.dao.ContactsDao;
 import com.accp.dao.CustomerDao;
-import com.accp.entity.Customer;
-import com.accp.entity.Keyword;
-import com.accp.entity.Page;
+import com.accp.dao.ProtalDao;
+import com.accp.entity.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,6 +15,10 @@ public class CustomerBizImpl implements CustomerBiz {
 
     @Resource
     private CustomerDao customerDao;
+    @Resource
+    private ProtalDao protalDao;
+    @Resource
+    private ContactsDao contactsDao;
 
     /**
      * 输入框输入搜索前十位客户
@@ -51,5 +55,38 @@ public class CustomerBizImpl implements CustomerBiz {
      */
     public int updateCustomer(Customer customer) {
         return customerDao.updateCustomer(customer);
+    }
+
+    /**
+     * 根据参数得到客户
+     * @param customer
+     * @return
+     */
+    public Customer queryCustomerByParam(Customer customer) {
+        return customerDao.queryCustomerByParam(customer);
+    }
+
+    /**
+     * 添加客户
+     * @param customer
+     * @param protal
+     * @param contactsList
+     * @return
+     */
+    public int addCustomer(Customer customer, Protal protal, List<Contacts> contactsList) {
+        int result = 0;
+//        1:添加客户
+        if(customerDao.addCustomer(customer)>0){
+//            2:添加门户
+            if(protalDao.addProtal(protal)>0){
+//                循环添加联系人
+                int cid = customerDao.queryCustomerByParam(customer).getCustomerId();
+                for (Contacts c:contactsList) {
+                    result=contactsDao.addContacts(c);
+                }
+
+            }
+        }
+        return result;
     }
 }

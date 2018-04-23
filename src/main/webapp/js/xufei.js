@@ -64,10 +64,9 @@ var path = $("#path").val();
             function (result) {
                 if (result != "failed") {
                     alert("恭喜您 ,关键词 [" + $("#keyword").val() + "]续费成功!");
-                    window.location.href=path+"/agent/toKeyWordManage"
+                    top.location=path+"/agent/toKeyWordManage";
                 }
             }, 'html');
-
 
     }
 

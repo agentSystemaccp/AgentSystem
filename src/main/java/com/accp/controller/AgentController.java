@@ -133,7 +133,7 @@ public class AgentController {
         keyWord.setTypeId(Integer.parseInt(servicetype));
         keyWord.setCheckStatus(1);      //未审核
         keyWord.setUseStatus(1);        //使用状态,默认已使用
-        keyWord.setAppStatus(0);        //未开通
+        keyWord.setAppStatus(2);        //未开通
         keyWord.setTerm(serviceyear.equals("买二赠一") ? 2:Integer.parseInt(serviceyear));
         if(keywordBiz.addKeyWord(keyWord,userInfo,Integer.parseInt(price))>0){
             return "success";
@@ -190,7 +190,7 @@ public class AgentController {
 
         Keyword keyword = new Keyword();
         keyword.setKeywordId(Integer.parseInt(keywordId));
-        keyword.setAppStatus(1);
+        keyword.setAppStatus(1);        //1:已开通,2:未开通
 
         return JSONArray.toJSONString(appInfoBiz.addAppInfo(appInfo,keyword));
     }
@@ -304,11 +304,30 @@ public class AgentController {
 
     }
 
+    /**
+     * 验证用户是否存在
+     * @param companyName
+     * @return
+     */
+    @RequestMapping("/isexitcustomname")
+    @ResponseBody
+    public Object isExitCustomer(String companyName){
+        Customer customer = new Customer();
+        customer.setCompanyName(companyName);
+        if(customerBiz.queryCustomerByParam(customer)==null){
+            return "nopeat";
+        }
+
+        return "peat";
+    }
+
 
     @RequestMapping("/addCustomer")
-    @ResponseBody
-    public Object addCutomer(){
-        return null;
+    public String addCutomer(Customer customer,Protal protal,List<Contacts> contactsList){
+        if(customerBiz.addCustomer(customer,protal,contactsList)>0){
+            return "customermanage";
+        }
+        return "modifycustom?cid=0&type=add";
     }
 
 

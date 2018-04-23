@@ -20,5 +20,10 @@ public interface CustomerDao {
     //修改客户
     int updateCustomer(Customer customer);
 
+    //根据参数返回客户对象
+    Customer queryCustomerByParam(Customer customer);
+    //添加客户信息
+    int addCustomer(Customer customer);
+
 
 }
