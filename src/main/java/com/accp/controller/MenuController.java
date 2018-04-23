@@ -20,15 +20,18 @@ public class MenuController{
     @ResponseBody
     public String getFunctionList(@PathVariable String id
     ){
+        String [] ids=id.split(",");
+        String menuid=ids[0];
         int menu_id=0;
-        if (id!=null && !id.equals("")){
-            menu_id=Integer.parseInt(id);
+        if (menuid!=null && !menuid.equals("")){
+            menu_id=Integer.parseInt(menuid);
         }
-        //String jspName=allUrl.substring(allUrl.lastIndexOf("/")+1);
-        Menu menu=new Menu();
-        menu.setMenu_id(menu_id);
-        List<com.accp.entity.Resource> resourceList=menuBiz.findResourceList(menu);
-
+        String roleid=ids[1];
+        int roleId=0;
+        if (roleid!=null && !roleid.equals("")){
+            roleId=Integer.parseInt(roleid);
+        }
+        List<com.accp.entity.Resource> resourceList=menuBiz.findResourceList(menu_id,roleId);
         return JSONArray.toJSONString(resourceList);
     }
 }

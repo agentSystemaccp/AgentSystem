@@ -46,8 +46,8 @@
 						<fmt:formatDate value="${resource.createTime}" pattern="yyyy-MM-dd"/>
 					</td>
 					<td>
-						<c:if test="${resource.resouceStatus==1}">启用</c:if>
-						<c:if test="${resource.resouceStatus==0}">停用</c:if>
+						<c:if test="${resource.resourceStatus==1}">启用</c:if>
+						<c:if test="${resource.resourceStatus==0}">停用</c:if>
 					</td>
 				</tr>
 

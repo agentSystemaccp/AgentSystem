@@ -23,7 +23,7 @@
 
 <!-- humane提醒库 -->
 <link id='theme' rel='stylesheet' href='${pageContext.request.contextPath }/humane/themes/original.css' />
-<script src='${pageContext.request.contextPath }/humane/humane.js'></script>
+<script type="text/javascript" src='${pageContext.request.contextPath }/humane/humane.js'></script>
 
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js"></script>

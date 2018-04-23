@@ -36,4 +36,16 @@
     <select id="findAllResource" resultType="Resource">
         select * FROM resource
     </select>
+
+    <!--根据角色ID删除角色权限中间表数据-->
+    <delete id="deleteResourceByRoleId" parameterType="Integer" >
+        DELETE  FROM role_resource WHERE ROLE_ID=#{roleid}
+    </delete>
+
+
+    <!--根据角色id插入权限数据到中间表-->
+    <insert id="addResourceByRoleId" parameterType="Integer">
+        INSERT  INTO role_resource (ROLE_ID,resource_id)
+        VALUES(#{roleId},#{resourceId})
+    </insert>
 </mapper>

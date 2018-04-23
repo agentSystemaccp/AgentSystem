@@ -19,4 +19,26 @@
         INSERT INTO account_details (userId,financeType,financeFund,balance,remark,createTime) VALUES (#{userId},#{financeType},#{financeFund},#{balance},#{remark},#{createTime})
     </insert>
 
+    <resultMap id="userMap" type="UserInfo">
+        <result column="userName" property="userName"/>
+    </resultMap>
+
+    <resultMap id="detailMap" type="DealDetail">
+        <result column="detailId" property="detailId"/>
+        <result column="financeType" property="financeType"/>
+        <result column="financeFund" property="financeFund"/>
+        <result column="balance" property="balance"/>
+        <result column="remark" property="remark"/>
+        <result column="createTime" property="createTime"/>
+        <association resultMap="userMap" property="user"/>
+    </resultMap>
+
+    <select id="queryDealDetailByDate" resultMap="detailMap">
+        SELECT d.*,u.userName FROM account_details d,userinfo u WHERE d.userId = u.userId
+        <if test="type == 0">AND 0 > d.financeFund</if>
+        <if test="starttime != '' and endtime == ''">AND d.createTime >= #{starttime}</if>
+        <if test="starttime == '' and endtime != ''">AND #{endtime} >= d.createTime </if>
+        <if test="starttime != '' and endtime != ''">AND d.createTime BETWEEN #{starttime} AND  #{endtime}</if>
+    </select>
+
 </mapper>

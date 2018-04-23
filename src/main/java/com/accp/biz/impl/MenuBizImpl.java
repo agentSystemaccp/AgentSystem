@@ -14,7 +14,7 @@ public class MenuBizImpl implements MenuBiz {
 
 
 
-    public List<com.accp.entity.Resource> findResourceList(Menu menu) {
-        return menuDao.findResourceList(menu);
+    public List<com.accp.entity.Resource> findResourceList(int menuId,int roleId) {
+        return menuDao.findResourceList(menuId,roleId);
     }
 }

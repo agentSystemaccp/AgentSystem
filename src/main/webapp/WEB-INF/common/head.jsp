@@ -19,6 +19,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/public.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/main.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/files/updatePassword/styles.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/caiwu.css">
 <!-- ymPrompt弹出框 -->
 <%--<link rel="stylesheet" type="text/css" href="/alertframe/skin/simple_gray/ymPrompt.css" />--%>
 <%--<!-- humane提醒库 -->--%>
@@ -38,7 +39,7 @@
 	<link href="${pageContext.request.contextPath }/resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
 	<link href="${pageContext.request.contextPath }/js/styles.css" type="text/css" rel="stylesheet"/>
 	<link href="${pageContext.request.contextPath }/files/manage/styles.css" type="text/css" rel="stylesheet"/>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/permission.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/permission.css"/>
 
 	<%--<script src="${pageContext.request.contextPath }/resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>--%>
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/axQuery.js"></script>
@@ -72,6 +73,7 @@
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/legacy.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/viewer.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/permission.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/caiwu.js"></script>
 
 
 </head>
@@ -110,6 +112,7 @@
 
 	<!-- 修改密码 -->
 	<input type="hidden" id="path" value="${pageContext.request.contextPath}" name="path"/>
+	<input type="hidden" id="role_id" value="${userLogin.role.roleId}"/>
 	<input type="hidden" name="allUrl" id="allUrl" value="${pageContext.request.getRequestURI()}">
 	<div id="modifydiv" class="modifydiv">
 
