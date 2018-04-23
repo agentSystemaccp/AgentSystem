@@ -321,7 +321,13 @@ public class AgentController {
         return "peat";
     }
 
-
+    /**
+     * 添加客户
+     * @param customer
+     * @param protal
+     * @param contactsList
+     * @return
+     */
     @RequestMapping("/addCustomer")
     public String addCutomer(Customer customer,Protal protal,List<Contacts> contactsList){
         if(customerBiz.addCustomer(customer,protal,contactsList)>0){
