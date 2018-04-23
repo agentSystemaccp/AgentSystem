@@ -18,13 +18,12 @@
           <option value="4" <c:if test="${reportType==4}">selected="selected"</c:if>>&nbsp;&nbsp;&nbsp;&nbsp;产品分类数量/金额汇总</option>
         </select>
           <div id="opertime" style="margin-left: 250px;margin-top: -20px">
-
             操作时间: <input type="text" class="Wdate"
                          size="15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="starttime" readonly="readonly"
-                         name="startTime"> 至 <input type="text" class="Wdate" size="15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="endtime"  readonly="readonly"
-                         name="endTime">
+                         name="starttime"> 至 <input type="text" class="Wdate" size="15" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" id="endtime"  readonly="readonly"
+                         name="endtime">
           </div>
-          <div style="margin-left: 580px;margin-top: -20px">
+          <div id="butten" style="margin-left: 580px;margin-top: -20px">
             <input type="submit" value="查询" onclick="queryReprot()" />
           </div>
 
@@ -81,16 +80,16 @@
       </tr>
       </thead>
       <tbody>
-      <%--<s:iterator value="accountDetailList" status="st">--%>
-        <%--<tr>--%>
-          <%--<td>${st.index+1}</td>--%>
-          <%--<td>${userName}</td>--%>
-          <%--<td>${money}</td>--%>
-          <%--<td>${accountMoney}</td>--%>
-          <%--<td>${memo}</td>--%>
-          <%--<td><s:date name="detailDateTime" format="yyyy-MM-dd HH:mm:ss"/></td>--%>
-        <%--</tr>--%>
-      <%--</s:iterator>--%>
+      <c:forEach items="${dealDetailList}" var="detail" varStatus="status">
+        <tr>
+          <td>${status.count}</td>
+          <td>${detail.user.userName}</td>
+          <td>${detail.financeFund}</td>
+          <td>${detail.balance}</td>
+          <td>${detail.remark}</td>
+          <td><fmt:formatDate value="${detail.createTime}" pattern="yyyy-MM-dd"/></td>
+        </tr>
+      </c:forEach>
 
       </tbody>
 
@@ -100,8 +99,8 @@
     <!-- 代理商流水报表 -->
     <div class="downloadfile">
       <ul>
-        <li><img src="/imgs/pdf.png"><a href="/reportdlspdf.action?startTime=<s:date name="startTime" format="yyyy-MM-dd"/>&endTime=<s:date name="endTime" format="yyyy-MM-dd"/>">PDF下载</a></li>
-        <li><img src="/imgs/excel.png"><a href="/reportdlsxls.action?startTime=<s:date name="startTime" format="yyyy-MM-dd"/>&endTime=<s:date name="endTime" format="yyyy-MM-dd"/>">Excel下载</a></li>
+        <li><img src="/imgs/pdf.png"><a href="/reportdlspdf.action?startTime=">PDF下载</a></li>
+        <li><img src="/imgs/excel.png"><a href="/reportdlsxls.action?startTime=">Excel下载</a></li>
       </ul>
     </div>
     <h1>代理商流水报表</h1>
@@ -116,17 +115,17 @@
         <th>时间</th>
       </tr>
       </thead>
-      <tbody>
-      <%--<s:iterator value="accountDetailList" status="st">--%>
-        <%--<tr>--%>
-          <%--<td>${st.index+1}</td>--%>
-          <%--<td>${userName}</td>--%>
-          <%--<td>${money}</td>--%>
-          <%--<td>${accountMoney}</td>--%>
-          <%--<td>${memo}</td>--%>
-          <%--<td><s:date name="detailDateTime" format="yyyy-MM-dd HH:mm:ss"/></td>--%>
-        <%--</tr>--%>
-      <%--</s:iterator>--%>
+      <tbody  style="text-align: center;font-family: 宋体">
+      <c:forEach items="${dealDetailList}" var="detail" varStatus="status">
+        <tr>
+          <td>${status.count}</td>
+          <td>${detail.user.userName}</td>
+          <td>${detail.financeFund}</td>
+          <td>${detail.balance}</td>
+          <td>${detail.remark}</td>
+          <td><fmt:formatDate value="${detail.createTime}" pattern="yyyy-MM-dd"/></td>
+        </tr>
+      </c:forEach>
 
       </tbody>
 
@@ -137,8 +136,8 @@
     <!-- 产品分类数量/金额汇总 -->
     <div class="downloadfile">
       <ul>
-        <%--<li><img src="/imgs/pdf.png"><a href="/reportproductpdf.action?startTime=<s:date name="startTime" format="yyyy-MM-dd"/>&endTime=<s:date name="endTime" format="yyyy-MM-dd"/>">PDF下载</a></li>--%>
-        <%--<li><img src="/imgs/excel.png"><a href="/reportproductxls.action?startTime=<s:date name="startTime" format="yyyy-MM-dd"/>&endTime=<s:date name="endTime" format="yyyy-MM-dd"/>">Excel下载</a></li>--%>
+        <li><img src="/imgs/pdf.png"><a href="/reportproductpdf.action?startTime=">PDF下载</a></li>
+        <li><img src="/imgs/excel.png"><a href="/reportproductxls.action?startTime=">Excel下载</a></li>
           <li><img src="/imgs/pdf.png"><a href="">PDF下载</a></li>
           <li><img src="/imgs/excel.png"><a href="">Excel下载</a></li>
       </ul>
@@ -150,54 +149,20 @@
         <th>序号</th><th>产品分类名称</th><th>数量</th><th>价格</th>
       </tr>
       </thead>
-      <tbody>
-      <%--<s:iterator value="reportProductList" status="st">--%>
-
-        <%--<tr>--%>
-          <%--<td>${st.index+1}</td>--%>
-          <%--<td>${configTypeName}</td>--%>
-          <%--<td>${number}</td>--%>
-          <%--<td>￥${price}</td>--%>
-
-        <%--</tr>--%>
-      <%--</s:iterator>--%>
-
+      <tbody  style="text-align: center;font-family: 宋体">
+        <c:forEach items="${typeList}" var="type" varStatus="status">
+          <tr>
+            <td>${status.count}</td>
+            <td>${type.typeName}</td>
+            <td>${type.number}</td>
+            <td>${type.allocation*type.number}</td>
+          </tr>
+        </c:forEach>
       </tbody>
 
     </table>
 
   </c:if>
-  <%--<table>
-      <thead>
-          <tr>
-              <th>序号</th>
-              <th>账务类型</th>
-              <th>账务资金</th>
-              <th>账户余额</th>
-              <th>备注信息</th>
-              <th>明细时间</th>
-          </tr>
-      </thead>
-      <tbody>
-          <s:iterator value="pager.items" status="st">
-
-              <tr>
-                  <td><s:property value="#st.index+1" />
-                  </td>
-                  <td><s:property value="detailTypeName" />
-                  </td>
-                  <td>￥<s:property value="money" />
-                  </td>
-                  <td>￥<s:property value="accountMoney" />
-                  </td>
-                  <td><s:property value="memo" />
-                  </td>
-                  <td><s:date name="detailDateTime" format="yyyy-MM-dd HH:mm:ss" />
-                  </td>
-              </tr>
-          </s:iterator>
-      </tbody>
-  </table>
 
 
 --%></div>

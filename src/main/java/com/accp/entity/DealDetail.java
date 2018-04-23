@@ -13,7 +13,7 @@ public class DealDetail {
     private float  balance;         //交易时所剩余额
     private Date createTime;          //交易时间
     private String remark;          //备注
-
+    private UserInfo user;      //当前明细用户对象
 
     public int getDetailId() {
         return detailId;
@@ -69,5 +69,13 @@ public class DealDetail {
 
     public void setRemark(String remark) {
         this.remark = remark;
+    }
+
+    public UserInfo getUser() {
+        return user;
+    }
+
+    public void setUser(UserInfo user) {
+        this.user = user;
     }
 }

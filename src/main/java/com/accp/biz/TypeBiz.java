@@ -11,4 +11,10 @@ public interface TypeBiz {
      * @return
      */
     List<Type> queryTypeByParentId(int parentId);
+
+    /**
+     * 查询产品类型
+     * @return
+     */
+    List<Type> queryProductType();
 }
