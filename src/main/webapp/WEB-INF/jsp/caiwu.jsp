@@ -24,6 +24,7 @@
 			</li>
 			<li>操作备注: <textarea id="memo"></textarea></li>
 			<li><input type="button" id="caiwuok" value="确定">
+
 			</li>
 			<li class="tip">操作提示: <span id="systemtip">输入的资金数,<b>正数(1000)</b>向账户输入1000元,<b>负数(-1000)</b>向账户减少1000元,精确到小数点两位数</span>
 			</li>
