@@ -24,4 +24,8 @@ public class TypeBizImpl implements TypeBiz {
     public List<Type> queryTypeByParentId(int parentId) {
         return typeDao.queryTypeByParentId(parentId);
     }
+
+    public List<Type> queryProductType() {
+        return typeDao.queryProductType();
+    }
 }

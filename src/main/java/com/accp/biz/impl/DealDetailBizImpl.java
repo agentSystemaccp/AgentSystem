@@ -34,4 +34,8 @@ public class DealDetailBizImpl implements DealDetailBiz {
         return page;
     }
 
+    public List<DealDetail> queryDealDetailByDate(int type,String starttime, String endtime) {
+        return dealDetailDao.queryDealDetailByDate(type,starttime,endtime);
+    }
+
 }

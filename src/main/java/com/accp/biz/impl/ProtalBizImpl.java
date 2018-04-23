@@ -49,9 +49,9 @@ public class ProtalBizImpl implements ProtalBiz{
      * @param protalId
      * @return
      */
-    public Protal queryProtalById(int protalId) {
-        Protal protal = protalDao.queryProtalById(protalId);
-        protal.getCustomer().setContacts(contactsDao.queryContactsByCustomerId(protal.getCustomerId()));
+    public Protal queryProtalById(int protalId,int cid) {
+        Protal protal = protalDao.queryProtalById(protalId,cid);
+        protal.getCustomer().setContacts(contactsDao.queryContactsByCustomerId(cid));
         return protal;
     }
 

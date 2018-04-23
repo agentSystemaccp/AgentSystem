@@ -29,5 +29,5 @@ public interface ProtalDao {
      * @param protalId
      * @return
      */
-    public Protal queryProtalById(int protalId);
+    public Protal queryProtalById(@Param("protalId") int protalId,@Param("cid") int cid);
 }

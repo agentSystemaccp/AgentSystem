@@ -1,7 +1,7 @@
 ﻿<%@include file="../common/head.jsp"%>
 <div class="mbxnav">
   <!-- 导航 -->
-  代理商管理\ <a href="/customlist.action">代理商客户管理</a>\ <a href="/viewcustom.action?custom.id=${custom.id}">查看客户信息</a>
+  代理商管理\ <a href="${pageContext.request.contextPath }/agent/toCustomerManage">代理商客户管理</a>\ <a href="">查看客户信息</a>
 </div>
 <div class="container">
   <c:if test="${protal != null}">
@@ -9,7 +9,7 @@
     <div class="subtitle">注册的移动云端信息</div>
     <div class="info2">
       <ul>
-        <li>登录账号 : ${protal.customer.keyword.appInfo.appCode}}</li>
+        <li>登录账号 : ${protal.customer.keyword.appInfo.appCode}</li>
         <li>登录密码 : ${protal.customer.keyword.appInfo.appPassword}</li>
         <li>客户端下载地址(IOS) : ${protal.customer.keyword.appInfo.appIOSUrl}</li>
         <li>二维码下载地址(IOS) : ${protal.customer.keyword.appInfo.appIOSQRCodeUrl}</li>
@@ -98,6 +98,6 @@
 
 </div>
 
-<link rel="stylesheet" type="text/css" href="/css/viewcustom.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/viewcustom.css">
   </body>
 </html>

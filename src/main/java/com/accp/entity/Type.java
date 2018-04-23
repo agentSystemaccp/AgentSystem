@@ -10,6 +10,7 @@ public class Type {
     private int typeStatus;         //状态
     private int allocation;         //配置数值
     private int realityAllocation;  //实际数值
+    private int number;             //运用这个类型的数量
 
     public int getTypeId() {
         return typeId;
@@ -57,5 +58,13 @@ public class Type {
 
     public void setRealityAllocation(int realityAllocation) {
         this.realityAllocation = realityAllocation;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 }

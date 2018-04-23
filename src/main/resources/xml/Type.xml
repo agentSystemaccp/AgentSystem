@@ -11,6 +11,8 @@
         SELECT * FROM finance_type WHERE parentId=#{parentId} AND typeStatus=1
     </select>
 
-
+    <select id="queryProductType" resultType="Type">
+        SELECT *,(SELECT COUNT(typeId) FROM keyword WHERE typeId = t.typeId) number FROM finance_type t WHERE parentId = 3
+    </select>
 
 </mapper>

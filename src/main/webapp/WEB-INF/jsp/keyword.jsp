@@ -30,20 +30,6 @@
       </li>
       <li>服务年限: <select id="serviceyear">
         <option value="" selected="selected">--请选择--</option>
-        <%--<s:bean name="org.apache.struts2.util.Counter">--%>
-          <%--<s:param name="first" value="1"></s:param>--%>
-          <%--<s:param name="last" value="maxServiceYears.configValue"></s:param>--%>
-          <%--<s:iterator>--%>
-            <%--<option value="<s:property/>">--%>
-              <%--<s:property />--%>
-            <%--</option>--%>
-          <%--</s:iterator>--%>
-        <%--</s:bean>--%>
-        <%--<s:iterator value="youhuiType">--%>
-          <%--<option value="id_<s:property value="id"/>">--%>
-            <%--<s:property value="configTypeName" />--%>
-          <%--</option>--%>
-        <%--</s:iterator>--%>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>

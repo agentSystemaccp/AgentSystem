@@ -47,8 +47,8 @@ function loadKeyWordList(pageIndex,keyword) {
                     var time = new Date(Date.parse(maturity));
 
 
-                    table+="<tr align='center'>"
-                    +"<td>"+data.pageList[i].keywordId+"</td>"
+                    table+="<tr align='center' style='width: auto'>"
+                    +"<td>"+(i+1)+"</td>"
                     +"<td>"+data.pageList[i].keyword+"</td>"
                     +"<td>"+data.pageList[i].customer.companyName+"</td>"
                     +"<td>"+data.pageList[i].user.userName+"</td>"
@@ -62,14 +62,22 @@ function loadKeyWordList(pageIndex,keyword) {
 
 
                     if(data.pageList[i].keywordStatus==1){
-                        if(data.pageList[i].appStatus==1){
-                            table+="<td><a href='#' kid='"+data.pageList[i].keywordId+"' keyword='"+data.pageList[i].keyword+"' class=\"xufei\">续费</a></td></tr>";
-                        }else {
-                            table+="<td><a href='#' kid='"+data.pageList[i].keywordId+"' keyword='"+data.pageList[i].keyword+"' class=\"openapp\">开通APP</a>&nbsp;&nbsp;<a href='#' kid='"+data.pageList[i].keywordId+"' keyword='"+data.pageList[i].keyword+"' class=\"xufei\">续费</a></td></tr>";
+                        //未开通
+                        if(data.pageList[i].appStatus==0){
+                            table+="<td><a href='#' kid='"+data.pageList[i].keywordId+"' keyword='"+data.pageList[i].keyword+"' class=\"openapp\">开通APP</a>&nbsp;&nbsp;";
                         }
-                    }else {
-                        table+="<td>无操作</td></tr>";
+                        //已审核
+                        if(data.pageList[i].checkStatus==3){
+                            table+="<a href='#' kid='"+data.pageList[i].keywordId+"' keyword='"+data.pageList[i].keyword+"' class=\"xufei\">续费</a>";
+                        }
+
+
+                        if(data.pageList[i].appStatus!=0&&data.pageList[i].checkStatus!=3){
+                            table+="<td style='color: #BEEBEE'>无操作";
+                        }
+
                     }
+                    table+="</td></tr>";
 
                 }
 

@@ -14,7 +14,7 @@ public class Customer {
     private int companyStatus;      //状态
 
     private List<Contacts> contacts;        //客户联系人集合
-    private List<Protal> protals;              //客户门户集合
+    private Protal protal;              //客户门户对象
     private Keyword keyword;            //客户下的关键字集合
     private Type type;              //客户类型
     private UserInfo user;          //客户的代理商
@@ -76,12 +76,12 @@ public class Customer {
         this.contacts = contacts;
     }
 
-    public List<Protal> getProtals() {
-        return protals;
+    public Protal getProtal() {
+        return protal;
     }
 
-    public void setProtals(List<Protal> protals) {
-        this.protals = protals;
+    public void setProtal(Protal protal) {
+        this.protal = protal;
     }
 
     public Keyword getKeyword() {

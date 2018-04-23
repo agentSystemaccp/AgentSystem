@@ -49,8 +49,11 @@ public class ProtalController {
 
     //获取门户对象 跳转到门户详情页面
     @RequestMapping("/queryProtal")
-    public String queryProtal(int protalId,String type,Model model) {
-        Protal protal = protalBiz.queryProtalById(protalId);
+    public String queryProtal(int protalId,String cid,String type,Model model) {
+        if(cid==null||cid.equals("")){
+           cid="0";
+        }
+        Protal protal = protalBiz.queryProtalById(protalId,Integer.parseInt(cid));
         Date endDate = protal.getCustomer().getKeyword().getCreateTime();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(endDate);

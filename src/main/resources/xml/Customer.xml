@@ -14,17 +14,53 @@
         <result property="companyPages" column="companyPages"/>
         <result property="companyStatus" column="companyStatus"/>
         <association property="type" javaType="Type">
+            <result property="typeId" column="typeId"/>
             <result property="typeName" column="typeName"/>
+        </association>
+        <association property="protal" javaType="Protal">
+            <result property="protalId" column="protalId"/>
+            <result property="customerId" column="customerId"/>
+            <result property="createTime" column="createTime"/>
+            <result property="legalRepresentative" column="legalRepresentative"/>
         </association>
     </resultMap>
 
-    <select id="queryCustomBySearch" resultMap="customerMap">
-        SELECT c.customerId,f.typeName,c.companyName FROM customerinfo AS c,finance_type AS f WHERE c.userId=#{userId} AND c.companyType=f.typeId
+    <select id="queryCustomByList" resultMap="customerMap">
+        SELECT c.customerId,f.typeName,c.companyName,p.legalRepresentative,p.createTime,c.companyStatus FROM customerinfo AS c,finance_type AS f,protalinfo p WHERE c.userId=#{userId} AND c.companyType=f.typeId AND p.customerId=c.customerId
             <if test="companyName!='' and companyName!=null">
                 and companyName like CONCAT('%',#{companyName},'%')
-            </if>
-         AND c.companyStatus=#{companyStatus} limit 10
+            </if> LIMIT #{offset},#{pageSize}
     </select>
+
+    <!--查询总条数-->
+    <select id="queryCountByName" resultType="_int">
+        SELECT COUNT(1) FROM customerinfo WHERE  userId=#{userId}
+        <if test="companyName!=null and companyName!=''">
+            AND companyName LIKE CONCAT ('%',#{companyName},'%')
+        </if>
+    </select>
+
+    <!--文本框点击搜索客户-->
+    <select id="queryCustomBySearch" resultMap="customerMap">
+        SELECT c.customerId,f.typeName,c.companyName FROM customerinfo AS c,finance_type AS f WHERE c.userId=#{userId} AND c.companyType=f.typeId
+        <if test="companyName!='' and companyName!=null">
+            and c.companyName like CONCAT('%',#{companyName},'%')
+        </if>
+        AND c.companyStatus=#{companyStatus} limit 10
+    </select>
+
+    <!--修改客户-->
+    <update id="updateCustomer">
+        UPDATE customerinfo
+        <set>
+            <if test="userId!=0">userId=#{userId},</if>
+            <if test="companyName!=null and companyName!=''">companyName=#{companyName},</if>
+            <if test="companyType!=0">companyType=#{companyType},</if>
+            <if test="companyPages!=null and companyPages!=''">companyPages=#{companyPages},</if>
+            <if test="companyStatus==0 or companyStatus==1">companyStatus=#{companyStatus},</if>
+        </set>
+        WHERE customerId=#{customerId}
+    </update>
 
 
 </mapper>

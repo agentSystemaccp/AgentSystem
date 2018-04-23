@@ -7,10 +7,10 @@ function getProtalList(pageNo) {
 
 $(".viewprotal").on("click",function () {
     var obj = $(this);
-    window.location.href = path+"/protal/queryProtal?protalId="+obj.attr("protalId")+"&type=view";
+    window.location.href = path+"/protal/queryProtal?protalId="+obj.attr("protalId")+"&cid=0"+"&type=view";
 })
 
 $(".modifprotal").on("click",function () {
     var obj = $(this);
-    window.location.href = path+"/protal/queryProtal?protalId="+obj.attr("protalId")+"&type=modify";
+    window.location.href = path+"/protal/queryProtal?protalId="+obj.attr("protalId")+"&cid=0"+"&type=modify";
 })

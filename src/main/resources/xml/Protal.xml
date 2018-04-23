@@ -25,6 +25,7 @@
     <!--配置客户类型对象-->
     <resultMap id="typeMap" type="Type">
         <result column="companyTypeName" property="typeName"/>
+        <result column="typeId" property="typeId"/>
     </resultMap>
 
     <!--配置用户对象-->
@@ -37,6 +38,7 @@
     <resultMap id="customerMap" type="Customer">
         <result column="cid" property="customerId"/>
         <result column="companyName" property="companyName"/>
+        <result column="companyType" property="companyType"/>
         <result column="companyStatus" property="companyStatus"/>
         <result column="companyPages" property="companyPages"/>
         <!--配置客户下的用户对象-->
@@ -113,6 +115,8 @@
         (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
         FROM protalInfo p,customerInfo c,userinfo u,keyword k LEFT JOIN appInfo a ON
         k.keywordId = a.keywordId WHERE p.customerId = c.customerId AND
-        c.userId = u.userId AND c.customerId = k.customerId AND p.protalId = #{protalId}
+        c.userId = u.userId AND c.customerId = k.customerId
+        <if test="protalId!=0">AND p.protalId = #{protalId}</if>
+        <if test="cid!=0">AND c.customerId = #{cid}</if>
     </select>
 </mapper>

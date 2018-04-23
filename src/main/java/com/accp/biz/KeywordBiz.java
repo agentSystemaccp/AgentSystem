@@ -15,4 +15,7 @@ public interface KeywordBiz {
     Page<Keyword> queryKeyWordList(String keyword,int userId, int pageSize, int pageNo);
     //根据id得到关键词
     Keyword queryKeyWordById(int keywordId);
+
+    //修改关键词
+    int updateKeyWord(Keyword keyword,UserInfo userInfo,int price);
 }
