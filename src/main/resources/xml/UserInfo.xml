@@ -60,4 +60,9 @@
         <if test="starttime == '' and endtime != ''">AND #{endtime} >= createTime </if>
         <if test="starttime != '' and endtime != ''">AND createTime BETWEEN #{starttime} AND  #{endtime}</if>
     </select>
+
+    <!--查找所有用户-->
+    <select id="queryAllUserInfo" resultType="UserInfo">
+        select * from userInfo
+    </select>
 </mapper>
