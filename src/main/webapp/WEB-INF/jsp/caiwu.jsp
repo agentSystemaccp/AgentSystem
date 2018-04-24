@@ -8,6 +8,7 @@
 <div class="container">
 	<div class="serachuserdiv">
 		<div>
+
 			搜索用户:<input id="searchUserText" type="text">输入后自动搜索
 		</div>
 
