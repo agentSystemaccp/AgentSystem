@@ -29,7 +29,7 @@
         SELECT c.customerId,f.typeName,c.companyName,p.legalRepresentative,p.createTime,c.companyStatus FROM customerinfo AS c,finance_type AS f,protalinfo p WHERE c.userId=#{userId} AND c.companyType=f.typeId AND p.customerId=c.customerId
             <if test="companyName!='' and companyName!=null">
                 and companyName like CONCAT('%',#{companyName},'%')
-            </if> LIMIT #{offset},#{pageSize}
+            </if> ORDER BY p.createTime DESC LIMIT #{offset},#{pageSize}
     </select>
 
     <!--查询总条数-->
@@ -71,7 +71,7 @@
 
     <!--添加客户-->
     <insert id="addCustomer">
-        INSERT INTO customerinfo VALUES (userId,companyName,companyType,companyPages,companyStatus) VALUES(#{userId},#{companyName},#{companyType},#{companyPages},#{companyStatus})
+        INSERT INTO customerinfo (userId,companyName,companyType,companyPages,companyStatus) VALUES(#{userId},#{companyName},#{companyType},#{companyPages},#{companyStatus})
     </insert>
 
 

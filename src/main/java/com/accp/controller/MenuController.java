@@ -34,9 +34,4 @@ public class MenuController{
         List<com.accp.entity.Resource> resourceList=menuBiz.findResourceList(menu_id,roleId);
         return JSONArray.toJSONString(resourceList);
     }
-
-    @RequestMapping(value = "/showCaiwu")
-    public String showCaiWu(){
-        return "caiwu";
-    }
 }

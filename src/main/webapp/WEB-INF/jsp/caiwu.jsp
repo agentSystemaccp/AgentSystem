@@ -3,12 +3,11 @@
 
 <div class="mbxnav">
 	<!-- 导航 -->
-	系统管理\ <a href="${pageContext.request.contextPath }/menu/showCaiwu">财务管理</a>
+	系统管理\ <a href="/caiwu.action">财务管理</a>
 </div>
 <div class="container">
 	<div class="serachuserdiv">
 		<div>
-
 			搜索用户:<input id="searchUserText" type="text">输入后自动搜索
 		</div>
 

@@ -22,7 +22,7 @@ public class CustomerBizImpl implements CustomerBiz {
 
     /**
      * 输入框输入搜索前十位客户
-     * @param customer
+     * @param
      * @return
      */
     public Page queryCustomByList(String companyName,int userId,int pageSize, int pageNo) {
@@ -70,19 +70,56 @@ public class CustomerBizImpl implements CustomerBiz {
      * 添加客户
      * @param customer
      * @param protal
-     * @param contactsList
      * @return
      */
-    public int addCustomer(Customer customer, Protal protal, List<Contacts> contactsList) {
+    public int addCustomer(Customer customer, Protal protal) {
         int result = 0;
+        int cid=0;
 //        1:添加客户
-        if(customerDao.addCustomer(customer)>0){
+        if((result=customerDao.addCustomer(customer))>0){
+            cid = customerDao.queryCustomerByParam(customer).getCustomerId();
+            protal.setCustomerId(cid);
+            result=-1;
 //            2:添加门户
-            if(protalDao.addProtal(protal)>0){
+            if((result=protalDao.addProtal(protal))>0){
+
 //                循环添加联系人
-                int cid = customerDao.queryCustomerByParam(customer).getCustomerId();
-                for (Contacts c:contactsList) {
-                    result=contactsDao.addContacts(c);
+                if(customer.getContacts()!=null){
+                    for (Contacts c:customer.getContacts()) {
+                        result=-1;
+                        c.setCustomerId(cid);
+                        result=contactsDao.addContacts(c);
+                    }
+                }
+
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 修改客户和门户
+     * @param customer
+     * @param protal
+     * @return
+     */
+    public int updateCustomerAndProtal(Customer customer, Protal protal) {
+        int result = 0;
+        int cid=0;
+//        1:添加客户
+        if((result=customerDao.updateCustomer(customer))>0){
+            result=-1;
+            cid = customerDao.queryCustomerByParam(customer).getCustomerId();
+//            2:添加门户
+            if((result=protalDao.updateProtal(protal))>0){
+
+//                循环添加联系人
+                if(customer.getContacts()!=null){
+                    for (Contacts c:customer.getContacts()) {
+                        result=-1;
+                        c.setCustomerId(cid);
+                        result=contactsDao.updateContacts(c);
+                    }
                 }
 
             }

@@ -33,10 +33,4 @@ public interface UserInfoDao {
      * @return
      */
     public List<UserInfo> queryAllUserBalance(@Param("starttime") String starttime,@Param("endtime") String endtime);
-
-    /**
-     * 查找所有用户
-     * @return
-     */
-    List<UserInfo> queryAllUserInfo();
 }

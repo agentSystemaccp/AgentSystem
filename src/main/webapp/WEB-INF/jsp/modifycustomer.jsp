@@ -2,16 +2,16 @@
 
 <div class="mbxnav">
   <!-- 导航 -->
-  代理商管理\ <a href="/customlist.action">代理商客户管理</a>\ 修改客户信息
+  代理商管理\ <a href="${pageContext.request.contextPath }/agent/toCustomerManage">代理商客户管理</a>\ 修改客户信息
 </div>
 <div class="container">
-  <form id="cform" action="/modifysavecustom.action" method="post">
-    <input type="hidden" name="custom.id" value="${custom.id}">
+  <form id="cform" action="" method="post">
+    <input type="hidden" name="customerId" value="${protal.customerId}">
     <div class="subtitle">基本信息</div>
     <div class="info1">
       <ul>
         <li>企业名称:<input type="text" name="companyName"
-                        id="customname" value="${protal.customer.companyName}">
+                        id="customname" readonly="readonly" value="${protal.customer.companyName}">
         </li>
         <li>企业类型:<select name="companyType">
           <option value="">请选择</option>
@@ -43,6 +43,7 @@
     <div class="subtitle">门户信息</div>
     <div class="info2">
       <ul>
+        <input type="hidden" name="protalId" value="${protal.protalId}">
         <li>法人代表:<input type="text" name="legalRepresentative" value="${protal.legalRepresentative}">
         </li>
         <li>注册日期:
@@ -68,14 +69,14 @@
         <li>国家:<input type="text" name="state" value="${protal.state}">
         </li>
         <li>省份:<select id="customprovince" name="province" onchange="loadCity();">
-          <option value="0">--请选择省份--</option>
+          <option value="">--请选择省份--</option>
         </select>
         </li>
         <li>公司传真:<input type="text" name="companyFax" value="${protal.companyFax}">
         </li>
         <li>城市:
           <select id="customcity" name="city">
-            <option value="0">--请选择城市--</option>
+            <option value="">--请选择城市--</option>
           </select>
         </li>
         <li>公司电话:<input type="text" name="companyTel" value="${protal.companyTel}">
@@ -113,11 +114,11 @@
         <tbody id="addtr">
         <c:forEach items="${contactsList}" var="contactsList" varStatus="contact">
           <tr>
-            <td><input type='text' name='contactsList[${contact.index}].contactsName' value="${contactsList.contactsName }"></td>
-            <td><input type='text' name='contactsList[${contact.index}].contactsTel'  value="${contactsList.contactsTel}"></td>
-            <td><input type='text' name='contactsList[${contact.index}].contactsFax'  value="${contactsList.contactsFax}"></td>
-            <td><input type='text' name='contactsList[${contact.index}].contactsEmail'  value="${contactsList.contactsEmail}"></td>
-            <td><input type='text' name='contactsList[${contact.index}].contactsPost'  value="${contactsList.contactsPost}"></td>
+            <td><input type='text' name='contacts[${contact.index}].contactsName' value="${contactsList.contactsName }"></td>
+            <td><input type='text' name='contacts[${contact.index}].contactsTel'  value="${contactsList.contactsTel}"></td>
+            <td><input type='text' name='contacts[${contact.index}].contactsFax'  value="${contactsList.contactsFax}"></td>
+            <td><input type='text' name='contacts[${contact.index}].contactsEmail'  value="${contactsList.contactsEmail}"></td>
+            <td><input type='text' name='contacts[${contact.index}].contactsPost'  value="${contactsList.contactsPost}"></td>
             <td  onclick='delTr(this)' style="cursor:hand">删除</td></tr>
           </tr>
         </c:forEach>

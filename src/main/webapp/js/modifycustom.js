@@ -1,5 +1,5 @@
 var contactcount=0;
-
+var path=$("#path").val();
 	mover(1);
 	contactcount=$("#contactcount").val();
 	//初始化日期	
@@ -18,11 +18,11 @@ var contactcount=0;
 	
 	//添加联系人
 	$("#addcontact").click(function(){
-		var str="<tr><td><input type='text' name='contactsList["+contactcount+"].contactsName'></td>" +
-				"<td><input type='text' name='contactsList["+contactcount+"].contactsTel'></td>" +
-				"<td><input type='text' name='contactsList["+contactcount+"].contactsFax'></td>" +
-				"<td><input type='text' name='contactsList["+contactcount+"].contactsEmail'></td>" +
-				"<td><input type='text' name='contactsList["+contactcount+"].contactsPost'></td>" +
+		var str="<tr><td><input type='text' name='contacts["+contactcount+"].contactsName'></td>" +
+				"<td><input type='text' name='contacts["+contactcount+"].contactsTel'></td>" +
+				"<td><input type='text' name='contacts["+contactcount+"].contactsFax'></td>" +
+				"<td><input type='text' name='contacts["+contactcount+"].contactsEmail'></td>" +
+				"<td><input type='text' name='contacts["+contactcount+"].contactsPost'></td>" +
 				"<td  onclick='delTr(this)'><a href='javascript:void();'>删除</a></td></tr>";
 		$("#addtr").append(str);
 		contactcount++;
@@ -32,7 +32,7 @@ var contactcount=0;
 	$("#cardnum").blur(function(){
 		var t=$("#cardnum").val();
 		if(!checkValidateNum(t))
-			humane.error("证件号码请输入数字!");
+			alert("证件号码请输入数字!");
 	})
 
 
@@ -53,13 +53,13 @@ function checksave(){
 	var customname=$.trim($("#customname").val());
 	var customtypename=$("#customtypename").val();
 	var customcardtype=$("#customcardtype").val();
-	if(customname.length==0)
+	if(customname=='')
 	{
-		humane.error("客户名称不能空");
+		alert("客户名称不能空");
 		return ;
 	}
-	if(customtypename.length==0){
-		humane.error("客户类型不能为空");
+	if(customtypename==''){
+		alert("客户类型不能为空");
 		return ;		
 	}
 /*	var t=$("#cardnum").val();
@@ -67,7 +67,25 @@ function checksave(){
 		humane.error("证件号码请输入数字!");
 	
 	*/
-	$("#cform").submit();
-		
+    $("#cform").ajaxSubmit({
+        type:"post",
+        url:path+"/agent/updateCustomer",
+        dataType : 'json',
+        async: false,
+        success :function (data) {
+            if(data=="success"){
+                alert("修改 [ "+customname+" ]成功!");
+                window.location.href=path+"/agent/toCustomerManage";
+            }else {
+                alert("修改[ "+customname+" ]失败,请重新修改!")
+            }
+        }
+
+    })
+
+
+
 }
+
+
 

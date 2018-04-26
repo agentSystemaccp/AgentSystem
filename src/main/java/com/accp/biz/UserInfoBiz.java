@@ -28,11 +28,4 @@ public interface UserInfoBiz {
      * @return
      */
     public List<UserInfo> queryAllUserBalance(String starttime, String endtime);
-
-
-    /**
-     * 查找所有用户
-     * @return
-     */
-    List<UserInfo> queryAllUserInfo();
 }
