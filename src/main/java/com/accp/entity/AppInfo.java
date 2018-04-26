@@ -1,6 +1,7 @@
 package com.accp.entity;
 
 public class AppInfo {
+
     private int appId;
     private int keywordId;
     private String appCode;
