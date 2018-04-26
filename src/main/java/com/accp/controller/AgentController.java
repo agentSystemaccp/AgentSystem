@@ -76,9 +76,9 @@ public class AgentController {
         Keyword keyWord = new Keyword();
         keyWord.setKeyword(keyword);
         if(keywordBiz.queryByKeyWord(keyWord)==null){
-            return "success";
+            return JSON.toJSONString("success");
         }
-        return "fail";
+        return JSON.toJSONString("fail");
     }
 
 
@@ -95,7 +95,7 @@ public class AgentController {
         }else if(servicetype.equals("21")){    //一年18000
             total= serviceyear.equals("买二赠一") ? 2*18000 :Integer.parseInt(serviceyear)*18000;
         }else {
-            return "exception";
+            return JSON.toJSONString("exception");
         }
         return JSONArray.toJSONString(total);
     }
@@ -109,9 +109,9 @@ public class AgentController {
     public Object valiBalance(String balance,HttpSession session){
         UserInfo u = (UserInfo)session.getAttribute("userLogin");
         if(u.getBalance()<Integer.parseInt(balance)){
-            return "nomoney";
+            return JSON.toJSONString("nomoney");
         }
-        return  "success";
+        return  JSON.toJSONString("success");
     }
 
 
@@ -136,9 +136,9 @@ public class AgentController {
         keyWord.setAppStatus(2);        //未开通
         keyWord.setTerm(serviceyear.equals("买二赠一") ? 2:Integer.parseInt(serviceyear));
         if(keywordBiz.addKeyWord(keyWord,userInfo,Integer.parseInt(price))>0){
-            return "success";
+            return JSON.toJSONString("success");
         }
-        return "failed";
+        return JSON.toJSONString("failed");
     }
 
 
@@ -225,9 +225,9 @@ public class AgentController {
         keyWord.setTerm(Integer.parseInt(serviceyear));
         keyWord.setKeyword(keyword);
         if(keywordBiz.updateKeyWord(keyWord,userInfo,Integer.parseInt(price))>0){
-            return "success";
+            return JSON.toJSONString("success");
         }
-        return "failed";
+        return JSON.toJSONString("failed");
     }
 
 
@@ -271,7 +271,7 @@ public class AgentController {
         else
             customer.setCompanyStatus(1);
 
-        return customerBiz.updateCustomer(customer)>0 ? "success":"false";
+        return customerBiz.updateCustomer(customer)>0 ? JSON.toJSONString("success"):JSON.toJSONString("false");
     }
 
     /**
@@ -314,10 +314,10 @@ public class AgentController {
         Customer customer = new Customer();
         customer.setCompanyName(companyName);
         if(customerBiz.queryCustomerByParam(customer)==null){
-            return "nopeat";
+            return JSON.toJSONString("nopeat");
         }
 
-        return "peat";
+        return JSON.toJSONString("peat");
     }
 
     /**
@@ -344,11 +344,26 @@ public class AgentController {
      */
     @RequestMapping("/updateCustomer")
     @ResponseBody
-    public Object updateCustomer(Protal protal,Customer customer){
+    public Object updateCustomer(Protal protal,Customer customer,HttpSession session){
+        int uid = ((UserInfo)session.getAttribute("userLogin")).getUserid();
+        customer.setUserId(uid);
         if(customerBiz.updateCustomerAndProtal(customer,protal)>0){
-            return "success";
+            return JSON.toJSONString("success");
         }
-        return "false";
+        return JSON.toJSONString("false");
+    }
+
+    /**
+     * 删除联系人
+     * @return
+     */
+    @RequestMapping("/delContacts")
+    @ResponseBody
+    public Object delContacts(int contactsId){
+        if(contactsBiz.delContactsById(contactsId)>0){
+            return JSON.toJSONString("success");
+        }
+        return  JSON.toJSONString("false");
     }
 
 

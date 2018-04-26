@@ -25,4 +25,8 @@
           </set>
         WHERE contactsId=#{contactsId}
     </update>
+
+    <delete id="delContactsById">
+        DELETE FROM contactsinfo WHERE contactsId=#{contactsId}
+    </delete>
 </mapper>

@@ -23,4 +23,13 @@ public class ContactsBizImpl implements ContactsBiz {
     public List<Contacts> queryContactsById(int customerId) {
         return contactsDao.queryContactsByCustomerId(customerId);
     }
+
+    /**
+     * 删除联系人
+     * @param contactsId
+     * @return
+     */
+    public int delContactsById(int contactsId) {
+        return contactsDao.delContactsById(contactsId);
+    }
 }

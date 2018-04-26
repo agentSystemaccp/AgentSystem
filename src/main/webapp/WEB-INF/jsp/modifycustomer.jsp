@@ -13,7 +13,7 @@
         <li>企业名称:<input type="text" name="companyName"
                         id="customname" readonly="readonly" value="${protal.customer.companyName}">
         </li>
-        <li>企业类型:<select name="companyType">
+        <li>企业类型:<select name="companyType" id="companyType">
           <option value="">请选择</option>
             <c:forEach var="typeList" items="${typeList}">
               <c:if test="${protal.customer.companyType==typeList.typeId}">
@@ -44,7 +44,7 @@
     <div class="info2">
       <ul>
         <input type="hidden" name="protalId" value="${protal.protalId}">
-        <li>法人代表:<input type="text" name="legalRepresentative" value="${protal.legalRepresentative}">
+        <li>法人代表:<input type="text" id="legalRepresentative" name="legalRepresentative" value="${protal.legalRepresentative}">
         </li>
         <li>注册日期:
           <input type="text" name="createTime" value="<fmt:formatDate value="${protal.createTime}" pattern="yyyy-MM-dd"/>"
@@ -79,7 +79,7 @@
             <option value="">--请选择城市--</option>
           </select>
         </li>
-        <li>公司电话:<input type="text" name="companyTel" value="${protal.companyTel}">
+        <li>公司电话:<input type="text" name="companyTel" id="companyTel" value="${protal.companyTel}">
         </li>
         <li>公司地址:<input type="text" name="companyAddress" value="${protal.companyAddress}">
         </li>
@@ -114,6 +114,7 @@
         <tbody id="addtr">
         <c:forEach items="${contactsList}" var="contactsList" varStatus="contact">
           <tr>
+            <input type='hidden' name='contacts[${contact.index}].contactsId' value="${contactsList.contactsId }">
             <td><input type='text' name='contacts[${contact.index}].contactsName' value="${contactsList.contactsName }"></td>
             <td><input type='text' name='contacts[${contact.index}].contactsTel'  value="${contactsList.contactsTel}"></td>
             <td><input type='text' name='contacts[${contact.index}].contactsFax'  value="${contactsList.contactsFax}"></td>
