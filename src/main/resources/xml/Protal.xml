@@ -109,18 +109,42 @@
     </select>
 
     <select id="queryProtalById" resultMap="protalMap">
-        SELECT p.*,c.*,u.*,k.*,a.*,c.customerId cid,u.userId uid,k.customerId kcustomerId,
-        (SELECT typeName FROM finance_type WHERE typeid = c.companyType) companyTypeName,
-        (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
-        FROM protalInfo p,customerInfo c,userinfo u,keyword k LEFT JOIN appInfo a ON
-        k.keywordId = a.keywordId WHERE p.customerId = c.customerId AND
-        c.userId = u.userId AND c.customerId = k.customerId
-        <if test="protalId!=0">AND p.protalId = #{protalId}</if>
-        <if test="cid!=0">AND c.customerId = #{cid}</if>
+        <if test="cid==0">
+            SELECT p.*,c.*,u.*,k.*,a.*,c.customerId cid,u.userId uid,k.customerId kcustomerId,
+            (SELECT typeName FROM finance_type WHERE typeid = c.companyType) companyTypeName,
+            (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
+            FROM protalInfo p,customerInfo c,userinfo u,keyword k LEFT JOIN appInfo a ON
+            k.keywordId = a.keywordId WHERE p.customerId = c.customerId AND
+            c.userId = u.userId AND c.customerId = k.customerId
+            <if test="protalId!=0">AND p.protalId = #{protalId}</if>
+        </if>
+        <if test="cid!=0">
+            SELECT c.*,p.*,(SELECT typeName FROM finance_type WHERE typeId = c.companyType) companyTypeName,(SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
+            FROM customerinfo c,protalinfo p,contactsinfo co WHERE c.customerId=p.customerId AND c.customerId=co.customerId AND c.customerId=#{cid}
+        </if>
+
     </select>
 
     <insert id="addProtal">
-        INSERT INTO protalinfo VALUES (customerId,legalRepresentative,typeId,createTime,idNumber,state,province,city,companyFax,companyTel,companyAddress,remark) VALUES
+        INSERT INTO protalinfo (customerId,legalRepresentative,typeId,createTime,idNumber,state,province,city,companyFax,companyTel,companyAddress,remark) VALUES
         (#{customerId},#{legalRepresentative},#{typeId},#{createTime},#{idNumber},#{state},#{province},#{city},#{companyFax},#{companyTel},#{companyAddress},#{remark})
     </insert>
+
+
+    <update id="updateProtal">
+        UPDATE protalinfo
+        <set>
+            <if test="legalRepresentative!=null and legalRepresentative!=''">legalRepresentative=#{legalRepresentative},</if>
+            <if test="typeId!=0">typeId=#{typeId},</if>
+            <if test="idNumber!=0">idNumber=#{idNumber},</if>
+            <if test="state!=null and state!=''">state=#{state},</if>
+            <if test="province!=null and province!=''">province=#{province},</if>
+            <if test="city!=null and city!=''">city=#{city},</if>
+            <if test="companyFax!=null and companyFax!=''">companyFax=#{companyFax},</if>
+            <if test="companyAddress!=null and companyAddress!=''">companyTel=#{companyAddress},</if>
+            <if test="companyTel!=null and companyTel!=''">companyTel=#{companyTel},</if>
+            <if test="remark!=null and remark!=''">remark=#{remark},</if>
+        </set>
+        WHERE protalId=#{protalId}
+    </update>
 </mapper>

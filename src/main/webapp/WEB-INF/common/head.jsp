@@ -39,6 +39,7 @@
 	<link href="${pageContext.request.contextPath }/resources/css/axure_rp_page.css" type="text/css" rel="stylesheet"/>
 	<link href="${pageContext.request.contextPath }/js/styles.css" type="text/css" rel="stylesheet"/>
 	<link href="${pageContext.request.contextPath }/files/manage/styles.css" type="text/css" rel="stylesheet"/>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/permission.css"/>
 
 	<%--<script src="${pageContext.request.contextPath }/resources/scripts/jquery-ui-1.8.10.custom.min.js"></script>--%>
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/axQuery.js"></script>

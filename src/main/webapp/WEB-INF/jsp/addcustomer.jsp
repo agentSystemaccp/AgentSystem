@@ -5,7 +5,7 @@
   代理商管理\ <a href="${pageContext.request.contextPath }/agent/toCustomerManage">代理商客户管理</a>\ 添加客户信息
 </div>
 <div class="container">
-  <form id="cform" action="${pageContext.request.contextPath }/agent/addCustomer" method="post">
+  <form id="cform" action="" method="post">
     <div class="subtitle">基本信息</div>
     <div class="info1">
       <ul>
@@ -25,7 +25,7 @@
         <li>状态: <select name="companyStatus">
             <option value="">请选择</option>
             <option value="1">启用</option>
-            <option value="0">停用</option>
+          <option value="0">停用</option>
         </select></li>
       </ul>
     </div>

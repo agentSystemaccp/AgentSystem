@@ -17,5 +17,8 @@ public interface CustomerBiz {
 
     Customer queryCustomerByParam(Customer customer);
 
-    int addCustomer(Customer customer, Protal protal, List<Contacts> contactsList);
+    int addCustomer(Customer customer, Protal protal);
+
+    //修改客户和门户
+    int updateCustomerAndProtal(Customer customer, Protal protal);
 }

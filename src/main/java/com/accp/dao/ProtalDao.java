@@ -33,4 +33,6 @@ public interface ProtalDao {
 
     //添加门户
     int addProtal(Protal protal);
+    //修改每户
+    int updateProtal(Protal protal);
 }

@@ -18,11 +18,11 @@ var path = $("#path").val();
 	
 	//添加联系人
 	$("#addcontact").click(function(){
-		var str="<tr><td><input type='text' name='contactsList["+contactcount+"].contactsName'></td>" +
-				"<td><input type='text' name='contactsList["+contactcount+"].contactsTel'></td>" +
-				"<td><input type='text' name='contactsList["+contactcount+"].contactsFax'></td>" +
-				"<td><input type='text' name='contactsList["+contactcount+"].contactsEmail'></td>" +
-				"<td><input type='text' name='contactsList["+contactcount+"].contactsPost'></td>" +
+		var str="<tr><td><input type='text' name='contacts["+contactcount+"].contactsName' value=''></td>" +
+				"<td><input type='text' name='contacts["+contactcount+"].contactsTel' value=''></td>" +
+				"<td><input type='text' name='contacts["+contactcount+"].contactsFax' value=''></td>" +
+				"<td><input type='text' name='contacts["+contactcount+"].contactsEmail' value=''></td>" +
+				"<td><input type='text' name='contacts["+contactcount+"].contactsPost' value=''></td>" +
 				"<td  onclick='delTr(this)'><a href='javascript:void()'>删除</a></td></tr>";
 		$("#addtr").append(str);
 		contactcount++;
@@ -59,7 +59,7 @@ function checksave(){
     var legalRepresentative =$("#legalRepresentative").val();
     var cardnum = $("#cardnum").val();
     var companyTel = $("#companyTel").val();
-	if(customname.length==0)
+    if(customname.length==0)
     {
         alert("客户名称不能为空!");
         return ;
@@ -74,10 +74,10 @@ function checksave(){
         alert("法人代表不能为空!");
         return ;
     }
-	if(companyType==''){
+    if(companyType==''){
         alert("请选择企业类型!");
-		return ;		
-	}
+		return ;
+    }
     if(customcardtype==''){
         alert("请选择证件类型!");
         return ;
@@ -103,28 +103,31 @@ function checksave(){
 		if(result=="peat"){
             alert("对不起,该客户名称已存在");
 		}else if(result=="nopeat"){
-            $("#cform").submit();
-            // $("#cform").ajaxSubmit({
-            //     type:"post",
-            //     url:path+"/agent/addCustomer",
-            //     dataType:"josn",
-            //     success:function (result) {
-            //         if(result=="success"){
-            //             alert("添加[ "+customname+" ]成功!")
-            //             window.location.href=path+"/agent/customerList";
-            //         }else {
-            //             alert("添加[ "+customname+" ]失败,请重新添加!")
-            //         }
-            //     }
-            //
-            // })
+            customerSubmit(customname);
 		}
 	},'html');
 
 
 
-		
 }
 
+function customerSubmit(customname) {
 
+
+    $("#cform").ajaxSubmit({
+        type:"post",
+        url:path+"/agent/insertCustomer",
+        dataType : 'json',
+        async: false,
+        success :function (data) {
+            if(data=="success"){
+                alert("添加[ "+customname+" ]成功!");
+                window.location.href=path+"/agent/toCustomerManage";
+            }else {
+                alert("添加[ "+customname+" ]失败,请重新添加!")
+            }
+        }
+
+    })
+}
 

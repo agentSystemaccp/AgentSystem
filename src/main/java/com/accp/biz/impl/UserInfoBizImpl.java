@@ -58,8 +58,4 @@ public class UserInfoBizImpl implements UserInfoBiz {
     public List<UserInfo> queryAllUserBalance(String starttime, String endtime) {
         return userInfoDao.queryAllUserBalance(starttime,endtime);
     }
-
-    public List<UserInfo> queryAllUserInfo() {
-        return userInfoDao.queryAllUserInfo();
-    }
 }

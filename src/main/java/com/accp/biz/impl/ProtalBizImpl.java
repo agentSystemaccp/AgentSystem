@@ -5,6 +5,7 @@ import com.accp.dao.AppInfoDao;
 import com.accp.dao.ContactsDao;
 import com.accp.dao.ProtalDao;
 import com.accp.entity.AppInfo;
+import com.accp.entity.Contacts;
 import com.accp.entity.Page;
 import com.accp.entity.Protal;
 import org.springframework.stereotype.Service;
@@ -51,7 +52,8 @@ public class ProtalBizImpl implements ProtalBiz{
      */
     public Protal queryProtalById(int protalId,int cid) {
         Protal protal = protalDao.queryProtalById(protalId,cid);
-        protal.getCustomer().setContacts(contactsDao.queryContactsByCustomerId(cid));
+        List<Contacts> contactsList = contactsDao.queryContactsByCustomerId(cid);
+        protal.getCustomer().setContacts(contactsList);
         return protal;
     }
 

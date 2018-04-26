@@ -301,7 +301,6 @@ public class AgentController {
         }else {
             return "addcustomer";
         }
-
     }
 
     /**
@@ -325,15 +324,31 @@ public class AgentController {
      * 添加客户
      * @param customer
      * @param protal
-     * @param contactsList
      * @return
      */
-    @RequestMapping("/addCustomer")
-    public String addCutomer(Customer customer,Protal protal,List<Contacts> contactsList){
-        if(customerBiz.addCustomer(customer,protal,contactsList)>0){
-            return "customermanage";
+    @RequestMapping("/insertCustomer")
+    @ResponseBody
+    public Object insertCustomer(Customer customer,Protal protal,HttpSession session){
+        int uid = ((UserInfo)session.getAttribute("userLogin")).getUserid();
+        customer.setUserId(uid);
+        protal.setCreateTime(new Date());
+        if(customerBiz.addCustomer(customer,protal)>0){
+            return JSON.toJSONString("success");
         }
-        return "modifycustom?cid=0&type=add";
+        return JSON.toJSONString("false");
+    }
+
+    /**
+     * 修改客户
+     * @return
+     */
+    @RequestMapping("/updateCustomer")
+    @ResponseBody
+    public Object updateCustomer(Protal protal,Customer customer){
+        if(customerBiz.updateCustomerAndProtal(customer,protal)>0){
+            return "success";
+        }
+        return "false";
     }
 
 
