@@ -118,7 +118,11 @@ public class CustomerBizImpl implements CustomerBiz {
                     for (Contacts c:customer.getContacts()) {
                         result=-1;
                         c.setCustomerId(cid);
-                        result=contactsDao.updateContacts(c);
+                        if(c.getContactsId()!=0){
+                            result=contactsDao.updateContacts(c);       //修改
+                        }else {
+                            result=contactsDao.addContacts(c);       //增加
+                        }
                     }
                 }
 

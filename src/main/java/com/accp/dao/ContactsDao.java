@@ -16,4 +16,6 @@ public interface ContactsDao {
     int addContacts(Contacts contacts);
 
     int updateContacts(Contacts contacts);
+
+    int delContactsById(int contactsId);
 }

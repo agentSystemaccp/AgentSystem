@@ -62,6 +62,7 @@
         <result column="companyFax" property="companyFax"/>
         <result column="idNumber" property="idNumber"/>
         <result column="createTime" property="createTime"/>
+        <result column="typeId" property="typeId"/>
         <result column="state" property="state"/>
         <result column="province" property="province"/>
         <result column="city" property="city"/>
@@ -113,14 +114,16 @@
             SELECT p.*,c.*,u.*,k.*,a.*,c.customerId cid,u.userId uid,k.customerId kcustomerId,
             (SELECT typeName FROM finance_type WHERE typeid = c.companyType) companyTypeName,
             (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
-            FROM protalInfo p,customerInfo c,userinfo u,keyword k LEFT JOIN appInfo a ON
+            FROM protalInfo p,customerInfo c,finance_type f,userinfo u,keyword k LEFT JOIN appInfo a ON
             k.keywordId = a.keywordId WHERE p.customerId = c.customerId AND
             c.userId = u.userId AND c.customerId = k.customerId
             <if test="protalId!=0">AND p.protalId = #{protalId}</if>
         </if>
         <if test="cid!=0">
-            SELECT c.*,p.*,(SELECT typeName FROM finance_type WHERE typeId = c.companyType) companyTypeName,(SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
-            FROM customerinfo c,protalinfo p,contactsinfo co WHERE c.customerId=p.customerId AND c.customerId=co.customerId AND c.customerId=#{cid}
+            SELECT c.*,p.*,f.*,(SELECT typeName FROM finance_type WHERE typeId = c.companyType) companyTypeName,
+            (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
+            FROM customerinfo c,protalinfo p,finance_type f WHERE c.customerId=p.customerId
+            AND f.typeId=c.companyType AND c.customerId=#{cid}
         </if>
 
     </select>
