@@ -23,7 +23,7 @@
 .container{
 	text-align:left;
 }
-.ope{height:auto;}
+.ope{clear: both;height:auto;}
 .tip{color:red;}
 #memo{width:60%;height:80px;}
 .important{background: #efefef;}

@@ -3,12 +3,14 @@ package com.accp.controller;
 
 import com.accp.biz.UserInfoBiz;
 import com.accp.entity.UserInfo;
+import com.alibaba.fastjson.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 @RequestMapping(value="/user")
@@ -82,5 +84,16 @@ public class UserInfoController {
     @GetMapping("/toManage")
     public String toManage(){
         return "manage";
+    }
+
+    /**
+     * 财务管理显示用户名
+     * @return
+     */
+    @RequestMapping(value = "/showUserName")
+    @ResponseBody
+    public String showAllUserName(){
+        List<UserInfo> userInfoList=userInfoBiz.queryAllUserInfo();
+        return JSONArray.toJSONString(userInfoList);
     }
 }

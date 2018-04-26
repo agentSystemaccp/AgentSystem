@@ -15,7 +15,6 @@
 	</div>
 	<div class="searchuserdiv ope">
 		<ul>
-
 			<li>操作类型: <s:select id="zijintype" list="accountConfigList"
 					headerKey="" headerValue="--请选择--"
 					listKey="configTypeValue" listValue="configTypeName"></s:select>
