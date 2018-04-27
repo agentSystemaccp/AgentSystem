@@ -5,12 +5,20 @@ var path = $("#path").val();
 mover(1);
 
 
-$("#searchCustomer").click(function () {
+
+    customerList();
+
+
+
+$(".container").on("click","#searchCustomer",function () {
     var cname = $("#cname").val();
     customerList("",cname);
     return;
 })
-customerList();
+// $("#searchCustomer").click(function () {
+//
+// })
+
 //客户列表
 function customerList(pageIndex,cname) {
     if (typeof(pageIndex) == "undefined"||typeof(pageIndex) == ""){
@@ -22,8 +30,8 @@ function customerList(pageIndex,cname) {
 
     $.ajax({
         type: "post",
-        url: path + "/agent/customerList",
-        data: {cname:cname,pageIndex: pageIndex},
+        url: path + "/agent/customerList?cname="+cname,
+        data: {pageIndex: pageIndex},
         success: function (data) {
             if(data.totalRows==0){
                 $(".container").html("<h3>对不起!暂无数据!</h3>")

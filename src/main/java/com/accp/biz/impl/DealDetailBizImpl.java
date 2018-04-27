@@ -37,4 +37,25 @@ public class DealDetailBizImpl implements DealDetailBiz {
         return dealDetailDao.queryDealDetailByDate(type,starttime,endtime);
     }
 
+    /**
+     * 预付款列表
+     * @param userid
+     * @param dealType
+     * @param starttime
+     * @param endtime
+     * @param pageSize
+     * @param pageNo
+     * @return
+     */
+    public Page<DealDetail> queryListByParam(int userid, int dealType, String starttime, String endtime, int pageSize, int pageNo) {
+        Page<DealDetail> page = new Page<DealDetail>();
+        page.setPageSize(pageSize);
+        page.setPageNo(pageNo);
+        page.setTotalRows(dealDetailDao.queryListCount(userid,dealType,starttime,endtime));
+        //设置总页数
+        page.setTotalPage((page.getTotalRows()+pageSize-1)/pageSize);
+        //设置查询的集合
+        page.setPageList(dealDetailDao.queryListByParam(userid,dealType,starttime,endtime,(pageNo-1)*pageSize,pageSize));
+        return page;
+    }
 }
