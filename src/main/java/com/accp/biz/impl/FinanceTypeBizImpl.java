@@ -12,6 +12,7 @@ public class FinanceTypeBizImpl implements FinanceTypeBiz {
     @Resource(name = "financeTypeDao")
     private FinanceTypeDao financeTypeDao;
     public List<FinanceType> findTypeByParentId(int parentId) {
+
         return financeTypeDao.findTypeByParentId(parentId);
     }
 }

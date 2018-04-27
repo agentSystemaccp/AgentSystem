@@ -82,6 +82,7 @@
     <!--静态文件印射-->
     <mvc:resources mapping="/jsp/**" location="WEB-INF/jsp/"/>
     <mvc:resources mapping="/common/**" location="WEB-INF/common/"/>
+    <mvc:resources mapping="/humane/**" location="/humane/"/>
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/images/**" location="/images/"/>
     <mvc:resources mapping="/imgs/**" location="/imgs/"/>

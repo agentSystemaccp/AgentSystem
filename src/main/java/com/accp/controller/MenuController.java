@@ -1,6 +1,8 @@
 package com.accp.controller;
 
+import com.accp.biz.FinanceTypeBiz;
 import com.accp.biz.MenuBiz;
+import com.accp.entity.FinanceType;
 import com.accp.entity.Menu;
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,8 @@ import java.util.List;
 public class MenuController{
     @Resource(name = "menuBiz")
     private MenuBiz menuBiz;
+    @Resource(name = "financeTypeBiz")
+    private FinanceTypeBiz financeTypeBiz;
 
     @RequestMapping(value = "/manage/{id}",method = RequestMethod.GET)
     @ResponseBody
@@ -36,7 +40,10 @@ public class MenuController{
     }
 
     @RequestMapping(value = "/showCaiwu")
-    public String showCaiWu(){
+    public String showCaiWu(Model model){
+        int parentId=2;
+        List<FinanceType> financeTypeList=financeTypeBiz.findTypeByParentId(parentId);
+        model.addAttribute("financeTypes",financeTypeList);
         return "caiwu";
     }
 }

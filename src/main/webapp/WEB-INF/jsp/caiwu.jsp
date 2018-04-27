@@ -15,9 +15,16 @@
 	</div>
 	<div class="searchuserdiv ope">
 		<ul>
-			<li>操作类型: <s:select id="zijintype" list="accountConfigList"
-					headerKey="" headerValue="--请选择--"
-					listKey="configTypeValue" listValue="configTypeName"></s:select>
+			<li>操作类型:
+				<select>
+					<option value="">--请选择--</option>
+					<c:forEach items="${financeTypes}" var="financeType">
+						<option value="${financeType.typeId}">${financeType.typeName}</option>
+					</c:forEach>
+				</select>
+				<%--<s:select id="zijintype" list="accountConfigList"--%>
+					<%--headerKey="" headerValue="--请选择--"--%>
+					<%--listKey="configTypeValue" listValue="configTypeName"></s:select>--%>
 			</li>
 			<li>操作资金:<input type="text" id="zijin"> <br>重要提示:输入的资金数,<b>正数(1000)</b>向账户输入1000元,<b>负数(-1000)</b>向账户减少1000元,精确到小数点两位数
 			</li>
@@ -32,5 +39,5 @@
 </div>
 
 </body>
+
 </html>
-<s:debug></s:debug>

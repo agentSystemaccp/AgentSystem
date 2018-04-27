@@ -20,7 +20,7 @@
         select r.*,m.* FROM menu m,resource r,role_resource rr
         <where>
             and m.menuId=#{menuId}
-            AND rr.ROLE_ID=1
+            AND rr.ROLE_ID=#{roleId}
             AND r.resourceId=rr.resource_id
             AND m.menuId=r.menuId
         </where>
