@@ -28,6 +28,7 @@
         <result column="financeType" property="financeType"/>
         <result column="financeFund" property="financeFund"/>
         <result column="balance" property="balance"/>
+        <result column="detailType" property="detailType"/>
         <result column="remark" property="remark"/>
         <result column="createTime" property="createTime"/>
         <association resultMap="userMap" property="user"/>
@@ -40,5 +41,24 @@
         <if test="starttime == '' and endtime != ''">AND #{endtime} >= d.createTime </if>
         <if test="starttime != '' and endtime != ''">AND d.createTime BETWEEN #{starttime} AND  #{endtime}</if>
     </select>
+
+    <select id="queryListByParam" resultType="DealDetail">
+        SELECT * FROM account_details WHERE userId=#{userid}
+        <if test="dealType>0"> AND detailType=#{dealType}</if>
+        <if test="starttime != '' and endtime == ''">AND createTime >= #{starttime}</if>
+        <if test="starttime == '' and endtime != ''">AND #{endtime} >= createTime </if>
+        <if test="starttime != '' and endtime != ''">AND createTime BETWEEN #{starttime} AND  #{endtime}</if>
+        LIMIT #{offset},#{pageSize}
+    </select>
+
+
+    <select id="queryListCount" resultType="_int">
+        SELECT COUNT(1) FROM account_details WHERE userId=#{userid}
+        <if test="dealType>0">AND detailType=#{dealType}</if>
+        <if test="starttime != '' and endtime == ''">AND createTime >= #{starttime}</if>
+        <if test="starttime == '' and endtime != ''">AND #{endtime} >= createTime </if>
+        <if test="starttime != '' and endtime != ''">AND createTime BETWEEN #{starttime} AND  #{endtime}</if>
+    </select>
+
 
 </mapper>

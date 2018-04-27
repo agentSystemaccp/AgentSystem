@@ -10,7 +10,7 @@
     <div>
       <label>客户名称:</label>
       <input type="text" id="cname" name="companyName" value="${companyName}">
-      <input type="submit" id="searchCustomer"  value="查询"/>
+      <input type="button" id="searchCustomer"  value="查询"/>
 
     </div>
   </form>

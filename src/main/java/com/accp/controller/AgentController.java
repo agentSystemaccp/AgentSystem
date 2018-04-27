@@ -34,7 +34,8 @@ public class AgentController {
     private ProtalBiz protalBiz;
     @Resource
     private ContactsBiz contactsBiz;
-
+    @Resource
+    private DealDetailBiz dealDetailBiz;
 
 
 
@@ -244,13 +245,13 @@ public class AgentController {
      */
     @RequestMapping("/customerList")
     @ResponseBody
-    public Object customerList(HttpSession session,String companyName,String pageIndex,Model model){
+    public Object customerList(HttpSession session,String cname,String pageIndex,Model model){
         int uid = ((UserInfo)session.getAttribute("userLogin")).getUserid();
         if(pageIndex==null||pageIndex==""){
             pageIndex="1";
         }
-        Page<Customer> page = customerBiz.queryCustomByList(companyName,uid,2,Integer.parseInt(pageIndex));
-        model.addAttribute("companyName",companyName);
+        Page<Customer> page = customerBiz.queryCustomByList(cname,uid,2,Integer.parseInt(pageIndex));
+        model.addAttribute("companyName",cname);
         return JSONArray.toJSONString(page);
     }
 
@@ -366,6 +367,53 @@ public class AgentController {
         return  JSON.toJSONString("false");
     }
 
+
+
+
+
+//      ------------------------------------------代理商预付款--------------------------------------------------------
+
+    /**
+     * 跳转至预付款
+     * @return
+     */
+    @RequestMapping("/loadType")
+    @ResponseBody
+    public Object loadType(String parentId){
+        //下拉列表
+        List<Type> typeList = typeBiz.queryTypeByParentId(Integer.parseInt(parentId));
+        return JSONArray.toJSONString(typeList);
+    }
+
+
+    /**
+     * 加载预付款列表
+     * @param detailType
+     * @param starttime
+     * @param endtime
+     * @return
+     */
+    @RequestMapping("/loadDetailList")
+    @ResponseBody
+    public Object loadDetailList(String detailType,String starttime,String endtime,String pageIndex,HttpSession session){
+        int uid = ((UserInfo)session.getAttribute("userLogin")).getUserid();
+        if(pageIndex==null||pageIndex==""){
+            pageIndex="1";
+        }
+        if(detailType==null||detailType==""){
+            detailType="0";
+        }
+        Page<DealDetail> detailPage = dealDetailBiz.queryListByParam(uid, Integer.parseInt(detailType), starttime, endtime, 2, Integer.parseInt(pageIndex));
+
+        return JSON.toJSONString(detailPage);
+    }
+
+
+
+    @RequestMapping("/toYFK")
+    public String toYFK(){
+        return "yfk";
+    }
 
     /**
      * 空跳至代理商客户管理页面

@@ -14,6 +14,8 @@ public interface DealDetailDao {
     //添加明细
     int addDealDetail(DealDetail dealDetail);
 
+    int queryListCount(@Param("userid")int userid,@Param("dealType") int dealType, @Param("starttime") String starttime,@Param("endtime")String endtime);
+
     /**
      * 通过日期查询代理商的流水明细
      * @param type 0为查询代理商 预付款流水明细即为代理商冻结资金明细
@@ -23,4 +25,9 @@ public interface DealDetailDao {
      * @return
      */
     public List<DealDetail> queryDealDetailByDate(@Param("type")int type,@Param("starttime") String starttime,@Param("endtime")String endtime);
+
+    List<DealDetail> queryListByParam(@Param("userid")int userid,@Param("dealType") int dealType, @Param("starttime") String starttime,@Param("endtime")String endtime,@Param("offset") int offset, @Param("pageSize") int pageSize);
+
+
+
 }
