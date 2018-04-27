@@ -8,6 +8,8 @@ public class FinanceType {
     private int allocation; // 配置数值
     private int realityAllocation; // 实际数值
 
+
+
     public int getTypeId() {
         return typeId;
     }
