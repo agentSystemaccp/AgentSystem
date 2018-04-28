@@ -38,6 +38,139 @@ function comtime(s,e){
 	
 }
 
+//导出代理商余额数据为Excel
+function accountExcel(starttime,endtime) {
+    $.ajax({
+        type: "get",
+        data:{starttime:starttime,endtime:endtime},
+        url:path + "/report/reportAccountExcel",
+        dataType:"json",
+        success:function (data) {
+            if(data == "1"){
+                alert("下载代理商余额报表成功,文件下载到D盘");
+            }else{
+                alert("下载代理商余额报表失败");
+            }
+        }
+    })
+}
+
+//导出代理商预付款流水报表为excel
+function yfExcel(starttime,endtime) {
+    $.ajax({
+        type: "get",
+        data:{starttime:starttime,endtime:endtime},
+        url:path + "/report/reportYFExcel",
+        dataType:"json",
+        success:function (data) {
+            if(data == "1"){
+                alert("下载代理商预付款流水报表成功,文件下载到D盘");
+            }else{
+                alert("下载代理商预付款流水报表失败");
+            }
+        }
+    })
+}
+
+//导出代理商流水报表为excel
+function userExcel(starttime,endtime) {
+    $.ajax({
+        type: "get",
+        data:{starttime:starttime,endtime:endtime},
+        url:path + "/report/reportUserExcel",
+        dataType:"json",
+        success:function (data) {
+            if(data == "1"){
+                alert("下载代理商流水报表成功,文件下载到D盘");
+            }else{
+                alert("下载代理商流水报表失败");
+            }
+        }
+    })
+}
+
+//产品分类数量/金额汇总报表为excel
+function productExcel() {
+    $.ajax({
+        type: "get",
+        url:path + "/report/reportProductExcel",
+        dataType:"json",
+        success:function (data) {
+            if(data == "1"){
+                alert("下载产品分类数量/金额汇总报表成功,文件下载到D盘");
+            }else{
+                alert("下载产品分类数量/金额汇总报表失败");
+            }
+        }
+    })
+}
+
+//导出代理商余额数据PDF
+function accountPDF(starttime,endtime) {
+    $.ajax({
+        type: "get",
+        data:{starttime:starttime,endtime:endtime},
+        url:path + "/report/reportAccountPDF",
+        dataType:"json",
+        success:function (data) {
+            if(data == "1"){
+                alert("下载代理商余额报表成功,文件下载到D盘");
+            }else{
+                alert("下载代理商余额报表失败");
+            }
+        }
+    })
+}
+
+//导出代理商预付款流水报表PDF
+function yfPDF(starttime,endtime) {
+    $.ajax({
+        type: "get",
+        data:{starttime:starttime,endtime:endtime},
+        url:path + "/report/reportYFPDF",
+        dataType:"json",
+        success:function (data) {
+            if(data == "1"){
+                alert("下载代理商预付款流水报表成功,文件下载到D盘");
+            }else{
+                alert("下载代理商预付款流水报表失败");
+            }
+        }
+    })
+}
+
+//导出代理商预付款流水报表PDF
+function userPDf(starttime,endtime) {
+    $.ajax({
+        type: "get",
+        data:{starttime:starttime,endtime:endtime},
+        url:path + "/report/reportUserPDF",
+        dataType:"json",
+        success:function (data) {
+            if(data == "1"){
+                alert("下载代理商预付款流水报表成功,文件下载到D盘");
+            }else{
+                alert("下载代理商预付款流水报表失败");
+            }
+        }
+    })
+}
+
+//导出产品分类数量/金额汇总报表PDF
+function productPDF() {
+    $.ajax({
+        type: "get",
+        url:path + "/report/reportProductPDF",
+        dataType:"json",
+        success:function (data) {
+            if(data == "1"){
+                alert("下载产品分类数量/金额汇总报表成功,文件下载到D盘");
+            }else{
+                alert("下载产品分类数量/金额汇总报表失败");
+            }
+        }
+    })
+}
 
 $().ready(function(){
 	mover(3);
