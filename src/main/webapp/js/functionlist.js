@@ -24,9 +24,9 @@ $().ready(function(){
 		$.post(path+"/resource/saverolefunc/"+roleId+dian+checkList,
 				function(result){
 				if(result=="success")
-					alert("保存成功");
+					humane.success("保存成功");
 				else
-                    alert("保存失败");
+                    humane.error("保存失败");
             window.location.href=path+"/resource/resourceList/"+roleId;
 		},"html");
 		

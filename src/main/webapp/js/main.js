@@ -49,18 +49,18 @@ $().ready(function() {
         var newpwd2 = $("#newpwd2").val();
         if (oldpwd.length < 5) {
             $("#oldpwdtext").focus();
-            alert("请输入原始密码");
+            humane.error("请输入原始密码");
         } else if (newpwd.length < 5) {
 
             $("#newpwd").focus();
-            alert("密码长度不能小于6");
+            humane.error("密码长度不能小于6");
         } else if (newpwd2.length < 5) {
 
             $("#newpwd2").focus();
-            alert("密码长度不能小于6");
+            humane.error("密码长度不能小于6");
         } else if (newpwd != newpwd2) {
 
-            alert("两次密码不相同");
+            humane.error("两次密码不相同");
         } else {
             // 提交到服务器
 
@@ -69,11 +69,11 @@ $().ready(function() {
             }, function (result) {//alert(result.length);
                 // "success",failed
                 if (result == '1') {
-                    alert("修改密码成功,请重新登录！");
+                    humane.success("修改密码成功,请重新登录！");
                     $("#modifydiv").hide();
                     window.location.href=path+"/login.jsp";
                 } else
-                    alert("修改密码失败 ！");
+                    humane.error("修改密码失败 ！");
             }, 'html');
         }
 

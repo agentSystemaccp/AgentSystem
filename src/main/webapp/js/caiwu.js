@@ -36,11 +36,9 @@ window.onload=function() {
                     if (result == "success") {
 
                         humane.success("恭喜,当前操作成功");
-                        $("#systemtip").html("恭喜,当前操作成功");
                     }
                     else {
                         humane.error("对不起,当前操作失败");
-                        $("#systemtip").html("对不起,当前操作失败");
                     }
 
                 }, 'html');

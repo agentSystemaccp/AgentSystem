@@ -33,9 +33,7 @@ window.onload = function () {
                 var years = $("#serviceyear").val();
                 if (keyword == null
                     || keyword.length == 0)
-                    $("#keywordtip")
-                        .html(
-                            "<font color='red'>对不起,您申请的关键词不能为空.请重新填写</font>");
+                    humane.error("对不起,您申请的关键词不能为空.请重新填写!");
                 else {
                     $("#keywordtip").html("<font color='green'>正在验证关键词是否已被抢占</font>");
 
@@ -111,7 +109,7 @@ function jisuan() {
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
                 success: function (result) {
                     if (result == "exception") {
-                        alert("计算价格时出现异常,请重试 ");
+                        humane.error("计算价格时出现异常,请重试 ");
                     } else {
                         $("#price").val(result);// result为返回金额
                     }
@@ -132,17 +130,17 @@ function submitKeyWord() {
     var servicetype = $("#servicetype").val();
     var serviceyear = $("#serviceyear").val();
     if (customID < 0) {
-        $("#custom").html("对不起,请选择客户");
+        humane.error("对不起,请选择客户!");
         $("#searchusertext").focus();
     } else if ($("#keyword").val() == '' || $("#keyword").val().length <= 0) {
+        humane.error("对不起,您 申请的关键词不能为空!");
 
-        $("#keywordtip").html("<font color='red'>对不起,您 申请的关键词不能为空!</font>");
         $("#keyword").focus();
     } else if (servicetype == "") {
-        $("#serviceTip").html("请选择服务类型");
+        humane.error("请选择服务类型!");
         $("#servicetype").focus();
     } else if (serviceyear == "") {
-        $("#yearTip").html("请选择服务年限");
+        humane.error("请选择服务类型!");
         $("#serviceyear").focus();
     } else {
         //清空提示
@@ -163,7 +161,7 @@ function submitKeyWord() {
                      validateBalance(servicetype,serviceyear);
 
                 } else
-                    alert("对不起,您申请的关键词 [" + $("#keyword").val() + "]已被抢占");
+                    humane.error("对不起,您申请的关键词 [" + $("#keyword").val() + "]已被抢占");
             }, 'html');
 
 
@@ -181,7 +179,7 @@ function validateBalance(servicetype,serviceyear) {
         },
         function (result) {
             if (result == "nomoney") {
-                alert("对不起,您当前的余额不能支付本次申请,请充值后再进行重试");
+                humane.error("对不起,您当前的余额不能支付本次申请,请充值后再进行重试");
 
             } else
             //余额充足,提交
@@ -203,7 +201,7 @@ function submitAdd(servicetype,serviceyear) {
         },
         function (result) {
             if (result != "failed") {
-                alert("恭喜您 ,您 提交的关键词[" + $("#keyword").val() + "]申请成功!");
+                humane.success("恭喜您 ,您 提交的关键词[" + $("#keyword").val() + "]申请成功!");
                 window.location.href=path+"/agent/toKeyWordManage"
             }
         }, 'html');

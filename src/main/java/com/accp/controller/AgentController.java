@@ -77,9 +77,9 @@ public class AgentController {
         Keyword keyWord = new Keyword();
         keyWord.setKeyword(keyword);
         if(keywordBiz.queryByKeyWord(keyWord)==null){
-            return JSON.toJSONString("success");
+            return "success";
         }
-        return JSON.toJSONString("fail");
+        return "fail";
     }
 
 
@@ -268,11 +268,16 @@ public class AgentController {
         Customer customer = new Customer();
         customer.setCustomerId(Integer.parseInt(cid));
         if(customStatus.equals("1"))
-            customer.setCompanyStatus(0);
+            customer.setCompanyStatus(2);
         else
             customer.setCompanyStatus(1);
 
-        return customerBiz.updateCustomer(customer)>0 ? JSON.toJSONString("success"):JSON.toJSONString("false");
+        String reuslt = "false";
+        //操作成功
+        if(customerBiz.updateCustomer(customer)>0)
+            return "success";
+        else
+            return  "false";
     }
 
     /**
@@ -349,9 +354,9 @@ public class AgentController {
         int uid = ((UserInfo)session.getAttribute("userLogin")).getUserid();
         customer.setUserId(uid);
         if(customerBiz.updateCustomerAndProtal(customer,protal)>0){
-            return JSON.toJSONString("success");
+            return "success";
         }
-        return JSON.toJSONString("false");
+        return "false";
     }
 
     /**

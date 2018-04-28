@@ -57,7 +57,7 @@
             <if test="companyName!=null and companyName!=''">companyName=#{companyName},</if>
             <if test="companyType!=0">companyType=#{companyType},</if>
             <if test="companyPages!=null and companyPages!=''">companyPages=#{companyPages},</if>
-            <if test="companyStatus==0 or companyStatus==1">companyStatus=#{companyStatus},</if>
+            <if test="companyStatus==1 or companyStatus==2">companyStatus=#{companyStatus},</if>
         </set>
         WHERE customerId=#{customerId}
     </update>
