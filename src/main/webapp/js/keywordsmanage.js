@@ -35,7 +35,7 @@ function loadKeyWordList(pageIndex,keyword) {
         success: function (data) {
 
             if(data.totalRows==0){
-                $(".container").html("<h3>对不起!暂无数据!</h3>")
+                humane.error("对不起!暂无数据!");
             }else {
                 $("#keywordManage").html("");
                 $(".pagination").html("");

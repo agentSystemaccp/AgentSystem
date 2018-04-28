@@ -2,7 +2,7 @@ function searchReportFunc(){
 	
 	if(comtime($("#starttime").val(),$("#endtime").val()))
 	{
-		alert("开始时间大于结束时间,请检查");
+		humane.error("开始时间大于结束时间,请检查");
 		return false;
 	}
 	return true;

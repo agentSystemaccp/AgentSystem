@@ -20,9 +20,9 @@
           </c:forEach>
         </select>
         </li>
-        <li>企业主页:<input type="text" name="companyPages" value="">
+        <li>企业主页:<input type="text" id="companyPages" name="companyPages" value="">
         </li>
-        <li>状态: <select name="companyStatus">
+        <li>状态: <select name="companyStatus" id="companyStatus">
             <option value="">请选择</option>
             <option value="1">启用</option>
           <option value="0">停用</option>
@@ -52,14 +52,14 @@
           <option value="">--请选择省份--</option>
         </select>
         </li>
-        <li>公司传真:<input type="text" name="companyFax" value="">
+        <li>公司传真:<input type="text" name="companyFax" id="companyFax" value="">
         </li>
         <li>城市: <select id="customcity" name="city">
           <option value="">--请选择城市--</option>
         </select></li>
         <li>公司电话:<input type="text" id="companyTel" name="companyTel" value="">
         </li>
-        <li>公司地址:<input type="text" name="companyAddress" value="">
+        <li>公司地址:<input type="text" name="companyAddress" id="companyAddress" value="">
         </li>
       </ul>
       <div class="clear"></div>
@@ -104,6 +104,7 @@
 
 </div>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/addcustom.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/validate.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/addcustom.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/medire/WdatePicker.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/cascade.js"></script>

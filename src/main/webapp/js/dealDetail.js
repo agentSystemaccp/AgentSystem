@@ -1,18 +1,5 @@
 var path=$("#path").val();
 
-// $(document).ready(function () {
-//     alert(5555);
-//     replace();
-// });
-
-// jQuery(function () {
-//     alert(5555);
-//     replace();
-// })
-
-// window.onload=function () {
-//     replace();
-// };
 
 replace();
 
@@ -28,7 +15,7 @@ function replace(pageIndex) {
         data: {pageIndex: pageIndex},
         success: function (data) {
             if(data.totalRows==0){
-                $(".container").html("<h3>对不起!暂无数据!</h3>")
+                humane.error("对不起!暂无数据!");
             }else {
                 $("#dealTable").html();
                 var table = "";

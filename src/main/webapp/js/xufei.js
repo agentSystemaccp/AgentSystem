@@ -8,10 +8,10 @@ var path = $("#path").val();
         var servicetype = $("#servicetype").val();
         var serviceyear = $("#serviceyear").val();
         if (servicetype == "") {
-            $("#serviceTip").html("请选择服务类型");
+            humane.error("请选择服务类型");
             $("#servicetype").focus();
         } else if (serviceyear == "") {
-            $("#yearTip").html("请选择服务年限");
+            humane.error("请选择服务年限");
             $("#serviceyear").focus();
         } else {
             //清空提示
@@ -41,7 +41,7 @@ var path = $("#path").val();
             },
             function (result) {
                 if (result == "nomoney") {
-                    alert("对不起,您当前的余额不能支付本次申请,请充值后再进行重试");
+                    humane.error("对不起,您当前的余额不能支付本次申请,请充值后再进行重试");
 
                 } else
                 //余额充足,提交
@@ -63,7 +63,7 @@ var path = $("#path").val();
             },
             function (result) {
                 if (result != "failed") {
-                    alert("恭喜您 ,关键词 [" + $("#keyword").val() + "]续费成功!");
+                    humane.success("恭喜您 ,关键词 [" + $("#keyword").val() + "]续费成功!");
                     top.location=path+"/agent/toKeyWordManage";
                 }
             }, 'html');
@@ -92,10 +92,10 @@ function jisuan() {
     var servicetype = $("#servicetype").val();
     var serviceyear = $("#serviceyear").val();
     if (servicetype == "") {
-        $("#serviceTip").html("请选择服务类型!");
+        humane.error("请选择服务类型!");
         $("#servicetype").focus();
     } else if (serviceyear == "") {
-        $("#yearTip").html("请选择服务年限!");
+        humane.error("请选择服务年限!");
         $("#serviceyear").focus();
     } else {
         $("#yearTip").html("");
@@ -108,7 +108,7 @@ function jisuan() {
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
                 success: function (result) {
                     if (result == "exception") {
-                        alert("计算价格时出现异常,请重试 ");
+                        humane.error("计算价格时出现异常,请重试 ");
                     } else {
                         $("#price").val(result);// result为返回金额
                     }

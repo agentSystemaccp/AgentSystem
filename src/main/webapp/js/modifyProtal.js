@@ -8,10 +8,10 @@ function checksave(){
         	dataType:"json",//ajax接口（请求url）返回的数据类型
             success:function (data) {
                 if(data == '1'){
-                    alert("修改成功");
+                    humane.success("修改成功!");
                     window.location.href=path+"/protal/queryProtalList";
                 }else{
-                    alert("修改失败");
+                    humane.error("修改失败!");
                 }
             }
     })
