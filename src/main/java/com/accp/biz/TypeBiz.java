@@ -10,11 +10,39 @@ public interface TypeBiz {
      * @param parentId
      * @return
      */
-    List<Type> queryTypeByParentId(int parentId);
+    List<Type> queryTypeByParentId(int parentId,int status);
 
     /**
      * 查询产品类型
      * @return
      */
     List<Type> queryProductType();
+
+    /**
+     * 通过Id删除类型
+     * @param typeId
+     * @return
+     */
+    int delType(int typeId);
+
+    /**
+     * 添加类型
+     * @param type
+     * @return
+     */
+    int addType(Type type);
+
+    /**
+     * 通过类型名称查询类型
+     * @param typeName
+     * @return
+     */
+    Type queryTypeByName(String typeName);
+
+    /**
+     * 修改类型
+     * @param type
+     * @return
+     */
+    int updateType(Type type);
 }

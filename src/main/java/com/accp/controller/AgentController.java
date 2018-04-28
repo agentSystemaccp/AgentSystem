@@ -64,7 +64,7 @@ public class AgentController {
     @RequestMapping("/loadServiceType")
     @ResponseBody
     public Object loadServiceType(){
-        return JSONArray.toJSONString(typeBiz.queryTypeByParentId(3));
+        return JSONArray.toJSONString(typeBiz.queryTypeByParentId(3,1));
     }
 
     /**
@@ -206,7 +206,7 @@ public class AgentController {
     @RequestMapping("/xufei")
     public String xufei(String kid, Model model){
         Keyword keyword = keywordBiz.queryKeyWordById(Integer.parseInt(kid));
-        model.addAttribute("xufei",typeBiz.queryTypeByParentId(3));
+        model.addAttribute("xufei",typeBiz.queryTypeByParentId(3,1));
         model.addAttribute("keyword",keyword);
         return  "xufei";
     }
@@ -289,8 +289,8 @@ public class AgentController {
         }
 
 
-        List<Type> typeList = typeBiz.queryTypeByParentId(1);   //根据父级id拿值
-        List<Type> idTypeList = typeBiz.queryTypeByParentId(4); //证件类型
+        List<Type> typeList = typeBiz.queryTypeByParentId(1,1);   //根据父级id拿值
+        List<Type> idTypeList = typeBiz.queryTypeByParentId(4,1); //证件类型
 
 
         model.addAttribute("protal",protal);
@@ -381,7 +381,7 @@ public class AgentController {
     @ResponseBody
     public Object loadType(String parentId){
         //下拉列表
-        List<Type> typeList = typeBiz.queryTypeByParentId(Integer.parseInt(parentId));
+        List<Type> typeList = typeBiz.queryTypeByParentId(Integer.parseInt(parentId),1);
         return JSONArray.toJSONString(typeList);
     }
 
