@@ -21,9 +21,17 @@ public class TypeController {
     @RequestMapping("/queryFinanceType")
     public String queryFinanceType(Model model){
         //查询财务类型集合
-        List<Type> typeList = typeBiz.queryTypeByParentId(2,0);
-        model.addAttribute("typeList",typeList);
+        List<Type> financeType = typeBiz.queryTypeByParentId(2,0);
+        model.addAttribute("financeType",financeType);
         return "financeType";
+    }
+
+    //查询服务类型并且跳转到服务类型页面
+    @RequestMapping("/queryServiceType")
+    public String queryServiceType(Model model){
+        List<Type> serviceType = typeBiz.queryTypeByParentId(3,0);
+        model.addAttribute("serviceType",serviceType);
+        return "serviceType";
     }
 
     //删除类型

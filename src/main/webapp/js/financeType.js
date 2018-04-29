@@ -1,11 +1,11 @@
 //点击添加按钮 出现添加弹框
 $("#addFinanceType").on("click",function () {
-    $("#addFinanceDiv").css({"visibility":"visible","display":"block"});
+    $("#addDiv").css({"visibility":"visible","display":"block"});
 });
 
 //点击添加文本框去取消按钮  关闭添加弹框
-$("#closeFinanceForm").on("click",function () {
-    $("#addFinanceDiv").css({"visibility": "hidden", "display": "none"});
+$("#closeForm").on("click",function () {
+    $("#addDiv").css({"visibility": "hidden", "display": "none"});
 });
 
 //添加类型时验证类型名是否存在
@@ -14,7 +14,7 @@ $("#addFinanceTypeName").on("blur",function () {
     //验证类型名称是否为空
     if($typeName.length == 0){
         alert("类型名称不能为空");
-        return false;
+        return;
     }
     $.ajax({
         type:"post",
@@ -26,17 +26,18 @@ $("#addFinanceTypeName").on("blur",function () {
 
             }else{
                 alert("类型已存在,请重新填写类型");
+                return;
             }
         }
     });
 });
 
 //添加类型保存按钮点击事件
-$("#addFinanceSave").on("click",function () {
+$("#addSave").on("click",function () {
     //提交数据
     $.ajax({
         type:"post",
-        data:$("#addFinanceTypeFrom").serialize(),      //序列化成封装的类
+        data:$("#addTypeFrom").serialize(),      //序列化成封装的类
         url:path+"/type/addType",
         dataType:"json",
         success:function (data) {
@@ -77,7 +78,7 @@ $(".modifyType").on("click",function () {
     $("#modifyFinanceId").val(obj.attr("typeId"));
     $("#modifyTypeName").val(obj.attr("typeName"));
     $("#modifyTypeStatus").val(obj.attr("status"));
-    $("#modifyFinanceDiv").css({"visibility":"visible","display":"block"});
+    $("#modifyDiv").css({"visibility":"visible","display":"block"});
 });
 
 //修改类型时验证类型名是否存在和验证类型名是否为空
@@ -88,31 +89,18 @@ $("#modifyTypeName").on("blur",function () {
         alert("类型名称不能为空");
         return false;
     }
-    $.ajax({
-        type:"post",
-        data:{typeName:$typeName},
-        url:path+"/type/checkType",
-        dataType:"json",
-        success:function (data) {
-            if(data == "1"){
-
-            }else{
-                alert("类型已存在,请重新填写类型");
-            }
-        }
-    });
 });
 
 //点击取消修改时,关闭修改弹框
-$("#closeModifyFinanceForm").on("click",function () {
-    $("#modifyFinanceDiv").css({"visibility": "hidden", "display": "none"});
+$("#closeModifyForm").on("click",function () {
+    $("#modifyDiv").css({"visibility": "hidden", "display": "none"});
 });
 
 //点击修改保存时,提示表单
-$("#modifyFinanceSave").on("click",function () {
+$("#modifySave").on("click",function () {
    $.ajax({
        type:"post",
-       data:$("#modifyFinanceFrom").serialize(),      //序列化成封装的类
+       data:$("#modifyFrom").serialize(),      //序列化成封装的类
        url:path+"/type/updateType",
        dataType:"json",
        success:function (data) {

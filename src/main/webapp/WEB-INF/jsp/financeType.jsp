@@ -18,24 +18,24 @@
     </tr>
     </thead>
     <tbody>
-      <c:forEach items="${typeList}" var="type" varStatus="statu">
+      <c:forEach items="${financeType}" var="type" varStatus="statu">
         <tr>
           <td>${statu.count}</td>
           <td>${type.typeName}</td>
           <td style="color: #66F4DF;">${type.typeStatus == 1 ? '启用':'停用'}</td>
           <td>
-            <a class="modifyType" href="javascript:;" typeName="${type.typeName}" typeId="${type.typeId}">修改</a>|
-            <a class="delType" href="javascript:;" status="${type.typeStatus}" typeName="${type.typeName}" typeId="${type.typeId}">删除</a>
+            <a class="modifyType" href="javascript:;" status="${type.typeStatus}" typeName="${type.typeName}" typeId="${type.typeId}">修改</a>|
+            <a class="delType" href="javascript:;" typeName="${type.typeName}" typeId="${type.typeId}">删除</a>
           </td>
         </tr>
       </c:forEach>
     </tbody>
   </table>
-  <div id="addFinanceDiv" style="visibility: hidden;display:none;width: 300px;height: 150px;background-color: #f5f5f5;position: absolute;left: 360px;top: 70px; ">
+  <div id="addDiv" style="visibility: hidden;display:none;width: 300px;height: 150px;background-color: #f5f5f5;position: absolute;left: 360px;top: 70px; ">
     <div style="width: 250px;height: 130px;padding: 30px 25px; ">
       <h5 style="text-align: center">正在进行添加操作</h5>
       <hr/>
-      <form id="addFinanceTypeFrom" method="post">
+      <form id="addTypeFrom" method="post">
         <input type="hidden" name="parentId" value="2"/>
         <div style="margin: 10px 5px">
           <label>类型名称：</label>
@@ -47,17 +47,17 @@
             <option selected value="1">启用</option>
             <option value="0">不启用</option>
           </select>
-          <input id="addFinanceSave" type="button" value="保存"/>
-          <input id="closeFinanceForm" type="button" value="取消">
+          <input id="addSave" type="button" value="保存"/>
+          <input id="closeForm" type="button" value="取消">
         </div>
       </form>
     </div>
   </div>
-  <div id="modifyFinanceDiv" style="visibility: hidden;display:none;width: 300px;height: 150px;background-color: #f5f5f5;position: absolute;left: 360px;top: 70px; ">
+  <div id="modifyDiv" style="visibility: hidden;display:none;width: 300px;height: 150px;background-color: #f5f5f5;position: absolute;left: 360px;top: 70px; ">
     <div style="width: 250px;height: 130px;padding: 30px 25px; ">
       <h5 style="text-align: center">正在进行修改操作</h5>
       <hr/>
-      <form id="modifyFinanceFrom" method="post">
+      <form id="modifyFrom" method="post">
         <input id="modifyFinanceId" type="hidden" name="typeId" value="">
         <div style="margin: 10px 5px">
           <label>类型名称：</label>
@@ -69,8 +69,8 @@
             <option selected value="1">启用</option>
             <option value="0">不启用</option>
           </select>
-          <input id="modifyFinanceSave" type="button" value="保存"/>
-          <input id="closeModifyFinanceForm" type="button" value="取消">
+          <input id="modifySave" type="button" value="保存"/>
+          <input id="closeModifyForm" type="button" value="取消">
         </div>
       </form>
     </div>
