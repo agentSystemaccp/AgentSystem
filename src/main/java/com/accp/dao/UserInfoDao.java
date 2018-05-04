@@ -24,6 +24,11 @@ public interface UserInfoDao {
      */
     UserInfo findInfo(UserInfo userInfo);
 
+    /**
+     * 修改用户信息
+     * @param userInfo
+     * @return
+     */
     int updateUserInfo(UserInfo userInfo);
 
     /**

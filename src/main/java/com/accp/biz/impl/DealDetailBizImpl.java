@@ -58,4 +58,11 @@ public class DealDetailBizImpl implements DealDetailBiz {
         page.setPageList(dealDetailDao.queryListByParam(userid,dealType,starttime,endtime,(pageNo-1)*pageSize,pageSize));
         return page;
     }
+
+    public boolean addDealDetail(DealDetail dealDetail) {
+        if (dealDetailDao.addDealDetail(dealDetail)>0){
+            return true;
+        }
+        return false;
+    }
 }

@@ -34,4 +34,11 @@ public interface UserInfoBiz {
      * @return
      */
     List<UserInfo> queryAllUserInfo();
+
+    /**
+     * 修改用户信息
+     * @param userInfo
+     * @return
+     */
+    boolean updateUserInfo(UserInfo userInfo);
 }

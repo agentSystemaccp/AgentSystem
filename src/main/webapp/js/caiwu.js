@@ -1,4 +1,5 @@
 var userid;
+var userbalance;
 var path;
 window.onload=function() {
     userid = -1;
@@ -14,6 +15,8 @@ window.onload=function() {
     });
 
     $("#caiwuok").click(function () {
+        var zijin= /^[+-]?\d+(?:\.\d{1,2})?$/;
+
         // 提交并执行账户操作
         if (userid < 0)
             humane.error("对不起,您还没有选择用户,请搜索进行用户选择");
@@ -22,25 +25,31 @@ window.onload=function() {
         }
         else if ($("#zijin").val() == '' || $("#zijin").val().length <= 0) {
             humane.error("对不起,您还没有输入金额");
-        } else {
+        }
+        else if(zijin.test($("#zijin").val())==false){
+            humane.error("对不起，请填写正确的操作资金格式");
+        }else {
             if (confirm("是否确定执行当前操作?")) {
 
-                $.post("/opeaccount.action", {
-                    'account.userId': userid,
-                    'account.userName': $("#searchUserText").val(),
-                    'account.money': $("#zijin").val(),
-                    'accountDetail.detailType': $("#zijintype").val(),
-                    'accountDetail.detailTypeName': $("#zijintype option:selected").text(),
-                    'accountDetail.memo': $("#memo").val()
+                $.post(path+"/deal/createAccountDetail", {
+                    'userId': userid,
+                    //'account.userName': $("#searchUserText").val(),
+                    'money': $("#zijin").val(),
+                    //'accountDetail.detailType': $("#zijintype").val(),
+                    'detailTypeName': $("#zijintype option:selected").text(),
+                    'memo': $("#memo").val(),
+                    'userbalance':userbalance
                 }, function (result) {
                     if (result == "success") {
 
                         humane.success("恭喜,当前操作成功");
                         $("#systemtip").html("恭喜,当前操作成功");
+                        $("#searchUserText").val("");
                     }
                     else {
                         humane.error("对不起,当前操作失败");
                         $("#systemtip").html("对不起,当前操作失败");
+                        $("#searchUserText").val("");
                     }
 
                 }, 'html');
@@ -51,8 +60,9 @@ window.onload=function() {
 
 }
 
-function confirmUser(uid, ucode) {
+function confirmUser(uid, ubalance,ucode) {
 	userid = uid;
+    userbalance=ubalance;
 	$("#searchUserText").val(ucode);
 	$("#searchresult").html("");
 }
@@ -66,6 +76,7 @@ function loadUsers() {
 		var userList = "<ul>";
 		for ( var i = 0; i < result.length; i++) {
 			userList = userList + "<li onclick=\"confirmUser('" + result[i].userid
+                    +"','" + result[i].balance
 					+ "','" + result[i].userAccount + "')\">" + result[i].userAccount
 					+ "</li>";
 		}

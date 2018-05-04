@@ -62,4 +62,11 @@ public class UserInfoBizImpl implements UserInfoBiz {
     public List<UserInfo> queryAllUserInfo() {
         return userInfoDao.queryAllUserInfo();
     }
+
+    public boolean updateUserInfo(UserInfo userInfo) {
+        if (userInfoDao.updateUserInfo(userInfo)>0){
+            return true;
+        }
+        return false;
+    }
 }

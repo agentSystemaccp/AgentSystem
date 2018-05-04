@@ -16,7 +16,7 @@
 	<div class="searchuserdiv ope">
 		<ul>
 			<li>操作类型:
-				<select>
+				<select id="zijintype">
 					<option value="">--请选择--</option>
 					<c:forEach items="${financeTypes}" var="financeType">
 						<option value="${financeType.typeId}">${financeType.typeName}</option>

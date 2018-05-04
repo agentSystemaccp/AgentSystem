@@ -20,4 +20,7 @@ public interface DealDetailBiz {
     public List<DealDetail> queryDealDetailByDate(int type,String starttime,String endtime);
 
     Page<DealDetail> queryListByParam(int userid,int dealType,String starttime,String endtime,int pageSize, int pageNo);
+
+    //添加明细
+    boolean addDealDetail(DealDetail dealDetail);
 }

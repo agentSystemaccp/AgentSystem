@@ -96,4 +96,5 @@ public class UserInfoController {
         List<UserInfo> userInfoList=userInfoBiz.queryAllUserInfo();
         return JSONArray.toJSONString(userInfoList);
     }
+
 }
