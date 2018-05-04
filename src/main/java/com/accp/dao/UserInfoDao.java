@@ -18,6 +18,7 @@ public interface UserInfoDao {
      */
     int updatePassword(UserInfo userInfo);
 
+
     /**
      * 根据参数查询信息
      * @return
