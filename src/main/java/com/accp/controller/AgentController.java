@@ -157,7 +157,7 @@ public class AgentController {
         if(pageIndex==null||pageIndex==""){
             pageIndex="1";
         }
-        Page<Keyword> page = keywordBiz.queryKeyWordList(keyword,uid,2,Integer.parseInt(pageIndex));
+        Page<Keyword> page = keywordBiz.queryKeyWordList(keyword,uid,5,Integer.parseInt(pageIndex));
         return JSONArray.toJSONString(page);
     }
 
@@ -250,7 +250,7 @@ public class AgentController {
         if(pageIndex==null||pageIndex==""){
             pageIndex="1";
         }
-        Page<Customer> page = customerBiz.queryCustomByList(cname,uid,2,Integer.parseInt(pageIndex));
+        Page<Customer> page = customerBiz.queryCustomByList(cname,uid,5,Integer.parseInt(pageIndex));
         model.addAttribute("companyName",cname);
         return JSONArray.toJSONString(page);
     }
@@ -320,10 +320,10 @@ public class AgentController {
         Customer customer = new Customer();
         customer.setCompanyName(companyName);
         if(customerBiz.queryCustomerByParam(customer)==null){
-            return JSON.toJSONString("nopeat");
+            return "nopeat";
         }
 
-        return JSON.toJSONString("peat");
+        return "peat";
     }
 
     /**
@@ -354,9 +354,9 @@ public class AgentController {
         int uid = ((UserInfo)session.getAttribute("userLogin")).getUserid();
         customer.setUserId(uid);
         if(customerBiz.updateCustomerAndProtal(customer,protal)>0){
-            return "success";
+            return JSON.toJSONString("success");
         }
-        return "false";
+        return JSON.toJSONString("false");
     }
 
     /**
@@ -367,9 +367,9 @@ public class AgentController {
     @ResponseBody
     public Object delContacts(int contactsId){
         if(contactsBiz.delContactsById(contactsId)>0){
-            return JSON.toJSONString("success");
+            return "success";
         }
-        return  JSON.toJSONString("false");
+        return  "false";
     }
 
 
@@ -408,7 +408,7 @@ public class AgentController {
         if(detailType==null||detailType==""){
             detailType="0";
         }
-        Page<DealDetail> detailPage = dealDetailBiz.queryListByParam(uid, Integer.parseInt(detailType), starttime, endtime, 2, Integer.parseInt(pageIndex));
+        Page<DealDetail> detailPage = dealDetailBiz.queryListByParam(uid, Integer.parseInt(detailType), starttime, endtime, 5, Integer.parseInt(pageIndex));
 
         return JSON.toJSONString(detailPage);
     }

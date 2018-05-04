@@ -66,7 +66,8 @@ function loadDetailList(pageIndex,starttime,endtime) {
 
 			if(data.pageList.length==0){
                 $("#accountdetail").html("");
-                $("#accountdetail").html("<h2 style='font-weight: 400;' align='center'>没有搜索到任何关键词的信息!</h2>");
+                humane.error("没有搜索到任何关键词的信息!");
+                $("#accountdetail").html("<h2 style='font-weight: 400;' align='center'></h2>");
                 $(".pagination").html("");
 			}else {
 

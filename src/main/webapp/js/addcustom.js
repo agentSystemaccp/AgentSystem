@@ -68,9 +68,8 @@ function customerSubmit(customname) {
         type:"post",
         url:path+"/agent/insertCustomer",
         dataType : 'json',
-        async: false,
-        success :function (data) {
-            if(data=="success"){
+        success :function (result) {
+            if(result=="success"){
                 humane.success("添加[ "+customname+" ]成功!");
                 window.location.href=path+"/agent/toCustomerManage";
             }else {

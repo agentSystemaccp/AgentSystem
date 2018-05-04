@@ -30,11 +30,11 @@
         <li>状态:<select name="companyStatus" id="companyStatus">
           <c:if test="${protal.customer.companyStatus==1}">
             <option value="1" selected="selected">启用</option>
-            <option value="0">停用</option>
+            <option value="2">停用</option>
           </c:if>
           <c:if test="${protal.customer.companyStatus!=1}">
             <option value="1">启用</option>
-            <option value="0" selected="selected">停用</option>
+            <option value="2" selected="selected">停用</option>
           </c:if>
         </select>
       </ul>
