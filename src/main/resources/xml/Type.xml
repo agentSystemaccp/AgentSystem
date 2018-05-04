@@ -8,11 +8,37 @@
 
 <!--根据父级id拿数据-->
     <select id="queryTypeByParentId" resultType="Type">
-        SELECT * FROM finance_type WHERE parentId=#{parentId} AND typeStatus=1
+        SELECT * FROM finance_type WHERE parentId=#{parentId}
+--         追加查询状态为启用类型
+        <if test="status != 0">
+            AND typeStatus = 1
+        </if>
     </select>
 
     <select id="queryProductType" resultType="Type">
         SELECT *,(SELECT COUNT(typeId) FROM keyword WHERE typeId = t.typeId) number FROM finance_type t WHERE parentId = 3
     </select>
 
+    <delete id="delType">
+        DELETE FROM finance_type WHERE typeId = #{typeId}
+    </delete>
+
+    <insert id="addType">
+        INSERT INTO finance_type VALUES (DEFAULT,#{parentId},#{typeName},#{typeStatus},#{allocation},#{realityAllocation})
+    </insert>
+
+    <select id="queryTypeByName" resultType="Type">
+        SELECT * FROM finance_type where typeName = #{typeName}
+    </select>
+
+    <update id="updateType">
+        UPDATE finance_type
+        <set>
+            <if test="typeName != null and typeName != ''">typeName = #{typeName}</if>
+            <if test="typeStatus == 0 or typeStatus == 1">,typeStatus = #{typeStatus}</if>
+            <if test="allocation != 0">,allocation = #{allocation}</if>
+            <if test="realityAllocation != 0">,realityAllocation = #{realityAllocation}</if>
+        </set>
+        where typeId = #{typeId}
+    </update>
 </mapper>

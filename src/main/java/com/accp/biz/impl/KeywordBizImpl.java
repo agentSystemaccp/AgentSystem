@@ -66,7 +66,7 @@ public class KeywordBizImpl implements KeywordBiz {
         //设置总页数
         page.setTotalPage((page.getTotalRows()+pageSize-1)/pageSize);
         //设置查询的集合
-        page.setPageList(keyWordDao.queryKeyWordList(keyword,(pageNo-1)*pageSize,pageSize));
+        page.setPageList(keyWordDao.queryKeyWordList(keyword,userId,(pageNo-1)*pageSize,pageSize));
         return page;
     }
 

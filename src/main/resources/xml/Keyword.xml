@@ -46,7 +46,11 @@
         SELECT k.*,u.userName,c.companyName FROM keyword k,userinfo u,customerinfo c WHERE k.userId=u.userid AND k.customerId=c.customerId
         <if test="keyword!=null and keyword!=''">
             AND k.keyword LIKE CONCAT ('%',#{keyword},'%')
-        </if> LIMIT #{offset},#{pageSize}
+        </if>
+        <if test="uid!=0">
+            AND k.userId =#{uid}
+        </if>
+         LIMIT #{offset},#{pageSize}
     </select>
 
     <!--查询总条数-->

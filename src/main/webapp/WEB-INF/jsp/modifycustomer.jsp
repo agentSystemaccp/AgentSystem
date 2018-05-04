@@ -25,16 +25,16 @@
             </c:forEach>
         </select>
         </li>
-        <li>企业主页:<input type="text" name="companyPages" value="${protal.customer.companyPages}">
+        <li>企业主页:<input type="text" name="companyPages" id="companyPages" value="${protal.customer.companyPages}">
         </li>
-        <li>状态:<select name="companyStatus">
+        <li>状态:<select name="companyStatus" id="companyStatus">
           <c:if test="${protal.customer.companyStatus==1}">
             <option value="1" selected="selected">启用</option>
-            <option value="0">停用</option>
+            <option value="2">停用</option>
           </c:if>
           <c:if test="${protal.customer.companyStatus!=1}">
             <option value="1">启用</option>
-            <option value="0" selected="selected">停用</option>
+            <option value="2" selected="selected">停用</option>
           </c:if>
         </select>
       </ul>
@@ -72,7 +72,7 @@
           <option value="">--请选择省份--</option>
         </select>
         </li>
-        <li>公司传真:<input type="text" name="companyFax" value="${protal.companyFax}">
+        <li>公司传真:<input type="text" name="companyFax" id="companyFax"  value="${protal.companyFax}">
         </li>
         <li>城市:
           <select id="customcity" name="city">
@@ -81,7 +81,7 @@
         </li>
         <li>公司电话:<input type="text" name="companyTel" id="companyTel" value="${protal.companyTel}">
         </li>
-        <li>公司地址:<input type="text" name="companyAddress" value="${protal.companyAddress}">
+        <li>公司地址:<input type="text" name="companyAddress" id="companyAddress" value="${protal.companyAddress}">
         </li>
       </ul>
       <div class="clear"></div>
@@ -115,10 +115,10 @@
         <c:forEach items="${contactsList}" var="contactsList" varStatus="contact">
           <tr>
             <input type='hidden' name='contacts[${contact.index}].contactsId' value="${contactsList.contactsId }">
-            <td><input type='text' name='contacts[${contact.index}].contactsName' value="${contactsList.contactsName }"></td>
-            <td><input type='text' name='contacts[${contact.index}].contactsTel'  value="${contactsList.contactsTel}"></td>
-            <td><input type='text' name='contacts[${contact.index}].contactsFax'  value="${contactsList.contactsFax}"></td>
-            <td><input type='text' name='contacts[${contact.index}].contactsEmail'  value="${contactsList.contactsEmail}"></td>
+            <td><input type='text' name='contacts[${contact.index}].contactsName'  value="${contactsList.contactsName }"></td>
+            <td><input type='text' name='contacts[${contact.index}].contactsTel'  class="contactsTel"  value="${contactsList.contactsTel}"></td>
+            <td><input type='text' name='contacts[${contact.index}].contactsFax'  class="contactsFax"  value="${contactsList.contactsFax}"></td>
+            <td><input type='text' name='contacts[${contact.index}].contactsEmail'  class="contactsEmail"  value="${contactsList.contactsEmail}"></td>
             <td><input type='text' name='contacts[${contact.index}].contactsPost'  value="${contactsList.contactsPost}"></td>
             <td  onclick='delTr(this)' style="cursor:hand">删除</td></tr>
           </tr>
@@ -136,6 +136,7 @@
 
 </div>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/modifycustom.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/validate.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/modifycustom.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/cascade.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/medire/WdatePicker.js"></script>

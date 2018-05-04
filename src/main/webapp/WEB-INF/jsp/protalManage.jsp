@@ -40,7 +40,7 @@
           <td>${protal.customer.user.userName}</td>
           <td><fmt:formatDate value="${protal.customer.keyword.createTime}" pattern="yyyy-MM-dd"/></td>
           <td>${protal.customer.type.typeName}</td>
-          <td>${protal.customer.keyword.keywordStatus==1?'启用':'停用'}</td>
+          <td style="color: #66F4DF;">${protal.customer.keyword.keywordStatus==1?'启用':'停用'}</td>
           <td>
             <a class="viewprotal" href="javascript:;" protalId="${protal.protalId}">查看</a>
             <c:if test="${not empty protal.customer.keyword.appInfo}">

@@ -91,7 +91,7 @@
         <if test="userId != 0 and userId != 1">
             AND u.userId = #{userId}
         </if>
-       GROUP BY c.companyName,p.protalId LIMIT #{pageNo},#{pageSize}
+        LIMIT #{pageNo},#{pageSize}
     </select>
 
     <select id="queryProtalCount" resultType="_Integer">

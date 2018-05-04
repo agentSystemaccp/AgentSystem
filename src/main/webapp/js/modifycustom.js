@@ -35,18 +35,10 @@
     $("#cardnum").blur(function(){
         var t=$("#cardnum").val();
         if(!checkValidateNum(t))
-            alert("证件号码请输入数字!");
+            humane.error("证件号码请输入数字!");
     })
 
 
-    function checkValidateNum(value){
-
-        var reg=new RegExp("^[0-9]*$");
-        if(reg.test(value))
-            return true;
-        else
-            return false;
-    }
     function delTr(obj){
         var contactsId = $(obj).parent().children(":first").val();
         if(contactsId!=0){
@@ -55,7 +47,7 @@
                 url:path+"/agent/delContacts?contactsId="+contactsId,
                 success :function (data) {
                     if(data=="false"){
-                        alert("删除联系失败!请联系管理员");
+                        humane.error("删除联系失败!请联系管理员");
                     }else {
                         $(obj).parent().remove();
                         contactcount--;
@@ -71,65 +63,8 @@
     }
 //验证,提交
     function checksave(){
-        var customname=$.trim($("#customname").val());
-        var customcardtype=$("#customcardtype").val();
-        var companyType=$("#companyType").val();
-        var customprovince=$("#customprovince").val();
-        var customcity=$("#customcity").val();
-        var legalRepresentative =$("#legalRepresentative").val();
-        var cardnum = $("#cardnum").val();
-        var companyTel = $("#companyTel").val();
-
-
-        if(customname=='')
-        {
-            alert("客户名称不能空");
-            return ;
-        }
-        if(customcardtype==''){
-            alert("请选择证件类型");
-            return ;
-        }
-
-        if(cardnum.length==0)
-        {
-            alert("证件号码不能为空!");
-            return ;
-        }
-        if(legalRepresentative.length==0)
-        {
-            alert("法人代表不能为空!");
-            return ;
-        }
-        if(companyType==''){
-            alert("请选择企业类型!");
-            return ;
-        }
-        if(customcardtype==''){
-            alert("请选择证件类型!");
-            return ;
-        }
-        if(customprovince==''){
-            alert("请选择省份!");
-            return ;
-        }
-        if(customcity==''){
-            alert("请选择城市!");
-            return ;
-        }
-        if(companyTel.length==0){
-            alert("请公司电话不能为空!");
-            return ;
-        }
-
-
-        /*	var t=$("#cardnum").val();
-            if(!checkValidateNum(t))
-                humane.error("证件号码请输入数字!");
-
-            */
-
-
+        //数据验证
+        validate();
 
         $("#cform").ajaxSubmit({
             type:"post",
@@ -138,10 +73,10 @@
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
             success :function (data) {
                 if(data=="success"){
-                    alert("修改 [ "+customname+" ]成功!");
+                    humane.success("修改 [ "+customname+" ]成功!");
                     window.location.href=path+"/agent/toCustomerManage";
                 }else {
-                    alert("修改[ "+customname+" ]失败,请重新修改!")
+                    humane.error("修改[ "+customname+" ]失败,请重新修改!")
                 }
             }
 

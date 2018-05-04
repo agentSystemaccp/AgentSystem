@@ -21,11 +21,51 @@ public class TypeBizImpl implements TypeBiz {
      * @param parentId
      * @return
      */
-    public List<Type> queryTypeByParentId(int parentId) {
-        return typeDao.queryTypeByParentId(parentId);
+    public List<Type> queryTypeByParentId(int parentId,int status) {
+        return typeDao.queryTypeByParentId(parentId,status);
     }
 
+    /**
+     * 查询产品类型
+     * @return
+     */
     public List<Type> queryProductType() {
         return typeDao.queryProductType();
+    }
+
+    /**
+     * 通过Id删除类型
+     * @param typeId
+     * @return
+     */
+    public int delType(int typeId) {
+        return typeDao.delType(typeId);
+    }
+
+    /**
+     * 添加类型
+     * @param type
+     * @return
+     */
+    public int addType(Type type){
+        return typeDao.addType(type);
+    }
+
+    /**
+     * 通过类型名称查询类型
+     * @param typeName
+     * @return
+     */
+    public Type queryTypeByName(String typeName) {
+        return typeDao.queryTypeByName(typeName);
+    }
+
+    /**
+     * 修改类型
+     * @param type
+     * @return
+     */
+    public int updateType(Type type) {
+        return typeDao.updateType(type);
     }
 }

@@ -35,7 +35,7 @@ function loadKeyWordList(pageIndex,keyword) {
         success: function (data) {
 
             if(data.totalRows==0){
-                $(".container").html("<h3>对不起!暂无数据!</h3>")
+                humane.error("对不起!暂无数据!");
             }else {
                 $("#keywordManage").html("");
                 $(".pagination").html("");
@@ -45,7 +45,7 @@ function loadKeyWordList(pageIndex,keyword) {
                     //到期时间
                     var maturity=(createTime.getFullYear()+data.pageList[i].term)+"-"+(createTime.getMonth()+1)+"-"+createTime.getDate();
                     var time = new Date(Date.parse(maturity));
-
+                    var checkStatus = data.pageList[i].checkStatus==1 ? '已申请':data.pageList[i].checkStatus == 2 ? '审核中':data.pageList[i].checkStatus ==  3 ? '已通过':'未通过';
 
                     table+="<tr align='center' style='width: auto'>"
                     +"<td>"+(i+1)+"</td>"
@@ -56,24 +56,23 @@ function loadKeyWordList(pageIndex,keyword) {
                     +"<td>"+createTime.getFullYear()+"-"+(createTime.getMonth()+1)+"-"+createTime.getDate()+"</td>"
                     +"<td>"+maturity+"</td>"
                     +"<td>"+(time>new Date() ? '未过期':'已过期')+"</td>"
-                    +"<td>"+(data.pageList[i].checkStatus==1 ? '已申请':2 ? '审核中': 3 ? '已通过':'未通过')+"</td>"
+                    +"<td>"+checkStatus+"</td>"
                     +"<td>"+(data.pageList[i].useStatus==1 ? '已使用': '未使用')+"</td>"
-                    +"<td>"+(data.pageList[i].appStatus==1 ? '已开通': '未开通')+"</td>";
-
+                    +"<td>"+(data.pageList[i].appStatus==1 ? '已开通': '未开通')+"</td>"
+                    +"<td>";
 
                     if(data.pageList[i].keywordStatus==1){
-                        //未开通
-                        if(data.pageList[i].appStatus==2){
-                            table+="<td><a href='#' kid='"+data.pageList[i].keywordId+"' keyword='"+data.pageList[i].keyword+"' class=\"openapp\">开通APP</a>&nbsp;&nbsp;";
+                        //APP未开通且审核通过
+                        if(data.pageList[i].appStatus==2 && data.pageList[i].checkStatus==3){
+                            table+="<a href='#' kid='"+data.pageList[i].keywordId+"' keyword='"+data.pageList[i].keyword+"' class=\"openapp\">开通APP</a>&nbsp;&nbsp;";
                         }
-                        //已审核
-                        if(data.pageList[i].checkStatus==3){
+                        //已审核且aap已开通
+                        if(data.pageList[i].checkStatus==3&&data.pageList[i].appStatus==1){
                             table+="<a href='#' kid='"+data.pageList[i].keywordId+"' keyword='"+data.pageList[i].keyword+"' class=\"xufei\">续费</a>";
                         }
 
-
-                        if(data.pageList[i].appStatus!=2&&data.pageList[i].checkStatus!=3){
-                            table+="<td style='color: #BEEBEE'>无操作";
+                        if(data.pageList[i].checkStatus!=3){
+                            table+="无操作";
                         }
                     }
                     table+="</td></tr>";

@@ -64,7 +64,7 @@ public class AgentController {
     @RequestMapping("/loadServiceType")
     @ResponseBody
     public Object loadServiceType(){
-        return JSONArray.toJSONString(typeBiz.queryTypeByParentId(3));
+        return JSONArray.toJSONString(typeBiz.queryTypeByParentId(3,1));
     }
 
     /**
@@ -77,9 +77,9 @@ public class AgentController {
         Keyword keyWord = new Keyword();
         keyWord.setKeyword(keyword);
         if(keywordBiz.queryByKeyWord(keyWord)==null){
-            return JSON.toJSONString("success");
+            return "success";
         }
-        return JSON.toJSONString("fail");
+        return "fail";
     }
 
 
@@ -144,8 +144,6 @@ public class AgentController {
 
 
     //    -------------------------------关键词申请管理------------------------------
-
-
     /**
      * 关键词列表
      * @return
@@ -157,7 +155,7 @@ public class AgentController {
         if(pageIndex==null||pageIndex==""){
             pageIndex="1";
         }
-        Page<Keyword> page = keywordBiz.queryKeyWordList(keyword,uid,2,Integer.parseInt(pageIndex));
+        Page<Keyword> page = keywordBiz.queryKeyWordList(keyword,uid,5,Integer.parseInt(pageIndex));
         return JSONArray.toJSONString(page);
     }
 
@@ -206,7 +204,7 @@ public class AgentController {
     @RequestMapping("/xufei")
     public String xufei(String kid, Model model){
         Keyword keyword = keywordBiz.queryKeyWordById(Integer.parseInt(kid));
-        model.addAttribute("xufei",typeBiz.queryTypeByParentId(3));
+        model.addAttribute("xufei",typeBiz.queryTypeByParentId(3,1));
         model.addAttribute("keyword",keyword);
         return  "xufei";
     }
@@ -250,7 +248,7 @@ public class AgentController {
         if(pageIndex==null||pageIndex==""){
             pageIndex="1";
         }
-        Page<Customer> page = customerBiz.queryCustomByList(cname,uid,2,Integer.parseInt(pageIndex));
+        Page<Customer> page = customerBiz.queryCustomByList(cname,uid,5,Integer.parseInt(pageIndex));
         model.addAttribute("companyName",cname);
         return JSONArray.toJSONString(page);
     }
@@ -268,11 +266,16 @@ public class AgentController {
         Customer customer = new Customer();
         customer.setCustomerId(Integer.parseInt(cid));
         if(customStatus.equals("1"))
-            customer.setCompanyStatus(0);
+            customer.setCompanyStatus(2);
         else
             customer.setCompanyStatus(1);
 
-        return customerBiz.updateCustomer(customer)>0 ? JSON.toJSONString("success"):JSON.toJSONString("false");
+        String reuslt = "false";
+        //操作成功
+        if(customerBiz.updateCustomer(customer)>0)
+            return "success";
+        else
+            return  "false";
     }
 
     /**
@@ -289,8 +292,8 @@ public class AgentController {
         }
 
 
-        List<Type> typeList = typeBiz.queryTypeByParentId(1);   //根据父级id拿值
-        List<Type> idTypeList = typeBiz.queryTypeByParentId(4); //证件类型
+        List<Type> typeList = typeBiz.queryTypeByParentId(1,1);   //根据父级id拿值
+        List<Type> idTypeList = typeBiz.queryTypeByParentId(4,1); //证件类型
 
 
         model.addAttribute("protal",protal);
@@ -315,10 +318,10 @@ public class AgentController {
         Customer customer = new Customer();
         customer.setCompanyName(companyName);
         if(customerBiz.queryCustomerByParam(customer)==null){
-            return JSON.toJSONString("nopeat");
+            return "nopeat";
         }
 
-        return JSON.toJSONString("peat");
+        return "peat";
     }
 
     /**
@@ -362,9 +365,9 @@ public class AgentController {
     @ResponseBody
     public Object delContacts(int contactsId){
         if(contactsBiz.delContactsById(contactsId)>0){
-            return JSON.toJSONString("success");
+            return "success";
         }
-        return  JSON.toJSONString("false");
+        return  "false";
     }
 
 
@@ -381,7 +384,7 @@ public class AgentController {
     @ResponseBody
     public Object loadType(String parentId){
         //下拉列表
-        List<Type> typeList = typeBiz.queryTypeByParentId(Integer.parseInt(parentId));
+        List<Type> typeList = typeBiz.queryTypeByParentId(Integer.parseInt(parentId),1);
         return JSONArray.toJSONString(typeList);
     }
 
@@ -403,7 +406,7 @@ public class AgentController {
         if(detailType==null||detailType==""){
             detailType="0";
         }
-        Page<DealDetail> detailPage = dealDetailBiz.queryListByParam(uid, Integer.parseInt(detailType), starttime, endtime, 2, Integer.parseInt(pageIndex));
+        Page<DealDetail> detailPage = dealDetailBiz.queryListByParam(uid, Integer.parseInt(detailType), starttime, endtime, 5, Integer.parseInt(pageIndex));
 
         return JSON.toJSONString(detailPage);
     }

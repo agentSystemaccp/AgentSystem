@@ -34,7 +34,7 @@ function customerList(pageIndex,cname) {
         data: {pageIndex: pageIndex},
         success: function (data) {
             if(data.totalRows==0){
-                $(".container").html("<h3>对不起!暂无数据!</h3>")
+                humane.error("对不起!暂无数据!");
             }else {
                 $("#customerManage").html("");
                 $(".pagination").html("");
@@ -119,14 +119,15 @@ $("#customerManage").on("click",".mofifyCustomStatus",function () {
     {
         $.post(path+"/agent/modifycustomstatus",{"cid":cid,
                 "customStatus":c_status},
-            function(result){
-                if(result=="success")
+            function(data){
+
+                if(data=="success")
                 {
-                    alert(action+"成功");
+                    humane.error(action+"成功");
                     window.location.reload(true);
                 }
                 else{
-                    alert(action+"失败");
+                    humane.error(action+"失败");
                 }
 
             },'html');

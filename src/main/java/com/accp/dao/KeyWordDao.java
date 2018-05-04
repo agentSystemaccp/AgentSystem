@@ -13,7 +13,7 @@ public interface KeyWordDao {
     //添加关键词
     int addKeyWord(Keyword keyword);
     //关键词申请管理
-    List<Keyword> queryKeyWordList(@Param("keyword")String keyword, @Param("offset") int offset, @Param("pageSize") int pageSize);
+    List<Keyword> queryKeyWordList(@Param("keyword")String keyword,@Param("uid")int uid, @Param("offset") int offset, @Param("pageSize") int pageSize);
 
     int queryKeyWordCount(@Param("keyword") String keyword,@Param("userId") int userId);
 

@@ -52,10 +52,14 @@ public class ProtalBizImpl implements ProtalBiz{
      */
     public Protal queryProtalById(int protalId,int cid) {
         Protal protal = protalDao.queryProtalById(protalId,cid);
-        if(protal!=null){
-            List<Contacts> contactsList = contactsDao.queryContactsByCustomerId(cid);
-            protal.getCustomer().setContacts(contactsList);
+        List<Contacts> contactsList = null;
+        //在门户点击查询
+        if(cid==0){
+            contactsList = contactsDao.queryContactsByCustomerId(protalId);
+        }else{  //通过客户id查询
+            contactsList = contactsDao.queryContactsByCustomerId(cid);
         }
+        protal.getCustomer().setContacts(contactsList);
         return protal;
     }
 
