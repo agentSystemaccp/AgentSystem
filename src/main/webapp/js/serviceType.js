@@ -12,7 +12,8 @@ $("#closeForm"). on("click",function () {
 $("#addTypeName").on("blur",function () {
    var $typeName = $("#addTypeName").val();
    if($typeName.length == 0){
-       alert("类型名称不能为空");
+       humane.error("类型名称不能为空");
+       return;
    }
    $.ajax({
        type:"post",
@@ -22,9 +23,10 @@ $("#addTypeName").on("blur",function () {
        success:function (data) {
            //类型名称不存在
            if(data == "1"){
-
+               humane.success("类型名称可用");
+               return;
            }else{
-               alert("该类型已经存在,请重新填写");
+               humane.error("该类型已经存在,请重新填写");
                return;
            }
        }
@@ -34,13 +36,13 @@ $("#addTypeName").on("blur",function () {
 
 //当失去焦点时验证类型数值是否为空和是否为数值类型
 $("#addAllocation").on("blur",function () {
-    $allocation = $("#addAllocation").val();
+    var $allocation = $("#addAllocation").val();
     if($allocation.length == 0){
         alert("类型数值不能为空");
         return;
     }
     if(isNaN($allocation)){
-        alert("类型数值请输入数值");
+        humane.error("类型数值请输入数值");
         return;
     }
 });
@@ -54,14 +56,14 @@ $("#addSave").on("click",function () {
         dataType:"json",
         success:function (data) {
             if(data == "1"){
-                alert("添加类型成功");
+                humane.success("添加类型成功");
                 window.location.href = path+"/type/queryServiceType";
             }else {
-                alert("添加类型失败");
+                humane.error("添加类型失败");
             }
         }
     })
-})
+});
 
 //点击修改是 弹出修改的div
 $(".modifyType").on("click",function () {
@@ -77,7 +79,8 @@ $(".modifyType").on("click",function () {
 $("#modifyTypeName").on("blur",function () {
     var $typeName = $("#modifyTypeName").val();
     if($typeName.length == 0){
-        alert("类型名称不能为空");
+        humane.error("类型名称不能为空");
+        return;
     }
 });
 
@@ -85,12 +88,12 @@ $("#modifyTypeName").on("blur",function () {
 //当失去焦点时验证类型数值是否为空和是否为数值类型
 $("#modifyAllocation").on("blur",function () {
     $allocation = $("#modifyAllocation").val();
-    if($allocation.length == 0){
-        alert("类型数值不能为空");
+    if ($allocation.length == 0) {
+        humane.error("类型数值不能为空");
         return;
     }
-    if(isNaN($allocation)){
-        alert("类型数值请输入数值");
+    if (isNaN($allocation)) {
+        humane.error("类型数值请输入数值");
         return;
     }
 });
@@ -108,12 +111,12 @@ $("#modifySave").on("click",function () {
         url:path+"/type/updateType",
         dataType:"json",
         success:function (data) {
-            if(data == "1"){
-                alert("修改类型成功");
+            if(data == 1){
+                humane.success("修改类型成功");
                 window.location.href=path+"/type/queryServiceType";
             }else{
-                alert("修改类型失败")
+                humane.error("修改类型失败")
             }
         }
-    })
-})
+    });
+});

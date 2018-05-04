@@ -59,6 +59,7 @@ public class ProtalBizImpl implements ProtalBiz{
         }else{  //通过客户id查询
             contactsList = contactsDao.queryContactsByCustomerId(cid);
         }
+        protal.getCustomer().setContacts(contactsList);
         return protal;
     }
 

@@ -47,9 +47,9 @@ function accountExcel(starttime,endtime) {
         dataType:"json",
         success:function (data) {
             if(data == "1"){
-                alert("下载代理商余额报表成功,文件下载到D盘");
+                humane.success("下载代理商余额报表成功,文件下载到D盘");
             }else{
-                alert("下载代理商余额报表失败");
+                humane.error("下载代理商余额报表失败");
             }
         }
     })
@@ -64,9 +64,9 @@ function yfExcel(starttime,endtime) {
         dataType:"json",
         success:function (data) {
             if(data == "1"){
-                alert("下载代理商预付款流水报表成功,文件下载到D盘");
+                humane.success("下载代理商预付款流水报表成功,文件下载到D盘");
             }else{
-                alert("下载代理商预付款流水报表失败");
+                humane.error("下载代理商预付款流水报表失败");
             }
         }
     })
@@ -81,9 +81,9 @@ function userExcel(starttime,endtime) {
         dataType:"json",
         success:function (data) {
             if(data == "1"){
-                alert("下载代理商流水报表成功,文件下载到D盘");
+                humane.success("下载代理商流水报表成功,文件下载到D盘");
             }else{
-                alert("下载代理商流水报表失败");
+                humane.error("下载代理商流水报表失败");
             }
         }
     })
@@ -97,9 +97,9 @@ function productExcel() {
         dataType:"json",
         success:function (data) {
             if(data == "1"){
-                alert("下载产品分类数量/金额汇总报表成功,文件下载到D盘");
+                humane.success("下载产品分类数量/金额汇总报表成功,文件下载到D盘");
             }else{
-                alert("下载产品分类数量/金额汇总报表失败");
+                humane.error("下载产品分类数量/金额汇总报表失败");
             }
         }
     })
@@ -114,9 +114,9 @@ function accountPDF(starttime,endtime) {
         dataType:"json",
         success:function (data) {
             if(data == "1"){
-                alert("下载代理商余额报表成功,文件下载到D盘");
+                humane.success("下载代理商余额报表成功,文件下载到D盘");
             }else{
-                alert("下载代理商余额报表失败");
+                humane.error("下载代理商余额报表失败");
             }
         }
     })
@@ -131,9 +131,9 @@ function yfPDF(starttime,endtime) {
         dataType:"json",
         success:function (data) {
             if(data == "1"){
-                alert("下载代理商预付款流水报表成功,文件下载到D盘");
+                humane.success("下载代理商预付款流水报表成功,文件下载到D盘");
             }else{
-                alert("下载代理商预付款流水报表失败");
+                humane.error("下载代理商预付款流水报表失败");
             }
         }
     })
@@ -148,9 +148,9 @@ function userPDf(starttime,endtime) {
         dataType:"json",
         success:function (data) {
             if(data == "1"){
-                alert("下载代理商预付款流水报表成功,文件下载到D盘");
+                humane.success("下载代理商预付款流水报表成功,文件下载到D盘");
             }else{
-                alert("下载代理商预付款流水报表失败");
+                humane.error("下载代理商预付款流水报表失败");
             }
         }
     })
@@ -164,9 +164,9 @@ function productPDF() {
         dataType:"json",
         success:function (data) {
             if(data == "1"){
-                alert("下载产品分类数量/金额汇总报表成功,文件下载到D盘");
+                humane.success("下载产品分类数量/金额汇总报表成功,文件下载到D盘");
             }else{
-                alert("下载产品分类数量/金额汇总报表失败");
+                humane.error("下载产品分类数量/金额汇总报表失败");
             }
         }
     })

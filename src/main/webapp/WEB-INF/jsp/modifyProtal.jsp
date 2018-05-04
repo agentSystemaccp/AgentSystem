@@ -76,7 +76,6 @@
           <li>公司传真:${protal.companyFax}</li>
           <li>城市: ${protal.city}</li>
           <li>公司电话:${protal.companyTel}</li>
-          <li>区:${protal.district}</li>
           <li>公司地址:${protal.companyAddress}</li>
           <li>备注:${protal.remark }</li>
         </ul>

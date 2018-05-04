@@ -22,7 +22,7 @@ $("#openappSubmit").click(function(){
                     humane.error("系统错误,请重新开通!");
                 }else {
                     //申请成功
-                    humane.success("APP开通成功！");
+                    humane.error("APP开通成功！");
                     top.location=path+"/agent/toKeyWordManage";
                 }
             }
