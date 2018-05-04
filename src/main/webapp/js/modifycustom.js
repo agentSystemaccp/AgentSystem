@@ -39,14 +39,6 @@
     })
 
 
-    function checkValidateNum(value){
-
-        var reg=new RegExp("^[0-9]*$");
-        if(reg.test(value))
-            return true;
-        else
-            return false;
-    }
     function delTr(obj){
         var contactsId = $(obj).parent().children(":first").val();
         if(contactsId!=0){

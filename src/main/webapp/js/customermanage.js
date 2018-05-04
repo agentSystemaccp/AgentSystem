@@ -123,7 +123,7 @@ $("#customerManage").on("click",".mofifyCustomStatus",function () {
 
                 if(data=="success")
                 {
-                    humane.success(action+"成功");
+                    humane.error(action+"成功");
                     window.location.reload(true);
                 }
                 else{

@@ -35,7 +35,7 @@ public class DealDetailController {
         if(pageIndex==null||pageIndex==""){
             pageIndex="1";
         }
-        Page<DealDetail> page = dealDetailBiz.queryDealDetails(uid,2,Integer.parseInt(pageIndex));
+        Page<DealDetail> page = dealDetailBiz.queryDealDetails(uid,5,Integer.parseInt(pageIndex));
 
         return JSONArray.toJSONString(page);
 

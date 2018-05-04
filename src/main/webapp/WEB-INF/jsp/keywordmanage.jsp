@@ -1,5 +1,8 @@
 ﻿<%@include file="../common/head.jsp"%>
-
+<div class="mbxnav">
+    <!-- 导航 -->
+    代理商管理\ <a href="${pageContext.request.contextPath }/agent/toKeyWordManage">关键词申请管理</a>
+</div>
 <div class="container">
   <!-- 搜索 -->
   <div>
