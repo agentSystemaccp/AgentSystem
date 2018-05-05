@@ -45,7 +45,7 @@
           </c:forEach>
         </select>
         </li>
-         <li>证件号码:<input type="text" name="idNumber" id="cardnum" value=""></li>
+         <li>证件号码:<input type="text" name="idNumber" id="cardnum" value="" title="只能填数字"></li>
         <li>国家:<input type="text" name="state" value="中国" readonly="readonly">
         </li>
         <li>省份: <select id="customprovince" name="province" onchange="loadCity();">

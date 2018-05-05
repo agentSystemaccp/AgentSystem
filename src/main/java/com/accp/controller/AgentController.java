@@ -137,9 +137,9 @@ public class AgentController {
         keyWord.setAppStatus(2);        //未开通
         keyWord.setTerm(serviceyear.equals("买二赠一") ? 2:Integer.parseInt(serviceyear));
         if(keywordBiz.addKeyWord(keyWord,userInfo,Integer.parseInt(price))>0){
-            return JSON.toJSONString("success");
+            return "success";
         }
-        return JSON.toJSONString("failed");
+        return "failed";
     }
 
 

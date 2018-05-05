@@ -43,6 +43,7 @@ public class KeywordBizImpl implements KeywordBiz {
        dealDetail.setFinanceFund(-price/keyword.getTerm());
        dealDetail.setFinanceType("预注册冻结资金");
        dealDetail.setRemark(userInfo.getUserName()+"对"+keyword.getKeyword()+"进行关键词申请预注册操作,冻结资金:"+price/keyword.getTerm());
+       dealDetail.setDetailType(13);
        dealDetailDao.addDealDetail(dealDetail);
 
 

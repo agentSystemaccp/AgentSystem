@@ -13,7 +13,9 @@
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
 
-
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-form.js"></script>
+	<script type="text/javascript" src='${pageContext.request.contextPath }/js/prompt.js'></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/public.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/main.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/files/updatePassword/styles.css">
@@ -24,8 +26,8 @@
 <%--<link id='theme' rel='stylesheet' href='/humane/themes/original.css' />--%>
 
 
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-form.js"></script>
+
+
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/public.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/login.js"></script>
@@ -41,6 +43,7 @@
 	<!-- humane提醒库 -->
 	<link id='theme' rel='stylesheet' href='${pageContext.request.contextPath }/humane/themes/original.css' />
 	<script type="text/javascript" src='${pageContext.request.contextPath }/humane/humane.js'></script>
+
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/axQuery.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/globals.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/scripts/axutils.js"></script>

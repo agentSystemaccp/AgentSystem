@@ -33,7 +33,7 @@ public class DealDetailController {
      * @return
      */
 
-    @PostMapping("/accountdetail")
+    @RequestMapping("/accountdetail")
     @ResponseBody
     public Object accountDetail( HttpSession session,@RequestParam(value = "pageIndex",required = false) String pageIndex){
                 int uid = ((UserInfo)session.getAttribute("userLogin")).getUserid();

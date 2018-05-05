@@ -2,7 +2,7 @@
 
 <div class="mbxnav">
     <!-- 导航 -->
-    代理商管理\当前账户信息\ <a href="${pageContext.request.contextPath }/deal/accountdetail">查看账户明细</a>
+    代理商管理\当前账户信息\ <a href="${pageContext.request.contextPath }/deal/toAccountDetail">查看账户明细</a>
 </div>
 <div class="container">
 

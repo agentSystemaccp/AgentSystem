@@ -33,7 +33,8 @@ window.onload = function () {
                 var years = $("#serviceyear").val();
                 if (keyword == null
                     || keyword.length == 0)
-                    humane.error("对不起,您申请的关键词不能为空.请重新填写!");
+                    $.MsgBox.Alert("消息","对不起,您申请的关键词不能为空.请重新填写!");
+                    // humane.error("对不起,您申请的关键词不能为空.请重新填写!");
                 else {
                     $("#keywordtip").html("<font color='green'>正在验证关键词是否已被抢占</font>");
 
@@ -109,7 +110,8 @@ function jisuan() {
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
                 success: function (result) {
                     if (result == "exception") {
-                        humane.error("计算价格时出现异常,请重试 ");
+                        $.MsgBox.Alert("消息","计算价格时出现异常,请重试! ");
+                        // humane.error("计算价格时出现异常,请重试 ");
                     } else {
                         $("#price").val(result);// result为返回金额
                     }
@@ -133,14 +135,16 @@ function submitKeyWord() {
         humane.error("对不起,请选择客户!");
         $("#searchusertext").focus();
     } else if ($("#keyword").val() == '' || $("#keyword").val().length <= 0) {
-        humane.error("对不起,您 申请的关键词不能为空!");
-
+        // humane.error("对不起,您申请的关键词不能为空!");
+        $.MsgBox.Alert("消息","对不起,您申请的关键词不能为空!");
         $("#keyword").focus();
-    } else if (servicetype == "") {
-        humane.error("请选择服务类型!");
+        } else if (servicetype == "") {
+        $.MsgBox.Alert("消息","请选择服务类型!");
+        // humane.error("请选择服务类型!");
         $("#servicetype").focus();
     } else if (serviceyear == "") {
-        humane.error("请选择服务类型!");
+        $.MsgBox.Alert("消息","请选择服务年限!");
+        // humane.error("请选择服务年限!");
         $("#serviceyear").focus();
     } else {
         //清空提示
@@ -161,7 +165,8 @@ function submitKeyWord() {
                      validateBalance(servicetype,serviceyear);
 
                 } else
-                    humane.error("对不起,您申请的关键词 [" + $("#keyword").val() + "]已被抢占");
+                    $.MsgBox.Alert("消息","对不起,您申请的关键词 [" + $("#keyword").val() + "]已被抢占!");
+                    // humane.error("对不起,您申请的关键词 [" + $("#keyword").val() + "]已被抢占");
             }, 'html');
 
 
@@ -201,9 +206,12 @@ function submitAdd(servicetype,serviceyear) {
         },
         function (result) {
             if (result != "failed") {
-                humane.success("恭喜您 ,您 提交的关键词[" + $("#keyword").val() + "]申请成功!");
-                window.location.href=path+"/agent/toKeyWordManage"
+                $.MsgBox.Alert("消息","恭喜您 ,您提交的关键词[" + $("#keyword").val() + "]申请成功!","/agent/toKeyWordManage");
+                // window.location.href=path+"/agent/toKeyWordManage";
+
+
             }
+
         }, 'html');
 
 
