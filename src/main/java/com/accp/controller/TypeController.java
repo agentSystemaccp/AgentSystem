@@ -72,7 +72,7 @@ public class TypeController {
         return "0";
     }
 
-    //添加类型vg
+    //添加类型
     @RequestMapping("/addType")
     @ResponseBody
     public String addType(Type type){
