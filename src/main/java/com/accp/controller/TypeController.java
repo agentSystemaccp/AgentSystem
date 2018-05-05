@@ -34,6 +34,22 @@ public class TypeController {
         return "serviceType";
     }
 
+    //查询服务年限并且跳转到服务年限页面
+    @RequestMapping("/queryLengthService")
+    public String queryLengthType(Model model){
+        Type type = typeBiz.queryTypeByName("服务年限");
+        model.addAttribute("type",type);
+        return "lengthService";
+    }
+
+    //查询app地址并且跳转到App地址页面
+    @RequestMapping("/queryAppURL")
+    public String queryAppURL(Model model){
+        Type type = typeBiz.queryTypeByName("AAP系统地址");
+        model.addAttribute("type",type);
+        return "appURL";
+    }
+
     //删除类型
     @RequestMapping("/delFinanceTypo")
     @ResponseBody

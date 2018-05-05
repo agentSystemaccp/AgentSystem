@@ -5,7 +5,7 @@
   </div>
   <div class="container">
     <div class="addCustomDiv">
-      <input id="addServiceType" value="   添加服务类型">
+      <input type="button" id="addServiceType" value="   添加服务类型">
     </div>
     <table style="text-align: center;font-family: 宋体" >
       <thead>
