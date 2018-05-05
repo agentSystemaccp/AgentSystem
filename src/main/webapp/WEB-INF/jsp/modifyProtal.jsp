@@ -122,7 +122,7 @@
   </form>
 
 </div>
-<link rel="stylesheet" type="text/css" href="/css/modifycustom.css">
-<script type="text/javascript" src="/js/modifyProtal.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/modifycustom.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/modifyProtal.js"></script>
   </body>
 </html>

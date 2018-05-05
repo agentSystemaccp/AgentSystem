@@ -8,7 +8,7 @@ public class Type {
     private int parentId;       //父级类型id
     private String typeName;        //类型名称
     private int typeStatus;         //状态
-    private int allocation;         //配置数值
+    private String allocation;         //配置数值
     private int realityAllocation;  //实际数值
     private int number;             //运用这个类型的数量
 
@@ -44,11 +44,11 @@ public class Type {
         this.typeStatus = typeStatus;
     }
 
-    public int getAllocation() {
+    public String getAllocation() {
         return allocation;
     }
 
-    public void setAllocation(int allocation) {
+    public void setAllocation(String allocation) {
         this.allocation = allocation;
     }
 

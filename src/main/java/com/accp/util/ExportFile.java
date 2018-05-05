@@ -75,7 +75,7 @@ public class ExportFile {
                 dataCell = row.createCell((short) 2);
                 dataCell.setCellValue(type.getNumber());
                 dataCell = row.createCell((short) 3);
-                dataCell.setCellValue((type.getNumber()*type.getAllocation()));
+                dataCell.setCellValue((type.getNumber()*Integer.parseInt(type.getAllocation())));
             }
         }
         //设置输出文件位置
@@ -179,7 +179,7 @@ public class ExportFile {
                         Paragraph paragraph = new Paragraph(String.valueOf(type.getNumber()),chinese);
                         dataCell.addElement(paragraph);
                     }else { //设置数据航第6个单元格
-                        Paragraph paragraph = new Paragraph(String.valueOf(type.getNumber()*type.getAllocation()),chinese);
+                        Paragraph paragraph = new Paragraph(String.valueOf(type.getNumber()*Integer.parseInt(type.getAllocation())),chinese);
                         dataCell.addElement(paragraph);
                     }
                     dataCell.setVerticalAlignment(Element.ALIGN_BASELINE);  //设置单元格垂直居中

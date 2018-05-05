@@ -5,7 +5,7 @@
 </div>
 <div class="container">
   <div class="addCustomDiv">
-    <input id="addFinanceType" value="   添加财务类型">
+    <input type="button" id="addFinanceType" value="   添加财务类型">
   </div>
 
   <table  style="text-align: center;font-family: 宋体" >
