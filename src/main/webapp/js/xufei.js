@@ -8,10 +8,10 @@ var path = $("#path").val();
         var servicetype = $("#servicetype").val();
         var serviceyear = $("#serviceyear").val();
         if (servicetype == "") {
-            humane.error("请选择服务类型");
+            $.MsgBox.Alert("消息","请选择服务类型");
             $("#servicetype").focus();
         } else if (serviceyear == "") {
-            humane.error("请选择服务年限");
+            $.MsgBox.Alert("消息","请选择服务年限");
             $("#serviceyear").focus();
         } else {
             //清空提示
@@ -41,7 +41,7 @@ var path = $("#path").val();
             },
             function (result) {
                 if (result == "nomoney") {
-                    humane.error("对不起,您当前的余额不能支付本次申请,请充值后再进行重试");
+                    $.MsgBox.Alert("消息","对不起,您当前的余额不能支付本次申请,请充值后再进行重试");
 
                 } else
                 //余额充足,提交
@@ -92,10 +92,10 @@ function jisuan() {
     var servicetype = $("#servicetype").val();
     var serviceyear = $("#serviceyear").val();
     if (servicetype == "") {
-        humane.error("请选择服务类型!");
+        $.MsgBox.Alert("消息","请选择服务类型!");
         $("#servicetype").focus();
     } else if (serviceyear == "") {
-        humane.error("请选择服务年限!");
+        $.MsgBox.Alert("消息","请选择服务年限!");
         $("#serviceyear").focus();
     } else {
         $("#yearTip").html("");
@@ -108,7 +108,7 @@ function jisuan() {
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
                 success: function (result) {
                     if (result == "exception") {
-                        humane.error("计算价格时出现异常,请重试 ");
+                        $.MsgBox.Alert("消息","计算价格时出现异常,请重试 ");
                     } else {
                         $("#price").val(result);// result为返回金额
                     }

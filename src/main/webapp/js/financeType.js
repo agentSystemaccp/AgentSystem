@@ -13,7 +13,7 @@ $("#addFinanceTypeName").on("blur",function () {
     var $typeName = $("#addFinanceTypeName").val();
     //验证类型名称是否为空
     if($typeName.length == 0){
-        humane.error("类型名称不能为空");
+        $.MsgBox.Alert("消息","类型名称不能为空");
         return;
     }
     $.ajax({
@@ -23,9 +23,9 @@ $("#addFinanceTypeName").on("blur",function () {
         dataType:"json",
         success:function (data) {
             if(data == "1"){
-                humane.success("类型名称可用");
+                $.MsgBox.Alert("消息","类型名称可用");
             }else{
-                humane.error("类型已存在,请重新填写类型");
+                $.MsgBox.Alert("消息","类型已存在,请重新填写类型");
                 return;
             }
         }
@@ -42,10 +42,10 @@ $("#addSave").on("click",function () {
         dataType:"json",
         success:function (data) {
             if(data == "1"){
-                humane.success("添加类型成功");
+                $.MsgBox.Alert("消息","添加类型成功");
                 window.location.href=path+"/type/queryFinanceType";
             }else{
-                humane.error("添加类型失败")
+                $.MsgBox.Alert("消息","添加类型失败")
             }
         }
     });
@@ -62,10 +62,10 @@ $(".delType").on("click",function () {
             dateType:"json",
             success:function (data) {
                 if(data == "1"){
-                    humane.success("删除["+obj.attr("typeName")+"]配置成功");
+                    $.MsgBox.Alert("消息","删除["+obj.attr("typeName")+"]配置成功");
                     window.location.href=path+"/type/queryFinanceType";
                 }else{
-                    humane.error("删除["+obj.attr("typeName")+"]配置失败");
+                    $.MsgBox.Alert("消息","删除["+obj.attr("typeName")+"]配置失败");
                 }
             }
         });
@@ -86,7 +86,7 @@ $("#modifyTypeName").on("blur",function () {
     var $typeName = $("#modifyTypeName").val();
     //验证类型名称是否为空
     if($typeName.length == 0){
-        humane.error("类型名称不能为空");
+        $.MsgBox.Alert("消息","类型名称不能为空");
         return false;
     }
 });
@@ -105,10 +105,10 @@ $("#modifySave").on("click",function () {
        dataType:"json",
        success:function (data) {
            if(data == "1"){
-               humane.success("修改类型成功");
+               $.MsgBox.Alert("消息","修改类型成功");
                window.location.href=path+"/type/queryFinanceType";
            }else{
-               humane.error("修改类型失败")
+               $.MsgBox.Alert("消息","修改类型失败")
            }
        }
    })

@@ -4,7 +4,7 @@ function searchyfklistFunc(){
 	
 	if(comtime($("#starttime").val(),$("#endtime").val()))
 	{
-		humane.error("开始时间大于结束时间,请检查");
+		$.MsgBox.Alert("消息","开始时间大于结束时间,请检查");
 		return false;
 	}
 	return true;
@@ -66,7 +66,7 @@ function loadDetailList(pageIndex,starttime,endtime) {
 
 			if(data.pageList.length==0){
                 $("#accountdetail").html("");
-                humane.error("没有搜索到任何关键词的信息!");
+                $.MsgBox.Alert("消息","没有搜索到任何关键词的信息!");
                 $("#accountdetail").html("<h2 style='font-weight: 400;' align='center'></h2>");
                 $(".pagination").html("");
 			}else {

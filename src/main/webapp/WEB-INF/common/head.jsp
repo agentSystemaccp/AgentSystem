@@ -42,7 +42,6 @@
 
 	<!-- humane提醒库 -->
 	<link id='theme' rel='stylesheet' href='${pageContext.request.contextPath }/humane/themes/original.css' />
-	<script type="text/javascript" src='${pageContext.request.contextPath }/humane/humane.js'></script>
 
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/axQuery.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/scripts/prototype/globals.js"></script>

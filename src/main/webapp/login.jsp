@@ -8,7 +8,7 @@
   <script src="${pageContext.request.contextPath }/js/jquery-form.js" type="text/javascript"></script>
   <script src="${pageContext.request.contextPath }/js/login.js" type="text/javascript"></script>
   <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-
+  <script type="text/javascript" src='${pageContext.request.contextPath }/js/prompt.js'></script>
   <link href="${pageContext.request.contextPath }/js/login.css" rel='stylesheet' type='text/css' />
   <!--//webfonts-->
 

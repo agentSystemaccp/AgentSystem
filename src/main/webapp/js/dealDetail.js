@@ -15,7 +15,7 @@ function replace(pageIndex) {
         data: {pageIndex: pageIndex},
         success: function (data) {
             if(data.totalRows==0){
-                humane.error("对不起!暂无数据!");
+                $.MsgBox.Alert("消息","对不起!暂无数据!");
             }else {
                 $("#dealTable").html();
                 var table = "";

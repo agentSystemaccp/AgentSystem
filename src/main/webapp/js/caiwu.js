@@ -19,15 +19,15 @@ window.onload=function() {
 
         // 提交并执行账户操作
         if (userid < 0)
-            humane.error("对不起,您还没有选择用户,请搜索进行用户选择");
+            $.MsgBox.Alert("消息","对不起,您还没有选择用户,请搜索进行用户选择!");
         else if ($("#zijintype").val() == '') {
-            humane.error("对不起,你还没有选择操作类型,请选择");
+            $.MsgBox.Alert("消息","对不起,你还没有选择操作类型,请选择!");
         }
         else if ($("#zijin").val() == '' || $("#zijin").val().length <= 0) {
-            humane.error("对不起,您还没有输入金额");
+            $.MsgBox.Alert("消息","对不起,您还没有输入金额!");
         }
         else if(zijin.test($("#zijin").val())==false){
-            humane.error("对不起，请填写正确的操作资金格式");
+            $.MsgBox.Alert("消息","对不起，请填写正确的操作资金格式!");
         }else {
             if (confirm("是否确定执行当前操作?")) {
 
@@ -42,12 +42,12 @@ window.onload=function() {
                 }, function (result) {
                     if (result == "success") {
 
-                        humane.success("恭喜,当前操作成功");
+                        $.MsgBox.Alert("消息","恭喜,当前操作成功");
                         $("#systemtip").html("恭喜,当前操作成功");
                         $("#searchUserText").val("");
                     }
                     else {
-                        humane.error("对不起,当前操作失败");
+                        $.MsgBox.Alert("消息","对不起,当前操作失败");
                         $("#systemtip").html("对不起,当前操作失败");
                         $("#searchUserText").val("");
                     }

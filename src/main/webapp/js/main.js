@@ -47,20 +47,20 @@ $().ready(function() {
         var oldpwd = $("#oldpwdtext").val();
         var newpwd = $("#newpwd").val();
         var newpwd2 = $("#newpwd2").val();
-        if (oldpwd.length < 5) {
+        if (oldpwd.length < 3) {
             $("#oldpwdtext").focus();
-            humane.error("请输入原始密码");
-        } else if (newpwd.length < 5) {
+            $.MsgBox.Alert("消息","请输入原始密码");
+        } else if (newpwd.length < 6) {
 
             $("#newpwd").focus();
-            humane.error("密码长度不能小于6");
-        } else if (newpwd2.length < 5) {
+            $.MsgBox.Alert("消息","密码长度不能小于6");
+        } else if (newpwd2.length <6) {
 
             $("#newpwd2").focus();
-            humane.error("密码长度不能小于6");
+            $.MsgBox.Alert("消息","密码长度不能小于6");
         } else if (newpwd != newpwd2) {
 
-            humane.error("两次密码不相同");
+            $.MsgBox.Alert("消息","两次密码不相同");
         } else {
             // 提交到服务器
 
@@ -69,11 +69,11 @@ $().ready(function() {
             }, function (result) {//alert(result.length);
                 // "success",failed
                 if (result == '1') {
-                    humane.success("修改密码成功,请重新登录！");
+                    $.MsgBox.Alert("消息","修改密码成功,请重新登录！");
                     $("#modifydiv").hide();
                     window.location.href=path+"/login.jsp";
                 } else
-                    humane.error("修改密码失败 ！");
+                    $.MsgBox.Alert("消息","修改密码失败 ！");
             }, 'html');
         }
 

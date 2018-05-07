@@ -12,7 +12,7 @@ $("#closeForm"). on("click",function () {
 $("#addTypeName").on("blur",function () {
    var $typeName = $("#addTypeName").val();
    if($typeName.length == 0){
-       humane.error("类型名称不能为空");
+       $.MsgBox.Alert("消息","类型名称不能为空");
        return;
    }
    $.ajax({
@@ -23,10 +23,10 @@ $("#addTypeName").on("blur",function () {
        success:function (data) {
            //类型名称不存在
            if(data == "1"){
-               humane.success("类型名称可用");
+               $.MsgBox.Alert("消息","类型名称可用");
                return;
            }else{
-               humane.error("该类型已经存在,请重新填写");
+               $.MsgBox.Alert("消息","该类型已经存在,请重新填写");
                return;
            }
        }
@@ -42,7 +42,7 @@ $("#addAllocation").on("blur",function () {
         return;
     }
     if(isNaN($allocation)){
-        humane.error("类型数值请输入数值");
+        $.MsgBox.Alert("消息","类型数值请输入数值");
         return;
     }
 });
@@ -56,10 +56,10 @@ $("#addSave").on("click",function () {
         dataType:"json",
         success:function (data) {
             if(data == "1"){
-                humane.success("添加类型成功");
+                $.MsgBox.Alert("消息","添加类型成功");
                 window.location.href = path+"/type/queryServiceType";
             }else {
-                humane.error("添加类型失败");
+                $.MsgBox.Alert("消息","添加类型失败");
             }
         }
     })
@@ -79,7 +79,7 @@ $(".modifyType").on("click",function () {
 $("#modifyTypeName").on("blur",function () {
     var $typeName = $("#modifyTypeName").val();
     if($typeName.length == 0){
-        humane.error("类型名称不能为空");
+        $.MsgBox.Alert("消息","类型名称不能为空");
         return;
     }
 });
@@ -89,11 +89,11 @@ $("#modifyTypeName").on("blur",function () {
 $("#modifyAllocation").on("blur",function () {
     $allocation = $("#modifyAllocation").val();
     if ($allocation.length == 0) {
-        humane.error("类型数值不能为空");
+        $.MsgBox.Alert("消息","类型数值不能为空");
         return;
     }
     if (isNaN($allocation)) {
-        humane.error("类型数值请输入数值");
+        $.MsgBox.Alert("消息","类型数值请输入数值");
         return;
     }
 });
@@ -112,10 +112,10 @@ $("#modifySave").on("click",function () {
         dataType:"json",
         success:function (data) {
             if(data == 1){
-                humane.success("修改类型成功");
+                $.MsgBox.Alert("消息","修改类型成功");
                 window.location.href=path+"/type/queryServiceType";
             }else{
-                humane.error("修改类型失败")
+                $.MsgBox.Alert("消息","修改类型失败")
             }
         }
     });

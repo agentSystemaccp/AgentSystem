@@ -34,7 +34,7 @@ function customerList(pageIndex,cname) {
         data: {pageIndex: pageIndex},
         success: function (data) {
             if(data.totalRows==0){
-                humane.error("对不起!暂无数据!");
+                $.MsgBox.Alert("消息","对不起!暂无数据!");
             }else {
                 $("#customerManage").html("");
                 $(".pagination").html("");
@@ -123,11 +123,11 @@ $("#customerManage").on("click",".mofifyCustomStatus",function () {
 
                 if(data=="success")
                 {
-                    humane.error(action+"成功");
+                    $.MsgBox.Alert("消息",action+"成功");
                     window.location.reload(true);
                 }
                 else{
-                    humane.error(action+"失败");
+                    $.MsgBox.Alert("消息",action+"失败");
                 }
 
             },'html');

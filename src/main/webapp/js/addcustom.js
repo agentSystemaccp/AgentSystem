@@ -32,7 +32,7 @@ var path = $("#path").val();
 	$("#cardnum").blur(function(){
 		var t=$("#cardnum").val();
 		if(!checkValidateNum(t))
-			humane.error("证件号码请输入数字!");
+            $.MsgBox.Alert("消息","证件号码请输入数字!");
 	})
 
 
@@ -51,7 +51,7 @@ function checksave(){
 
 	$.post(path+"/agent/isexitcustomname",{"companyName":customname},function(result){
 		if(result=="peat"){
-            humane.error("对不起,该客户名称已存在");
+            $.MsgBox.Alert("消息","对不起,该客户名称已存在");
 		}else if(result=="nopeat"){
             customerSubmit(customname);
 		}
@@ -70,10 +70,10 @@ function customerSubmit(customname) {
         dataType : 'json',
         success :function (result) {
             if(result=="success"){
-                humane.success("添加[ "+customname+" ]成功!");
+                $.MsgBox.Alert("消息","添加[ "+customname+" ]成功!");
                 window.location.href=path+"/agent/toCustomerManage";
             }else {
-                humane.error("添加[ "+customname+" ]失败,请重新添加!")
+                $.MsgBox.Alert("消息","添加[ "+customname+" ]失败,请重新添加!")
             }
         }
 
