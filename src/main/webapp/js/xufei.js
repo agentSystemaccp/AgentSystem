@@ -8,10 +8,10 @@ var path = $("#path").val();
         var servicetype = $("#servicetype").val();
         var serviceyear = $("#serviceyear").val();
         if (servicetype == "") {
-            $.MsgBox.Alert("消息","请选择服务类型");
+            $("#serviceTip").html("请选择服务类型");
             $("#servicetype").focus();
         } else if (serviceyear == "") {
-            $.MsgBox.Alert("消息","请选择服务年限");
+            $("#yearTip").html("请选择服务年限");
             $("#serviceyear").focus();
         } else {
             //清空提示
@@ -63,7 +63,7 @@ var path = $("#path").val();
             },
             function (result) {
                 if (result != "failed") {
-                    humane.success("恭喜您 ,关键词 [" + $("#keyword").val() + "]续费成功!");
+                    $.MsgBox.Alert("消息","恭喜您 ,关键词 [" + $("#keyword").val() + "]续费成功!");
                     top.location=path+"/agent/toKeyWordManage";
                 }
             }, 'html');
@@ -92,10 +92,10 @@ function jisuan() {
     var servicetype = $("#servicetype").val();
     var serviceyear = $("#serviceyear").val();
     if (servicetype == "") {
-        $.MsgBox.Alert("消息","请选择服务类型!");
+        $("#serviceTip").html("请选择服务类型");
         $("#servicetype").focus();
     } else if (serviceyear == "") {
-        $.MsgBox.Alert("消息","请选择服务年限!");
+        $("#yearTip").html("请选择服务年限");
         $("#serviceyear").focus();
     } else {
         $("#yearTip").html("");

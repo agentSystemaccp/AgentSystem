@@ -59,7 +59,7 @@ function loadKeyWordList(pageIndex,keyword) {
                     +"<td>"+checkStatus+"</td>"
                     +"<td>"+(data.pageList[i].useStatus==1 ? '已使用': '未使用')+"</td>"
                     +"<td>"+(data.pageList[i].appStatus==1 ? '已开通': '未开通')+"</td>"
-                    +"<td>";
+                    +"<td class='opr'>";
 
                     if(data.pageList[i].keywordStatus==1){
                         //APP未开通且审核通过
@@ -80,6 +80,8 @@ function loadKeyWordList(pageIndex,keyword) {
                 }
 
                 $("#keywordManage").append(table);
+
+                $(".opr").css({"color":"#999"});
 
 
 

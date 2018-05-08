@@ -3,7 +3,6 @@ $(document).ready(function () {
     var path=$("#path").val();
     var $info = $(".smenu").empty();
     $(".showChildMenu").click(function () {
-        after("asdfasdfasdf ")
         var obj = $(this);
         var son ="";
         $(".smenu").html("");

@@ -25,7 +25,7 @@
             </c:forEach>
         </select>
         </li>
-        <li>企业主页:<input type="text" name="companyPages" id="companyPages" value="${protal.customer.companyPages}">
+        <li>企业主页:<input type="text" name="companyPages" placeholder="http://www.baidu.com" id="companyPages" value="${protal.customer.companyPages}">
         </li>
         <li>状态:<select name="companyStatus" id="companyStatus">
           <c:if test="${protal.customer.companyStatus==1}">
@@ -64,7 +64,7 @@
         </li>
 
 
-        <li>证件号码:<input type="text" name="idNumber" id="cardnum" value="${protal.idNumber}">
+        <li>证件号码:<input type="text" name="idNumber" placeholder="请输入数字" id="cardnum" value="${protal.idNumber}">
         </li>
         <li>国家:<input type="text" name="state" value="${protal.state}">
         </li>
@@ -72,14 +72,14 @@
           <option value="">--请选择省份--</option>
         </select>
         </li>
-        <li>公司传真:<input type="text" name="companyFax" id="companyFax"  value="${protal.companyFax}">
+        <li>公司传真:<input type="text" name="companyFax" id="companyFax" placeholder="0111-1111111"  value="${protal.companyFax}">
         </li>
         <li>城市:
           <select id="customcity" name="city">
             <option value="">--请选择城市--</option>
           </select>
         </li>
-        <li>公司电话:<input type="text" name="companyTel" id="companyTel" value="${protal.companyTel}">
+        <li>公司电话:<input type="text" name="companyTel" id="companyTel" placeholder="011-1111111" value="${protal.companyTel}">
         </li>
         <li>公司地址:<input type="text" name="companyAddress" id="companyAddress" value="${protal.companyAddress}">
         </li>
@@ -116,9 +116,9 @@
           <tr>
             <input type='hidden' name='contacts[${contact.index}].contactsId' value="${contactsList.contactsId }">
             <td><input type='text' name='contacts[${contact.index}].contactsName'  value="${contactsList.contactsName }"></td>
-            <td><input type='text' name='contacts[${contact.index}].contactsTel'  class="contactsTel"  value="${contactsList.contactsTel}"></td>
-            <td><input type='text' name='contacts[${contact.index}].contactsFax'  class="contactsFax"  value="${contactsList.contactsFax}"></td>
-            <td><input type='text' name='contacts[${contact.index}].contactsEmail'  class="contactsEmail"  value="${contactsList.contactsEmail}"></td>
+            <td><input type='text' name='contacts[${contact.index}].contactsTel' placeholder="13|5|8000000000" class="contactsTel"  value="${contactsList.contactsTel}"></td>
+            <td><input type='text' name='contacts[${contact.index}].contactsFax'  class="contactsFax" placeholder="0111-1111111"  value="${contactsList.contactsFax}"></td>
+            <td><input type='text' name='contacts[${contact.index}].contactsEmail'  class="contactsEmail" placeholder="zhangsan-001@gmail.com"  value="${contactsList.contactsEmail}"></td>
             <td><input type='text' name='contacts[${contact.index}].contactsPost'  value="${contactsList.contactsPost}"></td>
             <td  onclick='delTr(this)' style="cursor:hand">删除</td></tr>
           </tr>

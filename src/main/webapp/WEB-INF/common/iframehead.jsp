@@ -20,13 +20,11 @@
     <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-form.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/public.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/main.css">
+    <script type="text/javascript" src='${pageContext.request.contextPath }/js/prompt.js'></script>
 
 <!-- humane提醒库 -->
 <link id='theme' rel='stylesheet' href='${pageContext.request.contextPath }/humane/themes/original.css' />
-<script type="text/javascript" src='${pageContext.request.contextPath }/humane/humane.js'></script>
 
-
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/public.js"></script>
 </head>

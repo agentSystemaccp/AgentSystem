@@ -47,15 +47,17 @@ function delTr(obj){
 function checksave(){
     var customname=$.trim($("#customname").val());
     //数据验证
-    validate();
+    if(validate()){
+        $.post(path+"/agent/isexitcustomname",{"companyName":customname},function(result){
+            if(result=="peat"){
+                $.MsgBox.Alert("消息","对不起,该客户名称已存在");
+            }else if(result=="nopeat"){
+                customerSubmit(customname);
+            }
+        },'html');
+	}
 
-	$.post(path+"/agent/isexitcustomname",{"companyName":customname},function(result){
-		if(result=="peat"){
-            $.MsgBox.Alert("消息","对不起,该客户名称已存在");
-		}else if(result=="nopeat"){
-            customerSubmit(customname);
-		}
-	},'html');
+
 
 
 
@@ -70,8 +72,7 @@ function customerSubmit(customname) {
         dataType : 'json',
         success :function (result) {
             if(result=="success"){
-                $.MsgBox.Alert("消息","添加[ "+customname+" ]成功!");
-                window.location.href=path+"/agent/toCustomerManage";
+                $.MsgBox.Alert("消息","添加[ "+customname+" ]成功!","/agent/toCustomerManage");
             }else {
                 $.MsgBox.Alert("消息","添加[ "+customname+" ]失败,请重新添加!")
             }

@@ -28,11 +28,11 @@
         var val = $("#allocation").val();
         var reg=/^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+))+$/;
         if(val.length == 0){
-            alert("配置类型不能为空");
+            $.MsgBox.Alert("消息","配置类型不能为空");
             return;
         }
         if(!reg.test(val)){
-            alert("配置类型必须以http://https://开头");
+            $.MsgBox.Alert("消息","配置类型必须以http://https://开头");
             return;
         }
         $.ajax({
@@ -42,10 +42,9 @@
             dataType:"json",
             success:function (data) {
                 if(data == "1"){
-                    alert("修改类型成功");
-                    window.location.href=path+"/type/queryAppURL";
+                    $.MsgBox.Alert("消息","修改类型成功","/type/queryAppURL");
                 }else{
-                    alert("修改类型失败")
+                    $.MsgBox.Alert("消息","修改类型失败")
                 }
             }
         });
