@@ -48,7 +48,7 @@
         <if test="starttime != '' and endtime == ''">AND createTime >= #{starttime}</if>
         <if test="starttime == '' and endtime != ''">AND #{endtime} >= createTime </if>
         <if test="starttime != '' and endtime != ''">AND createTime BETWEEN #{starttime} AND  #{endtime}</if>
-        LIMIT #{offset},#{pageSize}
+        ORDER BY createTime DESC LIMIT #{offset},#{pageSize}
     </select>
 
 

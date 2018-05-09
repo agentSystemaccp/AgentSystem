@@ -15,10 +15,6 @@ $(".container").on("click","#searchCustomer",function () {
     customerList("",cname);
     return;
 })
-// $("#searchCustomer").click(function () {
-//
-// })
-
 //客户列表
 function customerList(pageIndex,cname) {
     if (typeof(pageIndex) == "undefined"||typeof(pageIndex) == ""){

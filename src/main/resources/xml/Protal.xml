@@ -120,10 +120,9 @@
             <if test="protalId!=0">AND p.protalId = #{protalId}</if>
         </if>
         <if test="cid!=0">
-            SELECT c.*,p.*,f.*,(SELECT typeName FROM finance_type WHERE typeId = c.companyType) companyTypeName,
-            (SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
-            FROM customerinfo c,protalinfo p,finance_type f WHERE c.customerId=p.customerId
-            AND f.typeId=c.companyType AND c.customerId=#{cid}
+            SELECT *,(SELECT typeName FROM finance_type WHERE typeId = c.companyType) companyTypeName,(SELECT typeName FROM finance_type WHERE typeid = p.typeId) protalType
+            FROM `customerinfo` c JOIN `protalinfo` p ON c.customerId=p.customerId LEFT JOIN `keyword` k ON c.customerId=k.customerId LEFT JOIN appInfo a ON a.keywordId=k.keywordId
+            WHERE c.customerId=#{cid}
         </if>
 
     </select>

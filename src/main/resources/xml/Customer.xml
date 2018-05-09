@@ -13,6 +13,7 @@
         <result property="companyType" column="companyType"/>
         <result property="companyPages" column="companyPages"/>
         <result property="companyStatus" column="companyStatus"/>
+        <result property="keywordId" column="keywordId"/>
         <association property="type" javaType="Type">
             <result property="typeId" column="typeId"/>
             <result property="typeName" column="typeName"/>
@@ -46,7 +47,7 @@
         <if test="companyName!='' and companyName!=null">
             and c.companyName like CONCAT('%',#{companyName},'%')
         </if>
-        AND c.companyStatus=#{companyStatus} limit 10
+        AND c.companyStatus=#{companyStatus} AND c.keywordId=0 limit 14
     </select>
 
     <!--修改客户-->
@@ -58,6 +59,7 @@
             <if test="companyType!=0">companyType=#{companyType},</if>
             <if test="companyPages!=null and companyPages!=''">companyPages=#{companyPages},</if>
             <if test="companyStatus==1 or companyStatus==2">companyStatus=#{companyStatus},</if>
+            <if test="keywordId!=0">keywordId=#{keywordId},</if>
         </set>
         WHERE customerId=#{customerId}
     </update>

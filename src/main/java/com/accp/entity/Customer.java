@@ -12,6 +12,7 @@ public class Customer {
     private int companyType;        //企业类型id
     private String companyPages;    //企业主页
     private int companyStatus;      //状态
+    private int keywordId;          //关键词id
 
     private List<Contacts> contacts;        //客户联系人集合
     private Protal protal;              //客户门户对象
@@ -108,4 +109,11 @@ public class Customer {
         this.user = user;
     }
 
+    public int getKeywordId() {
+        return keywordId;
+    }
+
+    public void setKeywordId(int keywordId) {
+        this.keywordId = keywordId;
+    }
 }

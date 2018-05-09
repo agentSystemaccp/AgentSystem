@@ -9,7 +9,7 @@
     <div class="subtitle">基本信息</div>
     <div class="info1">
       <ul>
-        <li>企业名称: <input type="text" name="companyName"
+        <li>企业名称: <input type="text" name="companyName" placeholder="请输入企业名称"
                         id="customname" value="">
         </li>
 
@@ -33,9 +33,9 @@
     <div class="subtitle">门户信息</div>
     <div class="info2">
       <ul>
-        <li>法人代表: <input type="text" id="legalRepresentative" name="legalRepresentative">
+        <li>法人代表: <input type="text" id="legalRepresentative" name="legalRepresentative" placeholder="请输入法人代表">
         </li>
-        <li>注册日期: <input type="text" name="createTime" value=""
+        <li>注册日期: <input type="text" name="createTime" value="" placeholder="请选择注册日期"
                         class="Wdate" onclick="WdatePicker()" id="regdate">
         </li>
         <li>证件类型: <select name="typeId" id="customcardtype">
@@ -59,7 +59,7 @@
         </select></li>
         <li>公司电话: <input type="text" id="companyTel" name="companyTel" placeholder="011-1111111" value="">
         </li>
-        <li>公司地址: <input type="text" name="companyAddress" id="companyAddress" value="">
+        <li>公司地址: <input type="text" name="companyAddress" id="companyAddress" value="" placeholder="请输入公司地址">
         </li>
       </ul>
       <div class="clear"></div>

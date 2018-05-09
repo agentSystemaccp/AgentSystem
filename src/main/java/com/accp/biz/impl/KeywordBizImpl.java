@@ -1,13 +1,11 @@
 package com.accp.biz.impl;
 
 import com.accp.biz.KeywordBiz;
+import com.accp.dao.CustomerDao;
 import com.accp.dao.DealDetailDao;
 import com.accp.dao.KeyWordDao;
 import com.accp.dao.UserInfoDao;
-import com.accp.entity.DealDetail;
-import com.accp.entity.Keyword;
-import com.accp.entity.Page;
-import com.accp.entity.UserInfo;
+import com.accp.entity.*;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,6 +21,8 @@ public class KeywordBizImpl implements KeywordBiz {
     private DealDetailDao dealDetailDao;
     @Resource
     private UserInfoDao userInfoDao;
+    @Resource
+    private CustomerDao customerDao;
 
     /**
      * 添加关键词,冻结资金,添加明细
@@ -46,8 +46,12 @@ public class KeywordBizImpl implements KeywordBiz {
        dealDetail.setDetailType(13);
        dealDetailDao.addDealDetail(dealDetail);
 
+       keyWordDao.addKeyWord(keyword);
+       Customer customer=new Customer();
+       customer.setCustomerId(keyword.getCustomerId());
+       customer.setKeywordId(keyWordDao.queryByKeyWord(keyword).getKeywordId());
 
-       return keyWordDao.addKeyWord(keyword);
+       return customerDao.updateCustomer(customer);
    }
 
 

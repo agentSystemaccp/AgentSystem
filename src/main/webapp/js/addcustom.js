@@ -19,9 +19,9 @@ var path = $("#path").val();
 	//添加联系人
 	$("#addcontact").click(function(){
 		var str="<tr><td><input type='text' name='contacts["+contactcount+"].contactsName'  value=''></td>" +
-				"<td><input type='text' name='contacts["+contactcount+"].contactsTel' class='contactsTel' value=''></td>" +
-				"<td><input type='text' name='contacts["+contactcount+"].contactsFax' class='contactsFax' value=''></td>" +
-				"<td><input type='text' name='contacts["+contactcount+"].contactsEmail' class='contactsEmail' value=''></td>" +
+				"<td><input type='text' name='contacts["+contactcount+"].contactsTel' placeholder='13|5|8000000000' class='contactsTel' value=''></td>" +
+				"<td><input type='text' name='contacts["+contactcount+"].contactsFax' placeholder='0111-1111111' class='contactsFax' value=''></td>" +
+				"<td><input type='text' name='contacts["+contactcount+"].contactsEmail' placeholder='zhangsan-001@gmail.com' class='contactsEmail' value=''></td>" +
 				"<td><input type='text' name='contacts["+contactcount+"].contactsPost' value=''></td>" +
 				"<td  onclick='delTr(this)'><a href='javascript:void()'>删除</a></td></tr>";
 		$("#addtr").append(str);
