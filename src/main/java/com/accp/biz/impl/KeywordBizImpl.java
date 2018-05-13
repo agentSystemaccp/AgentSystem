@@ -7,6 +7,8 @@ import com.accp.dao.KeyWordDao;
 import com.accp.dao.UserInfoDao;
 import com.accp.entity.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -29,29 +31,32 @@ public class KeywordBizImpl implements KeywordBiz {
      * @param keyword
      * @return
      */
-   public int addKeyWord(Keyword keyword, UserInfo userInfo,int price) {
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
+   public int addKeyWord(Keyword keyword, UserInfo userInfo,int price) throws Exception{
        //冻结一年资金资金
        userInfo.setBalance(userInfo.getBalance()-(price/keyword.getTerm()));
        userInfo.setFrozenFunds(userInfo.getFrozenFunds()+price);          //冻结资金
-       userInfoDao.updateUserInfo(userInfo);
-
-       //添加明细
-       DealDetail dealDetail = new DealDetail();
-       dealDetail.setUserId(userInfo.getUserid());
-       dealDetail.setBalance((float) userInfo.getBalance()-(price/keyword.getTerm()));
-       dealDetail.setCreateTime(new Date());
-       dealDetail.setFinanceFund(-price/keyword.getTerm());
-       dealDetail.setFinanceType("预注册冻结资金");
-       dealDetail.setRemark(userInfo.getUserName()+"对"+keyword.getKeyword()+"进行关键词申请预注册操作,冻结资金:"+price/keyword.getTerm());
-       dealDetail.setDetailType(13);
-       dealDetailDao.addDealDetail(dealDetail);
-
-       keyWordDao.addKeyWord(keyword);
-       Customer customer=new Customer();
-       customer.setCustomerId(keyword.getCustomerId());
-       customer.setKeywordId(keyWordDao.queryByKeyWord(keyword).getKeywordId());
-
-       return customerDao.updateCustomer(customer);
+       if(userInfoDao.updateUserInfo(userInfo)>0){
+           //添加明细
+           DealDetail dealDetail = new DealDetail();
+           dealDetail.setUserId(userInfo.getUserid());
+           dealDetail.setBalance((float) userInfo.getBalance()-(price/keyword.getTerm()));
+           dealDetail.setCreateTime(new Date());
+           dealDetail.setFinanceFund(-price/keyword.getTerm());
+           dealDetail.setFinanceType("预注册冻结资金");
+           dealDetail.setRemark(userInfo.getUserName()+"对"+keyword.getKeyword()+"进行关键词申请预注册操作,冻结资金:"+price/keyword.getTerm());
+           dealDetail.setDetailType(13);
+           if(dealDetailDao.addDealDetail(dealDetail)>0){
+               keyWordDao.addKeyWord(keyword);
+               Customer customer=new Customer();
+               customer.setCustomerId(keyword.getCustomerId());
+               customer.setKeywordId(keyWordDao.queryByKeyWord(keyword).getKeywordId());
+               if(customerDao.updateCustomer(customer)>0){
+                   return 1;
+               }
+           }
+       }
+        throw new RuntimeException("添加关键词时发生异常!");
    }
 
 
@@ -99,21 +104,28 @@ public class KeywordBizImpl implements KeywordBiz {
      * @param keyword
      * @return
      */
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
     public int updateKeyWord(Keyword keyword,UserInfo userInfo,int price) {
         //扣除续费资金
         userInfo.setBalance(userInfo.getBalance()-price);
-        userInfoDao.updateUserInfo(userInfo);
+        if(userInfoDao.updateUserInfo(userInfo)>0){
+            //添加明细
+            DealDetail dealDetail = new DealDetail();
+            dealDetail.setUserId(userInfo.getUserid());
+            dealDetail.setBalance((float) userInfo.getBalance()-price);
+            dealDetail.setCreateTime(new Date());
+            dealDetail.setFinanceFund(-price);
+            dealDetail.setFinanceType("扣除续费"+keyword.getTerm()+"年"+price+"元");
+            dealDetail.setRemark(userInfo.getUserName()+"对"+keyword.getKeyword()+"进行关键词续费操作,扣除续费资金:"+keyword.getTerm()+"年"+price+"元");
+            if(dealDetailDao.addDealDetail(dealDetail)>0){
+                if(keyWordDao.updateKeyWord(keyword)>0){
+                    return 1;
+                }
+            }
+        }
+        throw new RuntimeException("关键词更新异常!!");
 
-        //添加明细
-        DealDetail dealDetail = new DealDetail();
-        dealDetail.setUserId(userInfo.getUserid());
-        dealDetail.setBalance((float) userInfo.getBalance()-price);
-        dealDetail.setCreateTime(new Date());
-        dealDetail.setFinanceFund(-price);
-        dealDetail.setFinanceType("扣除续费"+keyword.getTerm()+"年"+price+"元");
-        dealDetail.setRemark(userInfo.getUserName()+"对"+keyword.getKeyword()+"进行关键词续费操作,扣除续费资金:"+keyword.getTerm()+"年"+price+"元");
-        dealDetailDao.addDealDetail(dealDetail);
 
-        return keyWordDao.updateKeyWord(keyword);
+
     }
 }

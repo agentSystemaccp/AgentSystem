@@ -40,6 +40,8 @@
 
   <!--声明式事务-->
   <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager"/>
+  <!--使用注解事务-->
+  <tx:annotation-driven transaction-manager="transactionManager"/>
   <tx:advice id="txAdvice" >
     <tx:attributes>
       <tx:method name="add*"/>

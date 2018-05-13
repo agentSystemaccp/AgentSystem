@@ -6,6 +6,8 @@ import com.accp.dao.CustomerDao;
 import com.accp.dao.ProtalDao;
 import com.accp.entity.*;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -53,8 +55,12 @@ public class CustomerBizImpl implements CustomerBiz {
      * @param customer
      * @return
      */
-    public int updateCustomer(Customer customer) {
-        return customerDao.updateCustomer(customer);
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
+    public int updateCustomer(Customer customer) throws Exception {
+        if(customerDao.updateCustomer(customer)>0){
+            return 1;
+        }
+        throw new RuntimeException("更新客户失败!");
     }
 
     /**
@@ -72,7 +78,8 @@ public class CustomerBizImpl implements CustomerBiz {
      * @param protal
      * @return
      */
-    public int addCustomer(Customer customer, Protal protal) {
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
+    public int addCustomer(Customer customer, Protal protal) throws Exception{
         int result = 0;
         int cid=0;
 //        1:添加客户
@@ -89,10 +96,18 @@ public class CustomerBizImpl implements CustomerBiz {
                         result=-1;
                         c.setCustomerId(cid);
                         result=contactsDao.addContacts(c);
+                        if(result<1){
+                            throw new RuntimeException("添加联系人失败!");
+                        }
                     }
                 }
 
+            }else {
+                throw new RuntimeException("添加门户失败!");
             }
+        }else {
+            throw new RuntimeException("添加客户失败!");
+
         }
         return result;
     }
@@ -103,6 +118,7 @@ public class CustomerBizImpl implements CustomerBiz {
      * @param protal
      * @return
      */
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
     public int updateCustomerAndProtal(Customer customer, Protal protal) {
         int result = 0;
         int cid=0;
@@ -123,10 +139,17 @@ public class CustomerBizImpl implements CustomerBiz {
                         }else {
                             result=contactsDao.addContacts(c);       //增加
                         }
+                        if(result<1){
+                            throw new RuntimeException("修改或添加联系人失败!");
+                        }
                     }
                 }
 
+            }else {
+                throw new RuntimeException("修改门户失败!");
             }
+        }else {
+            throw new RuntimeException("修改客户失败!");
         }
         return result;
     }

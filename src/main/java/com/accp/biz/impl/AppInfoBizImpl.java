@@ -6,6 +6,8 @@ import com.accp.dao.KeyWordDao;
 import com.accp.entity.AppInfo;
 import com.accp.entity.Keyword;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.security.Key;
@@ -26,12 +28,16 @@ public class AppInfoBizImpl implements AppInfoBiz {
      * @param appInfo
      * @return
      */
-    public int addAppInfo(AppInfo appInfo, Keyword keyword) {
-
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
+    public int addAppInfo(AppInfo appInfo, Keyword keyword) throws Exception{
         //修改开通状态
         if(keyWordDao.updateKeyWord(keyword)>0){
-            return appInfoDao.addAppInfo(appInfo);
+            if( appInfoDao.addAppInfo(appInfo)>0){
+                return 1;
+            }
         }
-        return 0;
+            throw new RuntimeException("关键词或APP更新失败!");
+        }
+
     }
-}
+

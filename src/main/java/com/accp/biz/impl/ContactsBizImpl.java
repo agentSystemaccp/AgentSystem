@@ -4,6 +4,8 @@ import com.accp.biz.ContactsBiz;
 import com.accp.dao.ContactsDao;
 import com.accp.entity.Contacts;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -29,7 +31,11 @@ public class ContactsBizImpl implements ContactsBiz {
      * @param contactsId
      * @return
      */
-    public int delContactsById(int contactsId) {
-        return contactsDao.delContactsById(contactsId);
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
+    public int delContactsById(int contactsId) throws Exception {
+        if(contactsDao.delContactsById(contactsId)>0){
+            return 1;
+        }
+        throw new RuntimeException("删除联系人失败!");
     }
 }

@@ -19,7 +19,7 @@ public interface UserInfoBiz {
      * @param userInfo
      * @return
      */
-    int updatePassword(UserInfo userInfo);
+    int updatePassword(UserInfo userInfo) throws Exception;
 
     /**
      * 通过日期来查询用户余额信息
@@ -40,5 +40,5 @@ public interface UserInfoBiz {
      * @param userInfo
      * @return
      */
-    boolean updateUserInfo(UserInfo userInfo);
+    boolean updateUserInfo(UserInfo userInfo) throws Exception;
 }

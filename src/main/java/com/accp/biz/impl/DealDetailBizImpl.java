@@ -5,6 +5,8 @@ import com.accp.dao.DealDetailDao;
 import com.accp.entity.DealDetail;
 import com.accp.entity.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -59,10 +61,16 @@ public class DealDetailBizImpl implements DealDetailBiz {
         return page;
     }
 
-    public boolean addDealDetail(DealDetail dealDetail) {
+    /**
+     * 添加一条明细
+     * @param dealDetail
+     * @return
+     */
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
+    public boolean addDealDetail(DealDetail dealDetail) throws Exception{
         if (dealDetailDao.addDealDetail(dealDetail)>0){
             return true;
         }
-        return false;
+        throw new RuntimeException("添加明细异常!");
     }
 }

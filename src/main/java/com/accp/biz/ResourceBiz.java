@@ -29,7 +29,7 @@ public interface ResourceBiz {
      * @param roleid
      * @return
      */
-    boolean deleteResourceByRoleId(int roleid);
+    boolean deleteResourceByRoleId(int roleid) throws Exception;
 
     /**
      * 根据角色id插入权限数据到中间表
@@ -37,5 +37,5 @@ public interface ResourceBiz {
      * @param resourceId
      * @return
      */
-    boolean addResourceByRoleId(int roleId,int resourceId);
+    boolean addResourceByRoleId(int roleId,int resourceId) throws Exception;
 }

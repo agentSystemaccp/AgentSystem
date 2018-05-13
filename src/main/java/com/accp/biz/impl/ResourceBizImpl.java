@@ -5,6 +5,8 @@ import com.accp.biz.ResourceBiz;
 import com.accp.dao.ResourceDao;
 import com.accp.entity.Role;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -21,17 +23,21 @@ public class ResourceBizImpl implements ResourceBiz {
         return resourceDao.findAllResource();
     }
 
-    public boolean deleteResourceByRoleId(int roleid) {
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
+    public boolean deleteResourceByRoleId(int roleid) throws Exception{
         if (resourceDao.deleteResourceByRoleId(roleid)>0){
             return true;
         }
-        return false;
+        throw new Exception("删除角色资源异常!");
     }
 
-    public boolean addResourceByRoleId(int roleId, int resourceId) {
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
+    public boolean addResourceByRoleId(int roleId, int resourceId) throws Exception{
         if (resourceDao.addResourceByRoleId(roleId,resourceId)>0){
             return true;
         }
-        return false;
+        throw new Exception("添加角色资源异常!");
+
+
     }
 }

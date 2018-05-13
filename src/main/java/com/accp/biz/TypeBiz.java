@@ -23,14 +23,14 @@ public interface TypeBiz {
      * @param typeId
      * @return
      */
-    int delType(int typeId);
+    int delType(int typeId) throws Exception;
 
     /**
      * 添加类型
      * @param type
      * @return
      */
-    int addType(Type type);
+    int addType(Type type) throws Exception;
 
     /**
      * 通过类型名称查询类型
@@ -44,5 +44,5 @@ public interface TypeBiz {
      * @param type
      * @return
      */
-    int updateType(Type type);
+    int updateType(Type type) throws Exception;
 }

@@ -27,5 +27,5 @@ public interface ProtalBiz {
      * @param appInfo
      * @return
      */
-    public int modifyProtal(AppInfo appInfo);
+    public int modifyProtal(AppInfo appInfo) throws Exception;
 }

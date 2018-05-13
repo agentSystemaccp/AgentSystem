@@ -9,6 +9,8 @@ import com.accp.entity.Contacts;
 import com.accp.entity.Page;
 import com.accp.entity.Protal;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -68,8 +70,13 @@ public class ProtalBizImpl implements ProtalBiz{
      * @param appInfo
      * @return
      */
-    public int modifyProtal(AppInfo appInfo) {
-        return appInfoDao.updateAppInfo(appInfo);
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
+    public int modifyProtal(AppInfo appInfo) throws Exception {
+        if(appInfoDao.updateAppInfo(appInfo)>0){
+            return 1;
+
+        }
+        throw new RuntimeException("修改APP异常!");
     }
 }
 

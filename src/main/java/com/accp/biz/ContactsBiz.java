@@ -7,5 +7,5 @@ import java.util.List;
 public interface ContactsBiz {
     List<Contacts> queryContactsById(int customerId);
 
-    int delContactsById(int contactsId);
+    int delContactsById(int contactsId) throws Exception;
 }

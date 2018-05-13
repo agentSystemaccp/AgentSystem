@@ -22,5 +22,5 @@ public interface DealDetailBiz {
     Page<DealDetail> queryListByParam(int userid,int dealType,String starttime,String endtime,int pageSize, int pageNo);
 
     //添加明细
-    boolean addDealDetail(DealDetail dealDetail);
+    boolean addDealDetail(DealDetail dealDetail) throws Exception;
 }

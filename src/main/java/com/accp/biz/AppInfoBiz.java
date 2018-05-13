@@ -9,5 +9,5 @@ public interface AppInfoBiz {
      * @param appInfo
      * @return
      */
-    int addAppInfo(AppInfo appInfo, Keyword keyword);
+    int addAppInfo(AppInfo appInfo, Keyword keyword) throws Exception;
 }

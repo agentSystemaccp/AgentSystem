@@ -13,12 +13,12 @@ public interface CustomerBiz {
 
     List<Customer> queryCustomBySearch(Customer customer);
 //    修改客户
-    int updateCustomer(Customer customer);
+    int updateCustomer(Customer customer) throws Exception;
 
     Customer queryCustomerByParam(Customer customer);
 
-    int addCustomer(Customer customer, Protal protal);
+    int addCustomer(Customer customer, Protal protal) throws Exception;
 
     //修改客户和门户
-    int updateCustomerAndProtal(Customer customer, Protal protal);
+    int updateCustomerAndProtal(Customer customer, Protal protal) throws Exception;
 }

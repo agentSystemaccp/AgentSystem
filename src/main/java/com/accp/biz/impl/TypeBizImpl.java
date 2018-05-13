@@ -4,6 +4,8 @@ import com.accp.biz.TypeBiz;
 import com.accp.dao.TypeDao;
 import com.accp.entity.Type;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -38,8 +40,12 @@ public class TypeBizImpl implements TypeBiz {
      * @param typeId
      * @return
      */
-    public int delType(int typeId) {
-        return typeDao.delType(typeId);
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
+    public int delType(int typeId) throws Exception {
+        if(typeDao.delType(typeId)>0){
+            return 1;
+        }
+        throw new RuntimeException("删除类型异常!");
     }
 
     /**
@@ -47,8 +53,12 @@ public class TypeBizImpl implements TypeBiz {
      * @param type
      * @return
      */
-    public int addType(Type type){
-        return typeDao.addType(type);
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
+    public int addType(Type type) throws Exception{
+        if(typeDao.addType(type)>0){
+            return 1;
+        }
+        throw new RuntimeException("添加类型异常!");
     }
 
     /**
@@ -65,7 +75,11 @@ public class TypeBizImpl implements TypeBiz {
      * @param type
      * @return
      */
-    public int updateType(Type type) {
-        return typeDao.updateType(type);
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
+    public int updateType(Type type) throws Exception {
+        if(typeDao.updateType(type)>0){
+            return 1;
+        }
+        throw new RuntimeException("更新类型异常!");
     }
 }

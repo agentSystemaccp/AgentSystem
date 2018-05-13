@@ -9,7 +9,7 @@ public interface KeywordBiz {
     //动态验证关键词是否存在
     Keyword queryByKeyWord(Keyword keyword);
 
-    int addKeyWord(Keyword keyword, UserInfo userInfo,int price);
+    int addKeyWord(Keyword keyword, UserInfo userInfo,int price) throws Exception;
 
     //查看账户明细
     Page<Keyword> queryKeyWordList(String keyword,int userId, int pageSize, int pageNo);
@@ -17,5 +17,5 @@ public interface KeywordBiz {
     Keyword queryKeyWordById(int keywordId);
 
     //修改关键词
-    int updateKeyWord(Keyword keyword,UserInfo userInfo,int price);
+    int updateKeyWord(Keyword keyword,UserInfo userInfo,int price) throws Exception;
 }

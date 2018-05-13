@@ -7,6 +7,8 @@ import com.accp.dao.UserInfoDao;
 import com.accp.entity.Role;
 import com.accp.entity.UserInfo;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -45,8 +47,13 @@ public class UserInfoBizImpl implements UserInfoBiz {
      * @param userInfo
      * @return
      */
-    public int updatePassword(UserInfo userInfo) {
-        return userInfoDao.updatePassword(userInfo);
+    @Transactional(propagation = Propagation.REQUIRED,timeout = 30,rollbackFor = {RuntimeException.class,Exception.class})
+    public int updatePassword(UserInfo userInfo) throws Exception {
+        if(userInfoDao.updatePassword(userInfo)>0){
+            return 1;
+        }
+        throw new RuntimeException("修改密码异常!");
+
     }
 
     /**
@@ -63,10 +70,10 @@ public class UserInfoBizImpl implements UserInfoBiz {
         return userInfoDao.queryAllUserInfo();
     }
 
-    public boolean updateUserInfo(UserInfo userInfo) {
+    public boolean updateUserInfo(UserInfo userInfo) throws Exception{
         if (userInfoDao.updateUserInfo(userInfo)>0){
             return true;
         }
-        return false;
+        throw new RuntimeException("修改登录用户异常!");
     }
 }
